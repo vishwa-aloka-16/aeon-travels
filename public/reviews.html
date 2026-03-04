@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Success Stories — AEON Travels & Tours</title>
+  <link rel="stylesheet" href="./assets/css/output.css"/>
+  <link rel="stylesheet" href="./assets/css/reviews.css"/>
+  <style>
+    .nav-center-links{display:flex;gap:1.5rem;align-items:center}
+    .nav-center-link{font-size:.88rem;font-weight:600;color:#374151;text-decoration:none;transition:color .2s;white-space:nowrap}
+    .nav-center-link:hover,.nav-center-link.active{color:#219a00}
+    @media(max-width:1024px){.nav-center-links{display:none}}
+    @media(max-width:1024px){#menuToggle{display:block}}
+  </style>
+</head>
+<body>
+
+  <!-- ── SIDE QUOTE OVERLAY ── -->
+  <div class="side-quote-overlay" id="sideQuoteOverlay"></div>
+
+  <!-- ── SIDE QUOTE PANEL ── -->
+  <div class="side-quote-panel" id="sideQuotePanel">
+    <div class="side-quote-header">
+      <h3>Get A <span>Quote</span></h3>
+      <button class="side-quote-close" id="sideQuoteClose">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <form class="side-quote-form" id="sideQuoteForm">
+      <div><label>Your Name</label><input type="text" name="name" placeholder="John Smith"/></div>
+      <div><label>Email Address</label><input type="email" name="email" placeholder="john@example.com"/></div>
+      <div><label>Mobile Number</label><input type="tel" name="mobile" placeholder="+1 234 567 890"/></div>
+      <div><label>Destination</label><input type="text" name="destination" placeholder="e.g. Ella, Sri Lanka"/></div>
+      <p class="side-quote-note">We will contact you within 24 hrs.</p>
+      <button type="submit" class="side-quote-submit">Submit Request</button>
+    </form>
+  </div>
+
+  <!-- ── FLOATING GET A QUOTE BUTTON ── -->
+  <button class="side-quote-btn" id="sideQuoteBtn">Get a Quote</button>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">
+      <img src="/public/assets/images/logo-flower-aeon.png" alt="Logo" style="height:2rem;width:2rem"/>
+      <h1 class="nav-brand">AEON Travels &amp; Tours</h1>
+    </div>
+    <div class="nav-center-links">
+      <a href="index.html" class="nav-center-link">Home</a>
+      <a href="tours-packages.html" class="nav-center-link">Holidays &amp; Tours</a>
+      <a href="reviews.html" class="nav-center-link active">Success Stories</a>
+      <a href="about.html" class="nav-center-link">About Us</a>
+      <a href="contact.html" class="nav-center-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="mailto:info@aeontravel.com" class="nav-icon-btn" title="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <g fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 12c0-3.771 0-5.657 1.172-6.828S6.229 4 10 4h4c3.771 0 5.657 0 6.828 1.172S22 8.229 22 12s0 5.657-1.172 6.828S17.771 20 14 20h-4c-3.771 0-5.657 0-6.828-1.172S2 15.771 2 12Z"/>
+            <path stroke-linecap="round" d="m6 8l2.159 1.8c1.837 1.53 2.755 2.295 3.841 2.295s2.005-.765 3.841-2.296L18 8"/>
+          </g>
+        </svg>
+      </a>
+      <a href="tel:+94112345678" class="nav-icon-btn" title="Call">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M14 2s2.2.2 5 3s3 5 3 5m-7.793-4.464s.99.282 2.475 1.767s1.768 2.475 1.768 2.475m-8.412-4.462l.649 1.163c.585 1.05.35 2.426-.572 3.349c0 0-1.12 1.119.91 3.148c2.028 2.028 3.147.91 3.147.91c.923-.923 2.3-1.158 3.349-.573l1.163.65c1.585.884 1.772 3.106.379 4.5c-.837.836-1.863 1.488-2.996 1.53c-1.908.073-5.149-.41-8.4-3.66c-3.25-3.251-3.733-6.492-3.66-8.4c.043-1.133.694-2.159 1.53-2.996c1.394-1.393 3.616-1.206 4.5.38Z"/>
+        </svg>
+      </a>
+      <div class="currency-wrap">
+        <button id="currencyButton">
+          <span id="currencyText">USD</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div id="currencyDropdown">
+          <ul style="padding:.25rem 0;list-style:none">
+            <li><a href="#" class="currency-item">USD</a></li>
+            <li><a href="#" class="currency-item">EUR</a></li>
+            <li><a href="#" class="currency-item">LKR</a></li>
+            <li><a href="#" class="currency-item">GBP</a></li>
+          </ul>
+        </div>
+      </div>
+      <button id="menuToggle" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M4 7h3m13 0h-9m9 10h-3M4 17h9m-9-5h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE DRAWER ── -->
+  <div class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-overlay" id="drawerOverlay"></div>
+    <div class="nav-drawer-panel">
+      <button class="drawer-close" id="drawerClose">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="tours-packages.html" class="drawer-link">Holidays &amp; Tours</a>
+      <a href="reviews.html" class="drawer-link" style="color:#219a00;font-weight:700">Success Stories</a>
+      <a href="about.html" class="drawer-link">About Us</a>
+      <a href="contact.html" class="drawer-link">Contact</a>
+      <a href="#" class="drawer-link" style="color:#219a00;font-weight:800"
+        onclick="openSideQuote();document.getElementById('navDrawer').classList.remove('open');">✦ Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- ── BREADCRUMB ── -->
+  <div class="rv-breadcrumb">
+    <a href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Home
+    </a>
+    <span class="bc-sep">›</span>
+    <span class="bc-active">Success Stories</span>
+  </div>
+
+  <!-- ── HERO ── -->
+  <div class="rv-hero">
+    <div class="rv-hero-inner">
+      <div class="rv-hero-eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Verified Customer Reviews
+      </div>
+      <h1>People <span>Say</span></h1>
+      <p class="rv-hero-sub">Real stories from real travellers. Over 2,600 five-star reviews collected across TripAdvisor, Google and Facebook.</p>
+      <div class="rv-stat-row" id="rvStatRow">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar overlay -->
+  <div class="rv-sidebar-overlay" id="rvSidebarOverlay"></div>
+
+  <!-- ── LAYOUT ── -->
+  <div class="rv-layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="rv-sidebar" id="rvSidebar">
+
+      <div class="rv-sidebar-mobile-header">
+        <h3>Filters</h3>
+        <button class="rv-sb-close" id="rvSbClose">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="rv-sb-group">
+        <h4>Search Reviews</h4>
+        <div class="rv-search-wrap">
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="text" class="rv-search-input" id="rvSearch" placeholder="Search by name, destination…"/>
+        </div>
+      </div>
+
+      <hr class="rv-sb-divider"/>
+
+      <div class="rv-sb-group">
+        <h4>Platform</h4>
+        <div class="rv-checkbox-list" id="rvPlatformFilters"></div>
+      </div>
+
+      <hr class="rv-sb-divider"/>
+
+      <div class="rv-sb-group">
+        <h4>Destination</h4>
+        <div class="rv-checkbox-list" id="rvDestFilters"></div>
+      </div>
+
+      <hr class="rv-sb-divider"/>
+
+      <div class="rv-sb-group">
+        <h4>Sort By</h4>
+        <div class="rv-sort-list">
+          <label class="rv-sort-item"><input type="radio" name="rvSort" value="newest" checked/> Newest First</label>
+          <label class="rv-sort-item"><input type="radio" name="rvSort" value="oldest"/> Oldest First</label>
+          <label class="rv-sort-item"><input type="radio" name="rvSort" value="featured"/> Featured</label>
+        </div>
+      </div>
+
+      <hr class="rv-sb-divider"/>
+
+      <button class="rv-reset-btn" id="rvResetBtn">↺ Reset All Filters</button>
+
+    </aside>
+
+    <!-- ── CONTENT ── -->
+    <main class="rv-content">
+
+      <div class="rv-toolbar">
+        <div class="rv-toolbar-left">
+          <span class="rv-count-text" id="rvCountText">Loading…</span>
+          <div id="rvActiveChips"></div>
+        </div>
+        <button class="rv-mobile-filter-btn" id="rvMobileFilterBtn">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/>
+          </svg>
+          Filters
+        </button>
+      </div>
+
+      <div class="rv-featured-strip" id="rvFeaturedStrip"></div>
+
+      <div class="rv-section-label" id="rvAllLabel" style="display:none;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#219a00"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        All Reviews
+      </div>
+
+      <div class="rv-cards-grid" id="rvCardsGrid">
+        <div class="rv-skeleton">
+          <div class="rv-skel-line long"></div><div class="rv-skel-line med"></div><div class="rv-skel-line long"></div><div class="rv-skel-line short"></div>
+          <div style="display:flex;gap:.6rem;margin-top:1rem"><div class="rv-skel-avatar"></div><div style="flex:1"><div class="rv-skel-line med"></div><div class="rv-skel-line short"></div></div></div>
+        </div>
+        <div class="rv-skeleton">
+          <div class="rv-skel-line med"></div><div class="rv-skel-line long"></div><div class="rv-skel-line long"></div><div class="rv-skel-line short"></div>
+          <div style="display:flex;gap:.6rem;margin-top:1rem"><div class="rv-skel-avatar"></div><div style="flex:1"><div class="rv-skel-line long"></div><div class="rv-skel-line short"></div></div></div>
+        </div>
+        <div class="rv-skeleton">
+          <div class="rv-skel-line long"></div><div class="rv-skel-line short"></div><div class="rv-skel-line med"></div><div class="rv-skel-line long"></div>
+          <div style="display:flex;gap:.6rem;margin-top:1rem"><div class="rv-skel-avatar"></div><div style="flex:1"><div class="rv-skel-line med"></div><div class="rv-skel-line short"></div></div></div>
+        </div>
+      </div>
+
+      <div class="rv-load-more-wrap" id="rvLoadMoreWrap" style="display:none;">
+        <button class="rv-load-more-btn" id="rvLoadMoreBtn">Load More Reviews</button>
+      </div>
+
+      <div class="rv-cta-banner">
+        <div>
+          <h2>Ready to write your own <strong>success story?</strong></h2>
+          <p>Join thousands of happy travellers who've trusted AEON to plan their dream getaway.</p>
+        </div>
+        <button class="rv-cta-btn" onclick="openSideQuote()">Get a Quote Today</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    /* ── CURRENCY ── */
+    const currBtn  = document.getElementById("currencyButton");
+    const currDrop = document.getElementById("currencyDropdown");
+    const currText = document.getElementById("currencyText");
+    currBtn.addEventListener("click", e => { e.stopPropagation(); currDrop.classList.toggle("open"); });
+    document.querySelectorAll(".currency-item").forEach(i =>
+      i.addEventListener("click", e => { e.preventDefault(); currText.textContent = i.textContent.trim(); currDrop.classList.remove("open"); }));
+    document.addEventListener("click", () => currDrop.classList.remove("open"));
+
+    /* ── DRAWER ── */
+    document.getElementById("menuToggle").addEventListener("click", () => document.getElementById("navDrawer").classList.add("open"));
+    document.getElementById("drawerClose").addEventListener("click", () => document.getElementById("navDrawer").classList.remove("open"));
+    document.getElementById("drawerOverlay").addEventListener("click", () => document.getElementById("navDrawer").classList.remove("open"));
+
+    /* ── SIDE QUOTE ── */
+    function openSideQuote() {
+      document.getElementById("sideQuotePanel").classList.add("open");
+      document.getElementById("sideQuoteOverlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeSideQuote() {
+      document.getElementById("sideQuotePanel").classList.remove("open");
+      document.getElementById("sideQuoteOverlay").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    document.getElementById("sideQuoteBtn").addEventListener("click", openSideQuote);
+    document.getElementById("sideQuoteClose").addEventListener("click", closeSideQuote);
+    document.getElementById("sideQuoteOverlay").addEventListener("click", closeSideQuote);
+    document.getElementById("sideQuoteForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const btn = e.target.querySelector(".side-quote-submit");
+      btn.textContent = "✓ Request Sent!"; btn.style.background = "#177a00";
+      setTimeout(() => { btn.textContent = "Submit Request"; btn.style.background = ""; e.target.reset(); closeSideQuote(); }, 2500);
+    });
+
+    /* ── REVIEWS SIDEBAR (mobile) ── */
+    const rvSidebar        = document.getElementById("rvSidebar");
+    const rvSidebarOverlay = document.getElementById("rvSidebarOverlay");
+    document.getElementById("rvMobileFilterBtn").addEventListener("click", () => {
+      rvSidebar.classList.add("open"); rvSidebarOverlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    });
+    function closeSidebar() {
+      rvSidebar.classList.remove("open"); rvSidebarOverlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    document.getElementById("rvSbClose").addEventListener("click", closeSidebar);
+    document.getElementById("rvSidebarOverlay").addEventListener("click", closeSidebar);
+  </script>
+
+  <script>
+    /* ══════════════════════════════════════════
+       REVIEWS PAGE — DATA & RENDERING
+    ══════════════════════════════════════════ */
+
+    const REVIEWS_URL = "../content/data/reviews.json";
+    const DEST_FLAGS  = {
+      "Sri Lanka":"lk","Vietnam":"vn","Maldives":"mv","Indonesia":"id",
+      "Dubai":"ae","Cambodia":"kh","Singapore":"sg","Malaysia":"my",
+      "Singapore and Malaysia":"sg","Thailand":"th"
+    };
+    const PLATFORM_LABELS = { tripadvisor:"TripAdvisor", google:"Google", facebook:"Facebook" };
+
+    let allReviews       = [];
+    let activePlatforms  = new Set();
+    let activeDestinations = new Set();
+    let searchQuery      = "";
+    let sortMode         = "newest";
+    const PAGE_SIZE      = 6;
+    let visibleCount     = PAGE_SIZE;
+
+    function stars(n)    { return "★".repeat(n) + "☆".repeat(5 - n); }
+    function formatDate(d){ return new Date(d).toLocaleDateString("en-GB",{year:"numeric",month:"long",day:"numeric"}); }
+    function initials(name){ return name.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase(); }
+    function flagUrl(dest){ const c=DEST_FLAGS[dest]; return c?`https://flagcdn.com/w40/${c}.png`:""; }
+
+    /* ── Hero stats ── */
+    function renderStats(stats) {
+      document.getElementById("rvStatRow").innerHTML = `
+        <div class="rv-stat-card">
+          <div class="rv-stat-icon ta"><img class="rounded-full" src="https://play-lh.googleusercontent.com/bfy2rE4Iu_15VyVAujaCtwQkThjUWWZSljcpnX2pdd4tcTO8SoGwrBhcTMwqeYjRlw" alt="TripAdvisor"></div>
+          <div>
+            <div class="rv-stat-info-label">TripAdvisor</div>
+            <div class="rv-stat-info-count ">${stats.tripadvisor.count.toLocaleString()}</div>
+            <div class="rv-stat-stars">${"★".repeat(Math.round(stats.tripadvisor.rating))} ${stats.tripadvisor.rating}</div>
+          </div>
+        </div>
+        <div class="rv-stat-card">
+          <div class="rv-stat-icon g"><img class="rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVZEZ6fa7bPwCI4HE5583rhd3qiFNmf6kiPg&s" alt="Google"></div>
+          <div>
+            <div class="rv-stat-info-label">Google</div>
+            <div class="rv-stat-info-count">${stats.google.count.toLocaleString()}</div>
+            <div class="rv-stat-stars">${"★".repeat(Math.round(stats.google.rating))} ${stats.google.rating}</div>
+          </div>
+        </div>
+        <div class="rv-stat-card">
+          <div class="rv-stat-icon fb"><img class="rounded-full" src="https://play-lh.googleusercontent.com/KCMTYuiTrKom4Vyf0G4foetVOwhKWzNbHWumV73IXexAIy5TTgZipL52WTt8ICL-oIo=w240-h480-rw" alt="Facebook"></div>
+          <div>
+            <div class="rv-stat-info-label">Facebook</div>
+            <div class="rv-stat-info-count">${stats.facebook.count.toLocaleString()}</div>
+            <div class="rv-stat-stars">${"★".repeat(Math.round(stats.facebook.rating))} ${stats.facebook.rating}</div>
+          </div>
+        </div>`;
+    }
+
+    /* ── Sidebar filters ── */
+    function populateSidebarFilters(reviews) {
+      const platforms = [...new Set(reviews.map(r => r.platform))];
+      document.getElementById("rvPlatformFilters").innerHTML = platforms.map(p => {
+        const cnt = reviews.filter(r => r.platform === p).length;
+        return `<label class="rv-checkbox-item">
+          <input type="checkbox" name="platform" value="${p}"/>
+          ${PLATFORM_LABELS[p] || p}
+          <span class="rv-checkbox-count">${cnt}</span>
+        </label>`;
+      }).join("");
+
+      const dests = [...new Set(reviews.map(r => r.destination))].sort();
+      document.getElementById("rvDestFilters").innerHTML = dests.map(d => {
+        const cnt = reviews.filter(r => r.destination === d).length;
+        return `<label class="rv-checkbox-item">
+          <input type="checkbox" name="destination" value="${d}"/>
+          ${d}
+          <span class="rv-checkbox-count">${cnt}</span>
+        </label>`;
+      }).join("");
+
+      document.querySelectorAll("input[name='platform']").forEach(el =>
+        el.addEventListener("change", () => { syncFilters(); applyAndRender(); }));
+      document.querySelectorAll("input[name='destination']").forEach(el =>
+        el.addEventListener("change", () => { syncFilters(); applyAndRender(); }));
+      document.querySelectorAll("input[name='rvSort']").forEach(el =>
+        el.addEventListener("change", e => { sortMode = e.target.value; applyAndRender(); }));
+      document.getElementById("rvSearch").addEventListener("input", e => {
+        searchQuery = e.target.value.toLowerCase(); applyAndRender();
+      });
+      document.getElementById("rvResetBtn").addEventListener("click", resetFilters);
+    }
+
+    function syncFilters() {
+      activePlatforms.clear();
+      activeDestinations.clear();
+      document.querySelectorAll("input[name='platform']:checked").forEach(el => activePlatforms.add(el.value));
+      document.querySelectorAll("input[name='destination']:checked").forEach(el => activeDestinations.add(el.value));
+    }
+
+    function resetFilters() {
+      document.querySelectorAll("input[name='platform'],input[name='destination']").forEach(el => el.checked = false);
+      document.querySelector("input[name='rvSort'][value='newest']").checked = true;
+      document.getElementById("rvSearch").value = "";
+      activePlatforms.clear(); activeDestinations.clear();
+      searchQuery = ""; sortMode = "newest"; visibleCount = PAGE_SIZE;
+      applyAndRender();
+    }
+
+    /* ── Filter & sort ── */
+    function filteredReviews() {
+      let r = [...allReviews];
+      if (activePlatforms.size)    r = r.filter(rv => activePlatforms.has(rv.platform));
+      if (activeDestinations.size) r = r.filter(rv => activeDestinations.has(rv.destination));
+      if (searchQuery) r = r.filter(rv =>
+        rv.name.toLowerCase().includes(searchQuery) ||
+        rv.text.toLowerCase().includes(searchQuery) ||
+        rv.destination.toLowerCase().includes(searchQuery) ||
+        (rv.tourTitle||"").toLowerCase().includes(searchQuery));
+      if (sortMode === "newest")   r.sort((a,b) => new Date(b.date) - new Date(a.date));
+      if (sortMode === "oldest")   r.sort((a,b) => new Date(a.date) - new Date(b.date));
+      if (sortMode === "featured") r.sort((a,b) => (b.featured?1:0) - (a.featured?1:0));
+      return r;
+    }
+
+    /* ── Featured card ── */
+    function buildFeaturedCard(r) {
+      const photos    = (r.images||[]).slice(0,4);
+      const photoGrid = photos.map(u=>`<div class="rv-fc-media-wrap"><img src="${u}" alt="${r.destination}" loading="lazy"/></div>`).join("");
+      const flag      = flagUrl(r.destination);
+      const TRUNCATE  = 340;
+      const short     = r.text.length > TRUNCATE;
+      const displayText = short ? r.text.slice(0,TRUNCATE)+"…" : r.text;
+      return `
+        <div class="rv-featured-card" id="fc-${r.id}">
+          <div class="rv-fc-body">
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem;">
+              <span class="rv-fc-platform ${r.platform}">${PLATFORM_LABELS[r.platform]}</span>
+              ${r.featured?'<span style="background:#fef9c3;color:#92400e;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:9999px;">⭐ Featured</span>':''}
+            </div>
+            ${r.tourTitle?`<div class="rv-fc-tour-tag">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+              ${r.tourTitle}</div>`:""}
+            <div class="rv-fc-stars">${"★".repeat(r.rating)}</div>
+            <div class="rv-fc-quote"><p id="fct-${r.id}">${displayText}</p></div>
+            ${short?`<button class="rv-fc-read-more" onclick="expandFeatured('${r.id}')">See More</button>`:""}
+            <div class="rv-fc-reviewer">
+              <div class="rv-fc-avatar" style="background:${r.avatarColor||'#219a00'}">${initials(r.name)}</div>
+              <div>
+                <div class="rv-fc-name">${r.name}</div>
+                ${r.title?`<div class="rv-fc-title-loc" style="color:#374151;font-size:.78rem;font-weight:600;">${r.title}</div>`:""}
+                <div class="rv-fc-title-loc">${r.location}</div>
+                <div class="rv-fc-date">${formatDate(r.date)}</div>
+              </div>
+              ${flag?`<img src="${flag}" alt="${r.destination}" style="width:22px;height:22px;border-radius:50%;object-fit:cover;margin-left:auto;" onerror="this.style.display='none'"/>`:""}
+            </div>
+            ${r.expert?`<div class="rv-fc-expert-tag">Destination Expert: <span>${r.expert}</span></div>`:""}
+          </div>
+          ${photos.length?`<div class="rv-fc-media">${photoGrid}</div>`:""}
+        </div>`;
+    }
+
+    /* ── Standard card ── */
+    function buildCard(r) {
+      const photos     = (r.images||[]).slice(0,3);
+      const photoStrip = photos.length?`<div class="rv-card-photos">${photos.map(u=>`<img src="${u}" alt="${r.destination}" loading="lazy"/>`).join("")}</div>`:"";
+      const flag       = flagUrl(r.destination);
+      const TRUNCATE   = 240;
+      const short      = r.text.length > TRUNCATE;
+      return `
+        <div class="rv-card" id="rc-${r.id}">
+          <div class="rv-card-top">
+            <span class="rv-card-platform ${r.platform}">${PLATFORM_LABELS[r.platform]}</span>
+            <span class="rv-card-stars">${"★".repeat(r.rating)}</span>
+          </div>
+          ${flag?`<div class="rv-card-dest"><img src="${flag}" alt="${r.destination}" onerror="this.style.display='none'"/>${r.destination}</div>`:""}
+          <p class="rv-card-quote" id="rct-${r.id}">${r.text}</p>
+          ${short?`<button class="rv-card-read-more" onclick="expandCard('${r.id}')">See More</button>`:""}
+          ${photoStrip}
+          <div class="rv-card-footer">
+            <div class="rv-card-avatar" style="background:${r.avatarColor||'#219a00'}">${initials(r.name)}</div>
+            <div>
+              <div class="rv-card-name">${r.name}</div>
+              <div class="rv-card-loc">${r.location}</div>
+              <div class="rv-card-date">${formatDate(r.date)}</div>
+            </div>
+            ${r.tourTitle?`<a href="tour-detail.html?id=${r.tourId}" class="rv-card-tour-tag" style="text-decoration:none;">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+              View Tour
+            </a>`:""}
+          </div>
+        </div>`;
+    }
+
+    /* ── Expand helpers ── */
+    window.expandFeatured = id => {
+      const el  = document.getElementById("fct-"+id);
+      const r   = allReviews.find(rv => rv.id === id);
+      if (el && r) el.textContent = r.text;
+      const btn = document.querySelector(`#fc-${id} .rv-fc-read-more`);
+      if (btn) btn.style.display = "none";
+    };
+    window.expandCard = id => {
+      const el  = document.getElementById("rct-"+id);
+      if (el) el.classList.add("expanded");
+      const btn = document.querySelector(`#rc-${id} .rv-card-read-more`);
+      if (btn) btn.style.display = "none";
+    };
+
+    /* ── Active chips ── */
+    function renderChips() {
+      const chips = [];
+      activePlatforms.forEach(p  => chips.push({label:PLATFORM_LABELS[p], key:"platform",     val:p}));
+      activeDestinations.forEach(d => chips.push({label:d,                  key:"destination", val:d}));
+      if (searchQuery) chips.push({label:`"${searchQuery}"`, key:"search", val:""});
+      document.getElementById("rvActiveChips").innerHTML = chips.map(c=>`
+        <button class="rv-active-chip" onclick="removeChip('${c.key}','${c.val}')">
+          ${c.label}
+          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>`).join("");
+    }
+
+    window.removeChip = (key, val) => {
+      if (key==="platform")    { activePlatforms.delete(val);    const el=document.querySelector(`input[name='platform'][value='${val}']`);    if(el)el.checked=false; }
+      if (key==="destination") { activeDestinations.delete(val); const el=document.querySelector(`input[name='destination'][value='${val}']`); if(el)el.checked=false; }
+      if (key==="search")      { searchQuery=""; document.getElementById("rvSearch").value=""; }
+      applyAndRender();
+    };
+
+    /* ── Render ── */
+    function applyAndRender() { visibleCount=PAGE_SIZE; renderPage(); }
+
+    function renderPage() {
+      const filtered = filteredReviews();
+      const featured = filtered.filter(r => r.featured);
+      const regular  = filtered.filter(r => !r.featured);
+
+      document.getElementById("rvCountText").innerHTML =
+        `Showing <strong>${filtered.length}</strong> review${filtered.length!==1?"s":""}`;
+      renderChips();
+
+      const featuredStrip = document.getElementById("rvFeaturedStrip");
+      if (featured.length && !searchQuery && activePlatforms.size===0 && activeDestinations.size===0) {
+        featuredStrip.innerHTML = `
+          <div class="rv-section-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#219a00"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Featured Stories
+          </div>
+          ${featured.slice(0,2).map(buildFeaturedCard).join("")}`;
+      } else {
+        featuredStrip.innerHTML = "";
+      }
+
+      const allLabel = document.getElementById("rvAllLabel");
+      const grid     = document.getElementById("rvCardsGrid");
+      const slice    = (searchQuery || activePlatforms.size || activeDestinations.size) ? filtered : regular;
+
+      if (slice.length===0) {
+        allLabel.style.display="none";
+        grid.innerHTML=`
+          <div class="rv-empty">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+            <p>No reviews match your filters.</p>
+            <button onclick="resetFilters()" style="margin-top:.75rem;color:#3b82f6;border:none;background:none;cursor:pointer;font-family:Raleway,sans-serif;font-size:.88rem;">Clear all filters</button>
+          </div>`;
+      } else {
+        allLabel.style.display="flex";
+        grid.innerHTML=slice.slice(0,visibleCount).map(buildCard).join("");
+      }
+
+      const loadWrap = document.getElementById("rvLoadMoreWrap");
+      const loadBtn  = document.getElementById("rvLoadMoreBtn");
+      const total    = (searchQuery||activePlatforms.size||activeDestinations.size)?filtered.length:regular.length;
+      if (visibleCount < total) {
+        loadWrap.style.display="block";
+        loadBtn.disabled=false;
+        loadBtn.textContent=`Load More Reviews (${total-visibleCount} remaining)`;
+      } else {
+        loadWrap.style.display="none";
+      }
+    }
+
+    document.getElementById("rvLoadMoreBtn").addEventListener("click", () => {
+      visibleCount += PAGE_SIZE;
+      renderPage();
+    });
+
+    /* ── Bootstrap ── */
+    async function boot() {
+      try {
+        const res  = await fetch(REVIEWS_URL);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        allReviews = data.reviews || [];
+        renderStats(data.stats);
+        populateSidebarFilters(allReviews);
+        applyAndRender();
+      } catch(err) {
+        console.error(err);
+        document.getElementById("rvCardsGrid").innerHTML=`
+          <div class="rv-empty"><p>⚠️ Could not load reviews. <small>${err.message}</small></p></div>`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", boot);
+  </script>
+<style>
+
+.aeon-footer {
+  background: #0a0a0a;
+  color: #9ca3af;
+  font-family: "Raleway", sans-serif;
+  padding: 4rem 2rem 0;
+  margin-top: 4rem;
+}
+
+/* ── TOP GRID ── */
+.aeon-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+@media (max-width: 960px) { .aeon-footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media (max-width: 560px) { .aeon-footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } }
+
+/* ── BRAND COL ── */
+.aeon-footer-brand-logo {
+  display: flex; align-items: center; gap: .65rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+.aeon-footer-brand-logo img {
+  width: 36px; height: 36px;
+  filter: brightness(0) invert(1);
+}
+.aeon-footer-brand-logo span {
+  font-size: 1.05rem; font-weight: 800;
+  color: #fff; letter-spacing: -.01em;
+}
+.aeon-footer-brand-desc {
+  font-size: .85rem; line-height: 1.8;
+  color: #6b7280; max-width: 290px;
+  margin-bottom: 1.5rem;
+}
+
+/* rating badges */
+.aeon-footer-badges { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.aeon-footer-badge {
+  display: flex; align-items: center; gap: .4rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .6rem; padding: .45rem .75rem;
+  font-size: .72rem; font-weight: 700; color: #d1d5db;
+}
+.aeon-footer-badge img { width: 16px; height: 16px; border-radius: 2px; object-fit: contain; }
+.aeon-footer-badge .badge-stars { color: #f59e0b; font-size: .7rem; }
+
+/* social row */
+.aeon-footer-socials { display: flex; gap: .6rem; }
+.aeon-footer-social {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #181818; border: 1px solid #222;
+  display: flex; align-items: center; justify-content: center;
+  color: #6b7280; text-decoration: none;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.aeon-footer-social:hover { background: #219a00; border-color: #219a00; color: #fff; }
+
+/* ── COLUMN HEADINGS ── */
+.aeon-footer-col h4 {
+  font-size: .78rem; font-weight: 800;
+  color: #fff; text-transform: uppercase;
+  letter-spacing: .08em; margin-bottom: 1.1rem;
+}
+
+/* ── NAV LINKS ── */
+.aeon-footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.aeon-footer-links a {
+  font-size: .875rem; color: #6b7280;
+  text-decoration: none; transition: color .2s;
+  display: flex; align-items: center; gap: .4rem;
+}
+.aeon-footer-links a:hover { color: #219a00; }
+.aeon-footer-links a .link-arrow {
+  opacity: 0; transform: translateX(-4px);
+  transition: opacity .2s, transform .2s;
+  color: #219a00; font-size: .7rem;
+}
+.aeon-footer-links a:hover .link-arrow { opacity: 1; transform: translateX(0); }
+
+/* ── CONTACT LIST ── */
+.aeon-footer-contact { display: flex; flex-direction: column; gap: .85rem; }
+.aeon-footer-contact-item { display: flex; align-items: flex-start; gap: .7rem; }
+.aeon-footer-contact-icon {
+  width: 32px; height: 32px; border-radius: .5rem;
+  background: #111; border: 1px solid #1f1f1f;
+  display: flex; align-items: center; justify-content: center;
+  color: #219a00; flex-shrink: 0; margin-top: 1px;
+}
+.aeon-footer-contact-item label {
+  font-size: .7rem; font-weight: 700; color: #4b5563;
+  text-transform: uppercase; letter-spacing: .05em;
+  display: block; margin-bottom: .15rem;
+}
+.aeon-footer-contact-item a,
+.aeon-footer-contact-item span {
+  font-size: .84rem; color: #9ca3af;
+  text-decoration: none; display: block;
+  transition: color .2s; line-height: 1.5;
+}
+.aeon-footer-contact-item a:hover { color: #219a00; }
+
+/* ── NEWSLETTER ── */
+.aeon-footer-newsletter-form {
+  display: flex; gap: .5rem;
+  margin-top: .75rem; flex-wrap: wrap;
+}
+.aeon-footer-newsletter-form input {
+  flex: 1; min-width: 0;
+  background: #111; border: 1px solid #222;
+  border-radius: .6rem; padding: .65rem .9rem;
+  font-size: .85rem; color: #fff;
+  font-family: "Raleway", sans-serif;
+  outline: none; transition: border-color .2s;
+}
+.aeon-footer-newsletter-form input::placeholder { color: #4b5563; }
+.aeon-footer-newsletter-form input:focus { border-color: #219a00; }
+.aeon-footer-newsletter-btn {
+  background: #219a00; color: #fff; border: none;
+  padding: .65rem 1.1rem; border-radius: .6rem;
+  font-size: .82rem; font-weight: 700; cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  white-space: nowrap; transition: background .2s;
+}
+.aeon-footer-newsletter-btn:hover { background: #177a00; }
+.aeon-footer-newsletter-note { font-size: .72rem; color: #374151; margin-top: .5rem; }
+
+/* ── DESTINATIONS CHIPS ── */
+.aeon-footer-dest-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .25rem; }
+.aeon-footer-dest-chip {
+  display: flex; align-items: center; gap: .3rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: 9999px; padding: .3rem .7rem;
+  font-size: .72rem; font-weight: 600; color: #6b7280;
+  text-decoration: none; transition: border-color .2s, color .2s;
+}
+.aeon-footer-dest-chip:hover { border-color: #219a00; color: #219a00; }
+.aeon-footer-dest-chip img { width: 14px; height: 14px; border-radius: 50%; object-fit: cover; }
+
+/* ── MID STRIP ── */
+.aeon-footer-mid {
+  max-width: 1280px; margin: 0 auto;
+  padding: 2rem 0;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+.aeon-footer-certifications { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.aeon-footer-cert {
+  display: flex; align-items: center; gap: .5rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .75rem; padding: .6rem 1rem;
+  font-size: .75rem; font-weight: 700; color: #d1d5db;
+}
+.aeon-footer-cert svg { color: #219a00; }
+.aeon-footer-payment { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.aeon-footer-payment span { font-size: .72rem; color: #4b5563; font-weight: 600; margin-right: .25rem; }
+.aeon-footer-pay-badge {
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .4rem; padding: .35rem .6rem;
+  font-size: .7rem; font-weight: 800; color: #9ca3af;
+  letter-spacing: .02em;
+}
+
+/* ── BOTTOM BAR ── */
+.aeon-footer-bottom {
+  max-width: 1280px; margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.aeon-footer-copyright { font-size: .78rem; color: #374151; line-height: 1.6; }
+.aeon-footer-copyright strong { color: #6b7280; }
+.aeon-footer-legal { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.aeon-footer-legal a { font-size: .75rem; color: #374151; text-decoration: none; transition: color .2s; }
+.aeon-footer-legal a:hover { color: #219a00; }
+
+/* ── DEV CREDIT ── */
+.aeon-footer-dev {
+  width: 100%; max-width: 1280px; margin: 0 auto;
+  padding: .85rem 0 1.25rem;
+  border-top: 1px solid #111;
+  display: flex; align-items: center; justify-content: center;
+  gap: .5rem; flex-wrap: wrap;
+}
+.aeon-footer-dev-text {
+  font-size: .72rem; color: #2d2d2d;
+  display: flex; align-items: center; gap: .4rem;
+  flex-wrap: wrap; justify-content: center;
+}
+.aeon-footer-dev-text a {
+  color: #374151; text-decoration: none; font-weight: 700;
+  transition: color .2s;
+}
+.aeon-footer-dev-text a:hover { color: #219a00; }
+.aeon-footer-dev-dot { color: #1f1f1f; }
+.aeon-footer-dev-heart { color: #ef4444; font-size: .75rem; }
+</style>
+
+<footer class="aeon-footer">
+  <div class="aeon-footer-grid">
+
+    <!-- ── COL 1: BRAND ── -->
+    <div class="aeon-footer-col">
+      <a href="index.html" class="aeon-footer-brand-logo">
+        <img src="/public/assets/images/logo-flower-aeon.png" alt="AEON Logo"/>
+        <span>AEON Travels &amp; Tours</span>
+      </a>
+      <p class="aeon-footer-brand-desc">
+        Crafting unforgettable journeys across Asia since 2012. We specialise in bespoke, tailor-made holidays built around you — not the other way around.
+      </p>
+
+      <div class="aeon-footer-badges">
+        <div class="aeon-footer-badge">
+          <img src="https://play-lh.googleusercontent.com/bfy2rE4Iu_15VyVAujaCtwQkThjUWWZSljcpnX2pdd4tcTO8SoGwrBhcTMwqeYjRlw" alt="TripAdvisor"/>
+          <span>TripAdvisor</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>1,306</span>
+        </div>
+        <div class="aeon-footer-badge">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVZEZ6fa7bPwCI4HE5583rhd3qiFNmf6kiPg&s" alt="Google"/>
+          <span>Google</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>1,068</span>
+        </div>
+        <div class="aeon-footer-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"/>
+          <span>Facebook</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>280</span>
+        </div>
+      </div>
+
+      <div class="aeon-footer-socials">
+        <!-- Facebook -->
+        <a href="#" class="aeon-footer-social" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" class="aeon-footer-social" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/94771234567" class="aeon-footer-social" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.998 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.008L2 22l5.137-1.318A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2z"/></svg>
+        </a>
+        <!-- TripAdvisor -->
+        <a href="#" class="aeon-footer-social" aria-label="TripAdvisor">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-13a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="#" class="aeon-footer-social" aria-label="YouTube">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── COL 2: QUICK LINKS ── -->
+    <div class="aeon-footer-col">
+      <h4>Quick Links</h4>
+      <ul class="aeon-footer-links">
+        <li><a href="index.html"><span class="link-arrow">›</span> Home</a></li>
+        <li><a href="tours-packages.html"><span class="link-arrow">›</span> Holidays &amp; Tours</a></li>
+        <li><a href="reviews.html"><span class="link-arrow">›</span> Success Stories</a></li>
+        <li><a href="about.html"><span class="link-arrow">›</span> About Us</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Contact Us</a></li>
+      </ul>
+
+      <h4 style="margin-top:1.75rem;">Destinations</h4>
+      <div class="aeon-footer-dest-chips">
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/lk.png" alt=""/> Sri Lanka</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/mv.png" alt=""/> Maldives</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/vn.png" alt=""/> Vietnam</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/kh.png" alt=""/> Cambodia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/id.png" alt=""/> Indonesia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/ae.png" alt=""/> Dubai</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/sg.png" alt=""/> Singapore</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/my.png" alt=""/> Malaysia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/th.png" alt=""/> Thailand</a>
+      </div>
+    </div>
+
+    <!-- ── COL 3: CONTACT ── -->
+    <div class="aeon-footer-col">
+      <h4>Contact Us</h4>
+      <div class="aeon-footer-contact">
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <label>Head Office</label>
+            <span>42 Galle Road, Colombo 03</span>
+            <span>Sri Lanka</span>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div>
+            <label>Phone</label>
+            <a href="tel:+94112345678">+94 11 234 5678</a>
+            <a href="tel:+94771234567">+94 77 123 4567</a>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
+            <label>Email</label>
+            <a href="mailto:info@aeontravel.com">info@aeontravel.com</a>
+            <a href="mailto:bookings@aeontravel.com">bookings@aeontravel.com</a>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.998 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.008L2 22l5.137-1.318A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2z"/></svg>
+          </div>
+          <div>
+            <label>WhatsApp</label>
+            <a href="https://wa.me/94771234567">+94 77 123 4567</a>
+            <span style="font-size:.75rem;color:#374151;">Available 24 / 7</span>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+          </div>
+          <div>
+            <label>Office Hours</label>
+            <span>Mon – Fri &nbsp; 8:30 AM – 6:00 PM</span>
+            <span>Sat &nbsp; 9:00 AM – 4:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COL 4: NEWSLETTER ── -->
+    <div class="aeon-footer-col">
+      <h4>Stay Inspired</h4>
+      <p style="font-size:.85rem;color:#4b5563;line-height:1.7;margin-bottom:.75rem;">
+        Get exclusive travel deals, destination guides, and trip inspiration delivered straight to your inbox.
+      </p>
+      <div class="aeon-footer-newsletter-form">
+        <input type="email" id="footerNewsletterEmail" placeholder="Your email address"/>
+        <button class="aeon-footer-newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+      <p class="aeon-footer-newsletter-note" id="footerNewsletterMsg">🔒 No spam, ever. Unsubscribe anytime.</p>
+
+      <h4 style="margin-top:1.75rem;">Trip Planner</h4>
+      <ul class="aeon-footer-links">
+        <li><a href="contact.html"><span class="link-arrow">›</span> Request a Custom Tour</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Group Bookings</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Honeymoon Packages</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Corporate Travel</a></li>
+        <li><a href="reviews.html"><span class="link-arrow">›</span> Read Traveller Stories</a></li>
+      </ul>
+    </div>
+
+  </div><!-- /grid -->
+
+  <!-- ── MID STRIP: TRUST + PAYMENTS ── -->
+  <div class="aeon-footer-mid">
+    <div class="aeon-footer-certifications">
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        SSL Secured
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M5 3h14a2 2 0 012 2v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm0 10h14a2 2 0 012 2v3a2 2 0 01-2 2H5a2 2 0 01-2-2v-3a2 2 0 012-2z"/></svg>
+        SLTDA Registered
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        2,600+ Five-Star Reviews
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+        24/7 Expert Support
+      </div>
+    </div>
+    <div class="aeon-footer-payment">
+      <span>We Accept</span>
+      <span class="aeon-footer-pay-badge">VISA</span>
+      <span class="aeon-footer-pay-badge">Mastercard</span>
+      <span class="aeon-footer-pay-badge">PayPal</span>
+      <span class="aeon-footer-pay-badge">Bank Transfer</span>
+    </div>
+  </div>
+
+  <!-- ── BOTTOM BAR ── -->
+  <div class="aeon-footer-bottom">
+    <div class="aeon-footer-copyright">
+      © <span id="footerYear"></span> <strong>AEON Travels &amp; Tours (Pvt) Ltd.</strong> All rights reserved.<br>
+      Reg. No. 00012345 · 42 Galle Road, Colombo 03, Sri Lanka
+    </div>
+    <div class="aeon-footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Refund Policy</a>
+      <a href="contact.html">Complaints</a>
+    </div>
+  </div>
+
+  <div class="aeon-footer-dev">
+    <div class="aeon-footer-dev-text">
+      <span>Designed &amp; Developed with</span>
+      <span class="aeon-footer-dev-heart">♥</span>
+      <span>by</span>
+      <a href="#" target="_blank" rel="noopener">Cipher Studio</a>
+      <span class="aeon-footer-dev-dot">·</span>
+      <span>Built on</span>
+      <a href="#" target="_blank" rel="noopener">Netlify CMS</a>
+      <span class="aeon-footer-dev-dot">·</span>
+      <a href="mailto:hello@cipherstudio.dev" target="_blank" rel="noopener">hello@cipherstudio.dev</a>
+    </div>
+  </div>
+
+</footer>
+
+<script>
+  /* ── Auto year ── */
+  document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+  /* ── Newsletter ── */
+  function subscribeNewsletter() {
+    const input = document.getElementById("footerNewsletterEmail");
+    const msg   = document.getElementById("footerNewsletterMsg");
+    const email = input.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.textContent = "⚠️ Please enter a valid email address.";
+      msg.style.color = "#ef4444";
+      return;
+    }
+    input.value = "";
+    msg.textContent = "✓ You're subscribed! Welcome aboard.";
+    msg.style.color = "#219a00";
+    setTimeout(() => {
+      msg.textContent = "🔒 No spam, ever. Unsubscribe anytime.";
+      msg.style.color = "";
+    }, 4000);
+  }
+
+  /* Allow Enter key in newsletter input */
+  document.getElementById("footerNewsletterEmail")
+    .addEventListener("keydown", e => { if (e.key === "Enter") subscribeNewsletter(); });
+</script>
+</body>
+</html>

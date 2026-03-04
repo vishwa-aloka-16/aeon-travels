@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tour Detail — AEON Travels & Tours</title>
+  <link rel="stylesheet" href="./assets/css/output.css">
+  <style>
+    /* ── GLOBAL ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    /* ── NAV CENTER LINKS ── */
+    .nav-center-links { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-center-link  { font-size: .88rem; font-weight: 600; color: #374151; text-decoration: none; transition: color .2s; white-space: nowrap; }
+    .nav-center-link:hover, .nav-center-link.active { color: #219a00; }
+    @media (max-width: 1024px) { .nav-center-links { display: none; } }
+
+    /* ── HAMBURGER ── */
+    @media (max-width: 1024px) { #menuToggle { display: block; } }
+
+    /* ── PAGE ── */
+    body { background: #f5f5f5; }
+
+    /* ── BREADCRUMB ── */
+    .td-breadcrumb { display:flex; align-items:center; gap:.4rem; padding:1rem 1.5rem .5rem; font-size:.82rem; color:#6b7280; flex-wrap:wrap; }
+    .td-breadcrumb a { color:#6b7280; text-decoration:none; display:flex; align-items:center; gap:.25rem; }
+    .td-breadcrumb a:hover { color:#219a00; }
+    .td-breadcrumb .active { color:#111; font-weight:600; }
+    .td-breadcrumb .sep { color:#9ca3af; }
+
+    /* ── LAYOUT ── */
+    .td-layout { display:grid; grid-template-columns:1fr 340px; gap:1.5rem; max-width:1300px; margin:0 auto; padding:0 1.5rem 4rem; }
+    @media(max-width:960px){ .td-layout{ grid-template-columns:1fr; } }
+
+    /* ── TITLE ── */
+    .td-title { font-size:clamp(1.6rem,4vw,2.4rem); font-weight:700; line-height:1.1; margin-bottom:1.25rem; }
+    .td-title span { font-weight:300; }
+
+    /* ── HERO GALLERY SLIDER ── */
+    .td-gallery { position:relative; border-radius:1.25rem; overflow:hidden; background:#e5e7eb; margin-bottom:1.5rem; }
+    .td-gallery-track { display:flex; transition:transform .4s ease; }
+    .td-gallery-slide { flex:0 0 100%; }
+    .td-gallery-slide img { width:100%; height:420px; object-fit:cover; display:block; }
+    @media(max-width:640px){ .td-gallery-slide img{ height:260px; } }
+    .td-gallery-dots { display:flex; justify-content:center; gap:.4rem; padding:.75rem 0 .25rem; }
+    .td-gallery-dot { width:8px; height:8px; border-radius:50%; background:#d1d5db; border:none; cursor:pointer; padding:0; transition:background .2s, transform .2s; }
+    .td-gallery-dot.active { background:#219a00; transform:scale(1.3); }
+    .td-gallery-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.85); border:none; border-radius:50%; width:38px; height:38px; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 10px rgba(0,0,0,.15); transition:background .2s; z-index:5; }
+    .td-gallery-arrow:hover { background:#fff; }
+    .td-gallery-prev { left:.75rem; }
+    .td-gallery-next { right:.75rem; }
+
+    /* ── SUMMARY CARD ── */
+    .td-summary-card { background:#eef4ff; border-radius:1.25rem; padding:1.5rem; margin-bottom:1.5rem; }
+    .td-suitable { display:flex; align-items:center; gap:.4rem; font-size:.85rem; color:#374151; margin-bottom:.75rem; }
+    .td-suitable svg { color:#219a00; }
+    .td-suitable strong { color:#111; }
+    .td-summary-card h2 { font-size:1.6rem; font-weight:700; margin-bottom:.75rem; }
+    .td-summary-text { font-size:.9rem; color:#4b5563; line-height:1.7; }
+    .td-inclusions-grid { display:grid; grid-template-columns:1fr 1fr; gap:.5rem .75rem; margin-top:1rem; }
+    .td-inclusion-item { display:flex; align-items:center; gap:.4rem; font-size:.85rem; color:#374151; }
+    .td-inclusion-item svg { color:#219a00; flex-shrink:0; }
+    .td-themes { margin-top:1.25rem; }
+    .td-themes h3 { font-size:1rem; font-weight:700; margin-bottom:.6rem; }
+    .td-theme-list { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .td-theme-chip { display:flex; align-items:center; gap:.35rem; font-size:.82rem; color:#219a00; font-weight:600; }
+    .td-cities { margin-top:1.25rem; }
+    .td-cities h3 { font-size:1rem; font-weight:700; margin-bottom:.3rem; display:inline-flex; align-items:center; gap:.5rem; }
+    .td-cities-badge { display:inline-flex; align-items:center; justify-content:center; background:#219a00; color:#fff; border-radius:.35rem; font-size:.75rem; font-weight:700; padding:2px 7px; }
+    .td-cities-list { font-size:.87rem; color:#6b7280; margin-top:.25rem; }
+    .td-dest-row { display:flex; gap:2rem; flex-wrap:wrap; margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #d1d5db; }
+    .td-dest-item label { font-size:.75rem; color:#9ca3af; display:block; margin-bottom:.3rem; }
+    .td-dest-country { display:flex; align-items:center; gap:.5rem; font-size:.95rem; font-weight:600; color:#219a00; }
+    .td-dest-country img { width:22px; height:22px; border-radius:50%; object-fit:cover; }
+    .td-type-badge { display:inline-block; background:#f0f9ec; color:#219a00; font-size:.85rem; font-weight:600; padding:.3rem .9rem; border-radius:.5rem; }
+
+    /* ── ITINERARY ── */
+    .td-itinerary { margin-bottom:1.5rem; }
+    .td-day-accordion { border-bottom:1px solid #e5e7eb; background:#fff; border-radius:.5rem; margin-bottom:.5rem; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.04); }
+    .td-day-header { display:flex; align-items:center; justify-content:space-between; padding:.9rem 1.25rem; cursor:pointer; user-select:none; gap:1rem; }
+    .td-day-header-left { display:flex; align-items:center; gap:.6rem; }
+    .td-day-dot { width:12px; height:12px; background:#219a00; border-radius:50%; flex-shrink:0; }
+    .td-day-label { font-size:.8rem; color:#9ca3af; font-weight:500; }
+    .td-day-city { font-size:1rem; font-weight:800; color:#111; }
+    .td-day-chevron { color:#9ca3af; transition:transform .3s; flex-shrink:0; }
+    .td-day-accordion.open .td-day-chevron { transform:rotate(180deg); }
+    .td-day-body { display:none; padding:0 1.25rem 1.25rem; }
+    .td-day-accordion.open .td-day-body { display:block; }
+    .td-day-desc { font-size:.875rem; color:#4b5563; line-height:1.7; margin-bottom:1rem; }
+    .td-day-img { width:100%; height:220px; object-fit:cover; border-radius:.9rem; margin-bottom:1rem; display:block; }
+    .td-day-activities-box { background:#f9fafb; border-radius:.75rem; padding:.9rem 1rem; margin-bottom:1rem; }
+    .td-day-activities-title { font-size:.9rem; font-weight:700; margin-bottom:.5rem; }
+    .td-day-activities-list { list-style:none; }
+    .td-day-activities-list li { font-size:.84rem; color:#6b7280; padding:.25rem 0; display:flex; align-items:center; gap:.5rem; }
+    .td-day-activities-list li::before { content:""; width:7px; height:7px; border-radius:50%; background:#9ca3af; flex-shrink:0; }
+    .td-highlights-title { font-size:.9rem; font-weight:700; margin-bottom:.6rem; }
+    .td-highlights-grid { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; }
+    .td-highlight-wrap { position:relative; }
+    .td-highlight-wrap img { width:100%; height:130px; object-fit:cover; border-radius:.65rem; display:block; }
+    .td-highlight-caption { font-size:.72rem; color:#6b7280; text-align:center; margin-top:.25rem; }
+    .td-day-logistics { background:#f9fafb; border-radius:.75rem; padding:.9rem 1rem; margin-top:1rem; display:flex; flex-direction:column; gap:.5rem; }
+    .td-logistics-item { display:flex; align-items:center; gap:.6rem; font-size:.83rem; color:#4b5563; }
+    .td-logistics-item svg { color:#9ca3af; flex-shrink:0; }
+
+    /* ── TOUR MAP ── */
+    .td-map-section { margin-bottom:1.5rem; }
+    .td-map-section h2 { font-size:1.25rem; font-weight:700; margin-bottom:.75rem; }
+    .td-map-placeholder { background:#dbeafe; border-radius:1rem; overflow:hidden; height:260px; display:flex; align-items:center; justify-content:center; position:relative; }
+    .td-map-placeholder iframe { width:100%; height:100%; border:none; }
+    .td-map-city-list { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.75rem; }
+    .td-map-city-chip { background:#fff; border:1px solid #d1d5db; border-radius:9999px; padding:.3rem .8rem; font-size:.78rem; color:#374151; display:flex; align-items:center; gap:.3rem; }
+    .td-map-city-chip span { color:#219a00; font-size:.75rem; }
+
+    /* ── INCLUSIONS TABS ── */
+    .td-tabs-section { margin-bottom:1.5rem; }
+    .td-tabs { display:flex; gap:.5rem; margin-bottom:1rem; flex-wrap:wrap; }
+    .td-tab { padding:.5rem 1.25rem; border-radius:9999px; font-size:.88rem; font-weight:600; cursor:pointer; border:1.5px solid #d1d5db; background:#fff; color:#6b7280; transition:all .2s; font-family:"Raleway",sans-serif; }
+    .td-tab.active { background:#111; color:#fff; border-color:#111; }
+    .td-tab-panel { display:none; }
+    .td-tab-panel.active { display:block; }
+    .td-check-list { background:#fff; border-radius:1rem; padding:1.25rem; box-shadow:0 2px 12px rgba(0,0,0,.05); }
+    .td-check-list li { display:flex; align-items:flex-start; gap:.6rem; font-size:.875rem; color:#374151; padding:.35rem 0; border-bottom:1px solid #f3f4f6; }
+    .td-check-list li:last-child { border-bottom:none; }
+    .td-check-list li svg { flex-shrink:0; margin-top:2px; }
+    .td-cross-list li svg { color:#ef4444; }
+
+    /* ── PEOPLE SAY ── */
+    .td-reviews-section { margin-bottom:1.5rem; }
+    .td-reviews-header h2 { font-size:1.6rem; font-weight:400; margin-bottom:.25rem; }
+    .td-reviews-header h2 strong { font-weight:700; }
+    .td-reviews-header p { font-size:.85rem; color:#6b7280; margin-bottom:1rem; }
+    .td-review-tabs { display:flex; gap:.75rem; margin-bottom:1rem; flex-wrap:wrap; }
+    .td-review-tab-btn { background:#111; color:#fff; border:none; border-radius:9999px; padding:.5rem 1.25rem; font-size:.85rem; font-weight:600; cursor:pointer; font-family:"Raleway",sans-serif; }
+    .td-platforms { display:flex; gap:1.5rem; margin-bottom:1rem; flex-wrap:wrap; }
+    .td-platform { text-align:center; }
+    .td-platform-icon { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.2rem; font-weight:700; color:#fff; margin:0 auto .3rem; }
+    .td-platform-icon.ta { background:#34d399; }
+    .td-platform-icon.g  { background:#ef4444; }
+    .td-platform-icon.fb { background:#3b82f6; }
+    .td-platform-label { font-size:.72rem; color:#9ca3af; }
+    .td-platform-count { font-size:1.3rem; font-weight:700; color:#111; }
+    .td-review-card { background:#fff; border-radius:1.25rem; padding:1.25rem; box-shadow:0 2px 12px rgba(0,0,0,.07); margin-bottom:1rem; }
+    .td-reviewer { display:flex; align-items:center; gap:.75rem; margin-bottom:.75rem; }
+    .td-reviewer-avatar { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; font-weight:700; color:#fff; flex-shrink:0; background:#219a00; }
+    .td-reviewer-name { font-size:.9rem; font-weight:700; }
+    .td-reviewer-loc { font-size:.78rem; color:#9ca3af; }
+    .td-reviewer-date { font-size:.75rem; color:#9ca3af; }
+    .td-reviewer-stars { color:#f59e0b; font-size:.85rem; }
+    .td-review-text { font-size:.85rem; color:#4b5563; line-height:1.6; }
+    .td-review-more { color:#3b82f6; font-size:.83rem; cursor:pointer; margin-top:.3rem; display:block; }
+    .td-review-dots { display:flex; gap:.35rem; justify-content:center; margin-top:1rem; }
+    .td-review-dot { width:8px; height:8px; border-radius:50%; background:#d1d5db; border:none; cursor:pointer; padding:0; }
+    .td-review-dot.active { background:#111; }
+
+    /* ── PERSONALIZED CTA ── */
+    .td-personalized { background:#f0fdf4; border-radius:1.25rem; padding:2rem 1.5rem; margin-bottom:1.5rem; display:flex; align-items:flex-start; gap:1.5rem; flex-wrap:wrap; }
+    .td-personalized-text h2 { font-size:1.5rem; font-weight:400; line-height:1.3; margin-bottom:.6rem; }
+    .td-personalized-text h2 strong { font-weight:700; }
+    .td-personalized-text p { font-size:.85rem; color:#6b7280; line-height:1.6; margin-bottom:1rem; }
+    .btn-green-solid { background:#219a00; color:#fff; border:none; padding:.65rem 1.5rem; border-radius:9999px; font-size:.9rem; font-weight:700; cursor:pointer; font-family:"Raleway",sans-serif; transition:background .2s; }
+    .btn-green-solid:hover { background:#177a00; }
+    .btn-black-solid { background:#111; color:#fff; border:none; padding:.65rem 1.5rem; border-radius:9999px; font-size:.9rem; font-weight:700; cursor:pointer; font-family:"Raleway",sans-serif; transition:background .2s; }
+    .btn-black-solid:hover { background:#333; }
+    .td-personalized-card { background:#fff; border-radius:1rem; padding:1.25rem; flex:0 0 280px; box-shadow:0 2px 12px rgba(0,0,0,.06); }
+    .td-personalized-card h3 { font-size:1rem; font-weight:700; margin-bottom:.4rem; }
+    .td-personalized-card p { font-size:.82rem; color:#6b7280; line-height:1.5; }
+    @media(max-width:640px){ .td-personalized-card{ flex:0 0 100%; } }
+
+    /* ── RELATED TOURS ── */
+    .td-related { margin-bottom:2rem; }
+    .td-related h2 { font-size:1.5rem; font-weight:400; margin-bottom:1rem; }
+    .td-related h2 strong { font-weight:700; }
+    .td-related-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    @media(max-width:1100px){ .td-related-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:580px){ .td-related-grid{ grid-template-columns:1fr; } }
+    .td-related-card { background:#fff; border-radius:1.1rem; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.06); cursor:pointer; transition:transform .3s, box-shadow .3s; }
+    .td-related-card:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,.12); }
+    .td-related-card img { width:100%; height:170px; object-fit:cover; display:block; }
+    .td-related-card-body { padding:.8rem 1rem 1rem; }
+    .td-related-card-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:.4rem; }
+    .td-related-loc { display:flex; align-items:center; gap:.25rem; color:#005ea6; font-size:.78rem; font-weight:600; }
+    .td-related-type { font-size:.7rem; background:#f3f4f6; padding:2px 8px; border-radius:9999px; color:#6b7280; }
+    .td-related-title { font-size:.85rem; font-weight:700; margin-bottom:.4rem; line-height:1.3; }
+    .td-related-price-label { font-size:.68rem; color:#9ca3af; }
+    .td-related-price { font-size:.88rem; font-weight:800; }
+
+    /* ── STICKY SIDEBAR ── */
+    .td-sidebar-sticky { position:sticky; top:80px; display:flex; flex-direction:column; gap:1rem; }
+    .td-price-card { background:#fff; border-radius:1.25rem; padding:1.5rem; box-shadow:0 4px 20px rgba(0,0,0,.08); }
+    .td-price-duration { font-size:.8rem; color:#9ca3af; margin-bottom:.25rem; }
+    .td-price-duration strong { color:#374151; font-weight:600; }
+    .td-price-show-inc { color:#3b82f6; font-size:.8rem; cursor:pointer; text-decoration:underline; float:right; margin-top:-.5rem; }
+    .td-price-amount { font-size:2.2rem; font-weight:700; color:#111; line-height:1; margin:.5rem 0 .15rem; }
+    .td-price-per { font-size:.8rem; color:#9ca3af; margin-bottom:1.25rem; }
+    .td-expert { display:flex; align-items:flex-start; gap:.75rem; margin-bottom:1.25rem; }
+    .td-expert-avatar { width:48px; height:48px; border-radius:50%; overflow:hidden; flex-shrink:0; background:#f3f4f6; display:flex; align-items:center; justify-content:center; font-size:1.3rem; }
+    .td-expert-avatar img { width:100%; height:100%; object-fit:cover; }
+    .td-expert-name { font-size:.9rem; font-weight:700; }
+    .td-expert-desc { font-size:.78rem; color:#6b7280; line-height:1.5; }
+    .td-expert-desc strong { color:#111; }
+    .td-price-cta { width:100%; background:#219a00; color:#fff; border:none; padding:.85rem; border-radius:9999px; font-size:1rem; font-weight:700; cursor:pointer; font-family:"Raleway",sans-serif; transition:background .2s, transform .2s; margin-bottom:.5rem; }
+    .td-price-cta:hover { background:#177a00; transform:translateY(-1px); }
+    .td-price-note { font-size:.75rem; color:#9ca3af; text-align:center; }
+
+    /* ── LOADING / ERROR ── */
+    .td-loading { min-height:60vh; display:flex; align-items:center; justify-content:center; font-size:1rem; color:#9ca3af; }
+    .td-error { text-align:center; padding:4rem 1rem; color:#9ca3af; }
+
+    @media(max-width:960px){ .td-sidebar-sticky { position:static; } }
+  </style>
+</head>
+<body>
+
+  <!-- ── SIDE QUOTE OVERLAY ── -->
+  <div class="side-quote-overlay" id="sideQuoteOverlay"></div>
+
+  <!-- ── SIDE QUOTE PANEL ── -->
+  <div class="side-quote-panel" id="sideQuotePanel">
+    <div class="side-quote-header">
+      <h3>Get A <span>Quote</span></h3>
+      <button class="side-quote-close" id="sideQuoteClose">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <form class="side-quote-form" id="sideQuoteForm">
+      <div><label>Your Name</label><input type="text" name="name" placeholder="John Smith"/></div>
+      <div><label>Email Address</label><input type="email" name="email" placeholder="john@example.com"/></div>
+      <div><label>Mobile Number</label><input type="tel" name="mobile" placeholder="+1 234 567 890"/></div>
+      <div><label>Destination</label><input type="text" name="destination" id="sqDestInput" placeholder="e.g. Ella, Sri Lanka"/></div>
+      <p class="side-quote-note">We will contact you within 24 hrs.</p>
+      <button type="submit" class="side-quote-submit">Submit Request</button>
+    </form>
+  </div>
+
+  <!-- ── FLOATING SIDE QUOTE BUTTON ── -->
+  <button class="side-quote-btn" id="sideQuoteBtn">Get a Quote</button>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">
+      <img src="/public/assets/images/logo-flower-aeon.png" alt="Logo" style="height:2rem;width:2rem"/>
+      <h1 class="nav-brand">AEON Travels &amp; Tours</h1>
+    </div>
+    <div class="nav-center-links">
+      <a href="index.html" class="nav-center-link">Home</a>
+      <a href="tours-packages.html" class="nav-center-link active">Holidays &amp; Tours</a>
+      <a href="reviews.html" class="nav-center-link">Success Stories</a>
+      <a href="about.html" class="nav-center-link">About Us</a>
+      <a href="contact.html" class="nav-center-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="mailto:info@aeontravel.com" class="nav-icon-btn" title="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-3.771 0-5.657 1.172-6.828S6.229 4 10 4h4c3.771 0 5.657 0 6.828 1.172S22 8.229 22 12s0 5.657-1.172 6.828S17.771 20 14 20h-4c-3.771 0-5.657 0-6.828-1.172S2 15.771 2 12Z"/><path stroke-linecap="round" d="m6 8l2.159 1.8c1.837 1.53 2.755 2.295 3.841 2.295s2.005-.765 3.841-2.296L18 8"/></g></svg>
+      </a>
+      <a href="tel:+94112345678" class="nav-icon-btn" title="Call">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M14 2s2.2.2 5 3s3 5 3 5m-7.793-4.464s.99.282 2.475 1.767s1.768 2.475 1.768 2.475m-8.412-4.462l.649 1.163c.585 1.05.35 2.426-.572 3.349c0 0-1.12 1.119.91 3.148c2.028 2.028 3.147.91 3.147.91c.923-.923 2.3-1.158 3.349-.573l1.163.65c1.585.884 1.772 3.106.379 4.5c-.837.836-1.863 1.488-2.996 1.53c-1.908.073-5.149-.41-8.4-3.66c-3.25-3.251-3.733-6.492-3.66-8.4c.043-1.133.694-2.159 1.53-2.996c1.394-1.393 3.616-1.206 4.5.38Z"/></svg>
+      </a>
+      <div class="currency-wrap">
+        <button id="currencyButton">
+          <span id="currencyText">USD</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <div id="currencyDropdown">
+          <ul style="padding:.25rem 0;list-style:none">
+            <li><a href="#" class="currency-item" data-currency="USD">USD</a></li>
+            <li><a href="#" class="currency-item" data-currency="EUR">EUR</a></li>
+            <li><a href="#" class="currency-item" data-currency="LKR">LKR</a></li>
+            <li><a href="#" class="currency-item" data-currency="GBP">GBP</a></li>
+          </ul>
+        </div>
+      </div>
+      <button id="menuToggle" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M4 7h3m13 0h-9m9 10h-3M4 17h9m-9-5h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE DRAWER ── -->
+  <div class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-overlay" id="drawerOverlay"></div>
+    <div class="nav-drawer-panel">
+      <button class="drawer-close" id="drawerClose">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="tours-packages.html" class="drawer-link" style="color:#219a00;font-weight:700">Holidays &amp; Tours</a>
+      <a href="reviews.html" class="drawer-link">Success Stories</a>
+      <a href="about.html" class="drawer-link">About Us</a>
+      <a href="contact.html" class="drawer-link">Contact</a>
+      <a href="#" class="drawer-link" style="color:#219a00;font-weight:800"
+        onclick="openSideQuote();document.getElementById('navDrawer').classList.remove('open');">✦ Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- ── PAGE CONTENT (rendered by JS) ── -->
+  <div id="tdPageRoot">
+    <div class="td-loading">Loading tour details…</div>
+  </div>
+
+  <!-- ══════════════════════════
+       SCRIPTS
+  ══════════════════════════ -->
+  <script>
+    /* ─────────────────────────────────────
+       CURRENCY
+    ───────────────────────────────────── */
+    const CURRENCY_RATES   = { LKR: 1, USD: 1/320, EUR: 1/347, GBP: 1/405 };
+    const CURRENCY_SYMBOLS = { LKR: "LKR ", USD: "$", EUR: "€", GBP: "£" };
+    let activeCurrency = "USD";
+
+    function parseLKR(str) {
+      if (typeof str === "number") return str;
+      return parseInt(String(str).replace(/[^0-9]/g, ""), 10) || 0;
+    }
+    function formatPrice(lkr, currency) {
+      return CURRENCY_SYMBOLS[currency] + Math.round(lkr * CURRENCY_RATES[currency]).toLocaleString();
+    }
+    function updateAllPrices() {
+      document.querySelectorAll("[data-lkr]").forEach(el => {
+        el.textContent = formatPrice(parseInt(el.dataset.lkr, 10), activeCurrency);
+      });
+    }
+
+    /* ─────────────────────────────────────
+       NAV — CURRENCY
+    ───────────────────────────────────── */
+    const currBtn  = document.getElementById("currencyButton");
+    const currDrop = document.getElementById("currencyDropdown");
+    const currText = document.getElementById("currencyText");
+    currBtn.addEventListener("click", e => { e.stopPropagation(); currDrop.classList.toggle("open"); });
+    document.querySelectorAll(".currency-item").forEach(item => {
+      item.addEventListener("click", e => {
+        e.preventDefault();
+        activeCurrency = item.dataset.currency;
+        currText.textContent = activeCurrency;
+        currDrop.classList.remove("open");
+        updateAllPrices();
+      });
+    });
+    document.addEventListener("click", () => currDrop.classList.remove("open"));
+
+    /* ─────────────────────────────────────
+       NAV — HAMBURGER
+    ───────────────────────────────────── */
+    document.getElementById("menuToggle").addEventListener("click", () =>
+      document.getElementById("navDrawer").classList.add("open"));
+    document.getElementById("drawerClose").addEventListener("click", () =>
+      document.getElementById("navDrawer").classList.remove("open"));
+    document.getElementById("drawerOverlay").addEventListener("click", () =>
+      document.getElementById("navDrawer").classList.remove("open"));
+
+    /* ─────────────────────────────────────
+       SIDE QUOTE PANEL
+    ───────────────────────────────────── */
+    function openSideQuote() {
+      document.getElementById("sideQuotePanel").classList.add("open");
+      document.getElementById("sideQuoteOverlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeSideQuote() {
+      document.getElementById("sideQuotePanel").classList.remove("open");
+      document.getElementById("sideQuoteOverlay").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    document.getElementById("sideQuoteBtn").addEventListener("click", openSideQuote);
+    document.getElementById("sideQuoteClose").addEventListener("click", closeSideQuote);
+    document.getElementById("sideQuoteOverlay").addEventListener("click", closeSideQuote);
+    document.getElementById("sideQuoteForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const btn = e.target.querySelector(".side-quote-submit");
+      btn.textContent = "✓ Request Sent!"; btn.style.background = "#177a00";
+      setTimeout(() => { btn.textContent = "Submit Request"; btn.style.background = ""; e.target.reset(); closeSideQuote(); }, 2500);
+    });
+  </script>
+
+  <script>
+    /* ══════════════════════════════════════════
+       TOUR DETAIL PAGE — RENDERER
+    ══════════════════════════════════════════ */
+    const PACKAGES_JSON_URL = "../content/data/packages.json";
+
+    function getPkgId() {
+      return new URLSearchParams(window.location.search).get("id") || null;
+    }
+    function flattenPackages(data) {
+      const all = [];
+      data.sections.forEach(sec => sec.packages.forEach(pkg => all.push(pkg)));
+      return all;
+    }
+
+    /* ── SVG icons ── */
+    const icoCheck = `<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#219a00" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`;
+    const icoCross = `<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`;
+    const icoHotel = `<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M9 21V9m6 12V9M3 9h18"/></svg>`;
+    const icoMeals = `<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M12 2v20M4 7c0-2.8 3.5-5 8-5s8 2.2 8 5v1H4V7z"/></svg>`;
+    const icoClock = `<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>`;
+    const icoCar   = `<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M3 17V9l2-5h14l2 5v8M3 9h18M7 17h.01M17 17h.01"/></svg>`;
+    const icoPin   = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`;
+
+    function themeIcon(t) {
+      const m = {
+        Adventure:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>`,
+        Culture:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
+        History:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2v6H4L2 10v12h20V10l-2-2h-2V2H6zm0 2h12v4H6V4zm-2 6h16l1 1v1H3v-1l1-1zM3 13h18v7H3v-7z"/></svg>`,
+        Beach:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 19h-8.35l5.07-8.24C16.5 10.26 16.25 10 16 10c-3.31 0-6 2.69-6 6H3v2h17v-2zM8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3z"/></svg>`,
+        Nature:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21h2.02c.8-1.83 2.16-3.17 3.16-4C12.96 15.17 18.5 13.5 22 11 21 11 19.5 6 17 8z"/></svg>`,
+        Wellness:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+        Honeymoon:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+        Luxury:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>`,
+        Shopping:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3z"/></svg>`,
+        Family:`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>`
+      };
+      return m[t] || m.Adventure;
+    }
+
+    function destinationFlag(dest) {
+      const m = { 'Sri Lanka':'lk','Maldives':'mv','Vietnam':'vn','Indonesia':'id','Dubai':'ae','Cambodia':'kh','Singapore':'sg','Malaysia':'my','Thailand':'th','Singapore & Malaysia':'sg' };
+      return m[dest] || 'lk';
+    }
+
+    function navigateTo(id) {
+      window.location.href = `tour-detail.html?id=${id}`;
+    }
+
+    /* ── Build page HTML ── */
+    function buildPage(pkg, allPackages) {
+      const priceLKR   = parseLKR(pkg.startingFrom);
+      const gallery    = pkg.galleryImages  || [];
+      const itinerary  = pkg.itinerary      || [];
+      const reviews    = pkg.reviews        || [];
+      const relatedIds = pkg.relatedPackages|| [];
+      const related    = relatedIds.map(id => allPackages.find(p => p.id === id)).filter(Boolean).slice(0, 4);
+
+      /* Gallery */
+      const slides = gallery.map((g, i) => `
+        <div class="td-gallery-slide">
+          <img src="${g.url}" alt="${g.caption}" loading="${i===0?'eager':'lazy'}"/>
+        </div>`).join("");
+      const dots = gallery.map((_, i) => `
+        <button class="td-gallery-dot${i===0?' active':''}" data-idx="${i}"></button>`).join("");
+
+      /* Summary inclusions */
+      const incItems = (pkg.inclusions || []).map(inc => `
+        <div class="td-inclusion-item">${icoCheck}<span>${inc}</span></div>`).join("");
+
+      /* Themes */
+      const themeItems = (pkg.themes || []).map(t => `
+        <span class="td-theme-chip">${themeIcon(t)} ${t}</span>`).join("");
+
+      /* Itinerary accordion */
+      const itDays = itinerary.map((day, i) => {
+        const highlights = (day.highlights || []).map(h => `
+          <div class="td-highlight-wrap">
+            <img src="${h.url}" alt="${h.caption}" loading="lazy"/>
+            <div class="td-highlight-caption">${h.caption}</div>
+          </div>`).join("");
+        const activities = (day.activities || []).map(a => `<li>${a}</li>`).join("");
+        const dayImg = (day.highlights && day.highlights[0]) ? day.highlights[0].url : pkg.image;
+        return `
+          <div class="td-day-accordion${i===0?' open':''}">
+            <div class="td-day-header" data-day="${i}">
+              <div class="td-day-header-left">
+                <div class="td-day-dot"></div>
+                <div>
+                  <div class="td-day-label">Day ${String(day.day).padStart(2,'0')}</div>
+                  <div class="td-day-city">${day.city}</div>
+                </div>
+              </div>
+              <svg class="td-day-chevron" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="td-day-body">
+              <p class="td-day-desc">${day.description}</p>
+              <img class="td-day-img" src="${dayImg}" alt="Day ${day.day}" loading="lazy"/>
+              <div class="td-day-activities-box">
+                <div class="td-day-activities-title">Day ${String(day.day).padStart(2,'0')} Activities</div>
+                <ul class="td-day-activities-list">${activities}</ul>
+              </div>
+              ${highlights ? `<div class="td-highlights-title">${day.city} Highlights</div><div class="td-highlights-grid">${highlights}</div>` : ''}
+              <div class="td-day-logistics">
+                <div class="td-logistics-item">${icoHotel} ${day.hotel   || 'N/A'}</div>
+                <div class="td-logistics-item">${icoMeals} ${day.meals   || 'N/A'}</div>
+                <div class="td-logistics-item">${icoClock} ${day.travelTime || 'N/A'}</div>
+                <div class="td-logistics-item">${icoCar}   ${day.transport  || 'N/A'}</div>
+              </div>
+            </div>
+          </div>`;
+      }).join("");
+
+      /* Tabs */
+      function tabList(arr, icon) { return arr.map(i => `<li>${icon}<span>${i}</span></li>`).join(""); }
+      const incFull  = tabList(pkg.inclusions_full || [], icoCheck);
+      const excFull  = tabList(pkg.exclusions      || [], icoCross);
+      const condFull = tabList(pkg.conditions      || [], icoCheck);
+
+      /* Reviews */
+      const platformSection = reviews.length ? `
+        <div class="td-platforms">
+          <div class="td-platform"><div class="td-platform-icon ta">◎</div><div class="td-platform-label">TripAdvisor</div><div class="td-platform-count">1306</div></div>
+          <div class="td-platform"><div class="td-platform-icon g">G</div><div class="td-platform-label">Google</div><div class="td-platform-count">1068</div></div>
+          <div class="td-platform"><div class="td-platform-icon fb">f</div><div class="td-platform-label">Facebook</div><div class="td-platform-count">280</div></div>
+        </div>` : '';
+
+      const reviewCards = reviews.map((r, i) => `
+        <div class="td-review-card" style="display:${i===0?'block':'none'}" data-review="${i}">
+          <div class="td-reviewer">
+            <div class="td-reviewer-avatar">${r.avatar}</div>
+            <div>
+              <div class="td-reviewer-name">${r.name}</div>
+              <div class="td-reviewer-loc">${r.location}</div>
+              <div class="td-reviewer-date">${r.date}</div>
+              <div class="td-reviewer-stars">${'★'.repeat(r.rating || 5)}</div>
+            </div>
+          </div>
+          <p class="td-review-text">${r.text}</p>
+          ${r.text.length > 200 ? `<span class="td-review-more" onclick="expandReview(${i})">See More</span>` : ''}
+        </div>`).join("");
+      const reviewDots = reviews.length > 1 ? reviews.map((_, i) => `
+        <button class="td-review-dot${i===0?' active':''}" data-rdot="${i}"></button>`).join("") : '';
+
+      /* Related cards — prices also converted */
+      const relatedCards = related.map(r => {
+        const rLKR = parseLKR(r.startingFrom);
+        return `
+          <div class="td-related-card" onclick="navigateTo('${r.id}')">
+            <img src="${r.image}" alt="${r.imageAlt || r.title}" loading="lazy"/>
+            <div class="td-related-card-body">
+              <div class="td-related-card-meta">
+                <div class="td-related-loc">${icoPin} ${r.destination}</div>
+                <span class="td-related-type">${r.type}</span>
+              </div>
+              <div class="td-related-title">${r.title}</div>
+              <div class="td-related-price-label">Starting From</div>
+              <div class="td-related-price" data-lkr="${rLKR}">${formatPrice(rLKR, activeCurrency)}</div>
+            </div>
+          </div>`;
+      }).join("");
+
+      /* Map cities */
+      const citiesList = (pkg.cities || '').split(',').map(c => `
+        <div class="td-map-city-chip"><span>●</span> ${c.trim()}</div>`).join("");
+
+      return `
+        <!-- BREADCRUMB -->
+        <div class="td-breadcrumb">
+          <a href="index.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+          <span class="sep">›</span>
+          <a href="tours-packages.html">Tours</a>
+          <span class="sep">›</span>
+          <span class="active">${pkg.destination}</span>
+        </div>
+
+        <!-- LAYOUT -->
+        <div class="td-layout">
+
+          <!-- ── MAIN COLUMN ── -->
+          <div class="td-main">
+
+            <h1 class="td-title"><strong>${pkg.destination}</strong> <span>${pkg.title.replace(pkg.destination, '').trim()}</span></h1>
+
+            <!-- Gallery -->
+            <div class="td-gallery">
+              <button class="td-gallery-arrow td-gallery-prev" id="gallPrev">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <div class="td-gallery-track" id="gallTrack">${slides}</div>
+              <button class="td-gallery-arrow td-gallery-next" id="gallNext">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+            <div class="td-gallery-dots" id="gallDots">${dots}</div>
+
+            <!-- Summary -->
+            <div class="td-summary-card">
+              <div class="td-suitable">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#219a00"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Suitable for : <strong>${pkg.suitableFor || 'Everyone'}</strong>
+              </div>
+              <h2>Tour Summary</h2>
+              <p class="td-summary-text">${pkg.summary}</p>
+              <div style="margin-top:1.25rem;">
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:.6rem;">Inclusions</h3>
+                <div class="td-inclusions-grid">${incItems}</div>
+              </div>
+              <div class="td-themes">
+                <h3>Tour Theme</h3>
+                <div class="td-theme-list">${themeItems}</div>
+              </div>
+              <div class="td-cities">
+                <h3>Number of Cities <span class="td-cities-badge">${pkg.numberOfCities || 1}</span></h3>
+                <div class="td-cities-list">${pkg.cities}</div>
+              </div>
+              <div class="td-dest-row">
+                <div class="td-dest-item">
+                  <label>Destination</label>
+                  <div class="td-dest-country">
+                    <img src="https://flagcdn.com/w40/${destinationFlag(pkg.destination)}.png" alt="${pkg.destination}" onerror="this.style.display='none'"/>
+                    ${pkg.destination}
+                  </div>
+                </div>
+                <div class="td-dest-item">
+                  <label>Type of tour</label>
+                  <span class="td-type-badge">${pkg.type}</span>
+                </div>
+                <div class="td-dest-item">
+                  <label>Duration</label>
+                  <div style="font-size:.9rem;font-weight:600;color:#111;">${pkg.duration}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Itinerary -->
+            <div class="td-itinerary" id="tdItinerary">
+              ${itDays || '<p style="color:#9ca3af;padding:1rem 0;">No itinerary available yet.</p>'}
+            </div>
+
+            <!-- Map -->
+            <div class="td-map-section">
+              <h2>Your Tour Map</h2>
+              <div class="td-map-placeholder">
+                <iframe src="https://maps.google.com/maps?q=${encodeURIComponent(pkg.cities || pkg.destination)}&output=embed"
+                  allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <div class="td-map-city-list">${citiesList}</div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="td-tabs-section">
+              <div class="td-tabs">
+                <button class="td-tab active" data-tab="inclusions">Inclusions</button>
+                <button class="td-tab" data-tab="exclusions">Exclusions</button>
+                <button class="td-tab" data-tab="conditions">Conditions</button>
+              </div>
+              <div class="td-tab-panel active" id="tab-inclusions">
+                <div class="td-check-list"><ul>${incFull}</ul></div>
+              </div>
+              <div class="td-tab-panel" id="tab-exclusions">
+                <div class="td-check-list td-cross-list"><ul>${excFull}</ul></div>
+              </div>
+              <div class="td-tab-panel" id="tab-conditions">
+                <div class="td-check-list"><ul>${condFull}</ul></div>
+              </div>
+            </div>
+
+            <!-- People Say -->
+            <div class="td-reviews-section">
+              <div class="td-reviews-header">
+                <h2>People <strong>Say</strong></h2>
+                <p>Check out what our clients loved about their vacations. Collected via their online reviews and success stories.</p>
+                <div class="td-review-tabs">
+                  <button class="td-review-tab-btn">Success Stories</button>
+                </div>
+                ${platformSection}
+              </div>
+              ${reviewCards}
+              ${reviews.length === 0 ? '<p style="color:#9ca3af;font-size:.9rem;">No reviews yet for this tour.</p>' : ''}
+              <div class="td-review-dots" id="tdReviewDots">${reviewDots}</div>
+            </div>
+
+            <!-- Personalised CTA -->
+            <div class="td-personalized">
+              <div class="td-personalized-text" style="flex:1;min-width:220px;">
+                <h2>Looking for a <strong>Personalized Trip</strong> or Tour?</h2>
+                <p>We specialise in tailor-made travel, connecting you with local experts in Sri Lanka, Maldives, Vietnam, Cambodia, Indonesia, Dubai, Singapore, and Malaysia.</p>
+                <button class="btn-black-solid" onclick="openSideQuote()">Inquire Now</button>
+              </div>
+              <div class="td-personalized-card">
+                <h3>Get Your own personalised Tour or Trip within 24 Hours of contact.</h3>
+                <p>We specialise in tailor-made travel, connecting you with local experts in places like Sri Lanka, Maldives, Vietnam, Cambodia, Myanmar, Indonesia, Dubai, Singapore, and Malaysia.</p>
+              </div>
+            </div>
+
+            <!-- Related Tours -->
+            <div class="td-related">
+              <h2>Related <strong>Tours</strong></h2>
+              <div class="td-related-grid">
+                ${relatedCards || '<p style="color:#9ca3af;">No related tours found.</p>'}
+              </div>
+            </div>
+
+          </div><!-- /td-main -->
+
+          <!-- ── SIDEBAR ── -->
+          <aside class="td-sidebar">
+            <div class="td-sidebar-sticky">
+
+              <div class="td-price-card">
+                <div class="td-price-duration">
+                  Duration: <strong>${pkg.duration}</strong>
+                  <span class="td-price-show-inc" onclick="openSideQuote()">Show Inclusions</span>
+                </div>
+                <div class="td-price-amount" data-lkr="${priceLKR}">${formatPrice(priceLKR, activeCurrency)}</div>
+                <div class="td-price-per">Per Person</div>
+                <div class="td-expert">
+                  <div class="td-expert-avatar">🧑‍💼</div>
+                  <div>
+                    <div class="td-expert-name">Hello! I'm your Expert</div>
+                    <div class="td-expert-desc">Your dedicated Destination Expert. We are online <strong>24/7</strong> &amp; feel free to connect with us. <strong>Let's plan your dream getaway!</strong></div>
+                  </div>
+                </div>
+                <button class="td-price-cta" onclick="openSideQuote()">Get a Quote</button>
+                <div class="td-price-note">*Our reply time is almost instant</div>
+              </div>
+
+              <div class="td-price-card" style="background:#f0fdf4;">
+                <div style="font-size:.8rem;color:#374151;font-weight:600;margin-bottom:.75rem;">Quick Info</div>
+                <div style="display:flex;flex-direction:column;gap:.5rem;">
+                  <div style="display:flex;justify-content:space-between;font-size:.83rem;"><span style="color:#9ca3af;">Destination</span><strong>${pkg.destination}</strong></div>
+                  <div style="display:flex;justify-content:space-between;font-size:.83rem;"><span style="color:#9ca3af;">Duration</span><strong>${pkg.duration}</strong></div>
+                  <div style="display:flex;justify-content:space-between;font-size:.83rem;"><span style="color:#9ca3af;">Tour Type</span><strong>${pkg.type}</strong></div>
+                  <div style="display:flex;justify-content:space-between;font-size:.83rem;"><span style="color:#9ca3af;">Suitable For</span><strong>${pkg.suitableFor || 'Everyone'}</strong></div>
+                  <div style="display:flex;justify-content:space-between;font-size:.83rem;"><span style="color:#9ca3af;">Cities</span><strong>${pkg.numberOfCities || 1}</strong></div>
+                </div>
+              </div>
+
+            </div>
+          </aside>
+
+        </div><!-- /td-layout -->
+      `;
+    }
+
+    /* ── Init interactions after render ── */
+    function initInteractions(pkg) {
+      /* Pre-fill quote destination */
+      const sqDest = document.getElementById("sqDestInput");
+      if (sqDest) sqDest.value = pkg.destination;
+
+      /* Gallery */
+      const track  = document.getElementById("gallTrack");
+      const dotEls = document.querySelectorAll(".td-gallery-dot");
+      let curSlide = 0;
+      const total  = (pkg.galleryImages || []).length;
+
+      function goTo(n) {
+        curSlide = Math.max(0, Math.min(n, total - 1));
+        track.style.transform = `translateX(-${curSlide * 100}%)`;
+        dotEls.forEach((d, i) => d.classList.toggle("active", i === curSlide));
+      }
+      document.getElementById("gallPrev").addEventListener("click", () => goTo(curSlide - 1));
+      document.getElementById("gallNext").addEventListener("click", () => goTo(curSlide + 1));
+      dotEls.forEach(d => d.addEventListener("click", () => goTo(+d.dataset.idx)));
+
+      /* Accordion */
+      document.querySelectorAll(".td-day-header").forEach(h => {
+        h.addEventListener("click", () => {
+          const acc = h.closest(".td-day-accordion");
+          const wasOpen = acc.classList.contains("open");
+          document.querySelectorAll(".td-day-accordion").forEach(a => a.classList.remove("open"));
+          if (!wasOpen) acc.classList.add("open");
+        });
+      });
+
+      /* Tabs */
+      document.querySelectorAll(".td-tab").forEach(tab => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".td-tab").forEach(t => t.classList.remove("active"));
+          document.querySelectorAll(".td-tab-panel").forEach(p => p.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+        });
+      });
+
+      /* Review carousel */
+      const rdots  = document.querySelectorAll(".td-review-dot");
+      const rcards = document.querySelectorAll(".td-review-card");
+      rdots.forEach(d => {
+        d.addEventListener("click", () => {
+          const idx = +d.dataset.rdot;
+          rcards.forEach((c, i) => c.style.display = i === idx ? 'block' : 'none');
+          rdots.forEach((dd, i) => dd.classList.toggle("active", i === idx));
+        });
+      });
+    }
+
+    window.expandReview = function(i) {
+      const card = document.querySelector(`.td-review-card[data-review="${i}"] .td-review-text`);
+      if (card) card.style["-webkit-line-clamp"] = "none";
+      const btn = document.querySelector(`.td-review-card[data-review="${i}"] .td-review-more`);
+      if (btn) btn.style.display = "none";
+    };
+
+    /* ── Bootstrap ── */
+    async function boot() {
+      const root = document.getElementById("tdPageRoot");
+      try {
+        const res  = await fetch(PACKAGES_JSON_URL);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const all  = flattenPackages(data);
+        const id   = getPkgId();
+        const pkg  = id ? all.find(p => p.id === id) : all[0];
+
+        if (!pkg) {
+          root.innerHTML = `<div class="td-error">⚠️ Package not found.<br><a href="tours-packages.html" style="color:#3b82f6;">← Back to tours</a></div>`;
+          return;
+        }
+
+        document.title = `${pkg.title} — AEON Travels & Tours`;
+        root.innerHTML = buildPage(pkg, all);
+        initInteractions(pkg);
+
+      } catch(err) {
+        console.error(err);
+        root.innerHTML = `<div class="td-error">⚠️ Could not load package data.<br><small>${err.message}</small></div>`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", boot);
+  </script>
+<style>
+
+.aeon-footer {
+  background: #0a0a0a;
+  color: #9ca3af;
+  font-family: "Raleway", sans-serif;
+  padding: 4rem 2rem 0;
+  margin-top: 4rem;
+}
+
+/* ── TOP GRID ── */
+.aeon-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+@media (max-width: 960px) { .aeon-footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media (max-width: 560px) { .aeon-footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } }
+
+/* ── BRAND COL ── */
+.aeon-footer-brand-logo {
+  display: flex; align-items: center; gap: .65rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+.aeon-footer-brand-logo img {
+  width: 36px; height: 36px;
+  filter: brightness(0) invert(1);
+}
+.aeon-footer-brand-logo span {
+  font-size: 1.05rem; font-weight: 800;
+  color: #fff; letter-spacing: -.01em;
+}
+.aeon-footer-brand-desc {
+  font-size: .85rem; line-height: 1.8;
+  color: #6b7280; max-width: 290px;
+  margin-bottom: 1.5rem;
+}
+
+/* rating badges */
+.aeon-footer-badges { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.aeon-footer-badge {
+  display: flex; align-items: center; gap: .4rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .6rem; padding: .45rem .75rem;
+  font-size: .72rem; font-weight: 700; color: #d1d5db;
+}
+.aeon-footer-badge img { width: 16px; height: 16px; border-radius: 2px; object-fit: contain; }
+.aeon-footer-badge .badge-stars { color: #f59e0b; font-size: .7rem; }
+
+/* social row */
+.aeon-footer-socials { display: flex; gap: .6rem; }
+.aeon-footer-social {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #181818; border: 1px solid #222;
+  display: flex; align-items: center; justify-content: center;
+  color: #6b7280; text-decoration: none;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.aeon-footer-social:hover { background: #219a00; border-color: #219a00; color: #fff; }
+
+/* ── COLUMN HEADINGS ── */
+.aeon-footer-col h4 {
+  font-size: .78rem; font-weight: 800;
+  color: #fff; text-transform: uppercase;
+  letter-spacing: .08em; margin-bottom: 1.1rem;
+}
+
+/* ── NAV LINKS ── */
+.aeon-footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.aeon-footer-links a {
+  font-size: .875rem; color: #6b7280;
+  text-decoration: none; transition: color .2s;
+  display: flex; align-items: center; gap: .4rem;
+}
+.aeon-footer-links a:hover { color: #219a00; }
+.aeon-footer-links a .link-arrow {
+  opacity: 0; transform: translateX(-4px);
+  transition: opacity .2s, transform .2s;
+  color: #219a00; font-size: .7rem;
+}
+.aeon-footer-links a:hover .link-arrow { opacity: 1; transform: translateX(0); }
+
+/* ── CONTACT LIST ── */
+.aeon-footer-contact { display: flex; flex-direction: column; gap: .85rem; }
+.aeon-footer-contact-item { display: flex; align-items: flex-start; gap: .7rem; }
+.aeon-footer-contact-icon {
+  width: 32px; height: 32px; border-radius: .5rem;
+  background: #111; border: 1px solid #1f1f1f;
+  display: flex; align-items: center; justify-content: center;
+  color: #219a00; flex-shrink: 0; margin-top: 1px;
+}
+.aeon-footer-contact-item label {
+  font-size: .7rem; font-weight: 700; color: #4b5563;
+  text-transform: uppercase; letter-spacing: .05em;
+  display: block; margin-bottom: .15rem;
+}
+.aeon-footer-contact-item a,
+.aeon-footer-contact-item span {
+  font-size: .84rem; color: #9ca3af;
+  text-decoration: none; display: block;
+  transition: color .2s; line-height: 1.5;
+}
+.aeon-footer-contact-item a:hover { color: #219a00; }
+
+/* ── NEWSLETTER ── */
+.aeon-footer-newsletter-form {
+  display: flex; gap: .5rem;
+  margin-top: .75rem; flex-wrap: wrap;
+}
+.aeon-footer-newsletter-form input {
+  flex: 1; min-width: 0;
+  background: #111; border: 1px solid #222;
+  border-radius: .6rem; padding: .65rem .9rem;
+  font-size: .85rem; color: #fff;
+  font-family: "Raleway", sans-serif;
+  outline: none; transition: border-color .2s;
+}
+.aeon-footer-newsletter-form input::placeholder { color: #4b5563; }
+.aeon-footer-newsletter-form input:focus { border-color: #219a00; }
+.aeon-footer-newsletter-btn {
+  background: #219a00; color: #fff; border: none;
+  padding: .65rem 1.1rem; border-radius: .6rem;
+  font-size: .82rem; font-weight: 700; cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  white-space: nowrap; transition: background .2s;
+}
+.aeon-footer-newsletter-btn:hover { background: #177a00; }
+.aeon-footer-newsletter-note { font-size: .72rem; color: #374151; margin-top: .5rem; }
+
+/* ── DESTINATIONS CHIPS ── */
+.aeon-footer-dest-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .25rem; }
+.aeon-footer-dest-chip {
+  display: flex; align-items: center; gap: .3rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: 9999px; padding: .3rem .7rem;
+  font-size: .72rem; font-weight: 600; color: #6b7280;
+  text-decoration: none; transition: border-color .2s, color .2s;
+}
+.aeon-footer-dest-chip:hover { border-color: #219a00; color: #219a00; }
+.aeon-footer-dest-chip img { width: 14px; height: 14px; border-radius: 50%; object-fit: cover; }
+
+/* ── MID STRIP ── */
+.aeon-footer-mid {
+  max-width: 1280px; margin: 0 auto;
+  padding: 2rem 0;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+.aeon-footer-certifications { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.aeon-footer-cert {
+  display: flex; align-items: center; gap: .5rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .75rem; padding: .6rem 1rem;
+  font-size: .75rem; font-weight: 700; color: #d1d5db;
+}
+.aeon-footer-cert svg { color: #219a00; }
+.aeon-footer-payment { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.aeon-footer-payment span { font-size: .72rem; color: #4b5563; font-weight: 600; margin-right: .25rem; }
+.aeon-footer-pay-badge {
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .4rem; padding: .35rem .6rem;
+  font-size: .7rem; font-weight: 800; color: #9ca3af;
+  letter-spacing: .02em;
+}
+
+/* ── BOTTOM BAR ── */
+.aeon-footer-bottom {
+  max-width: 1280px; margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.aeon-footer-copyright { font-size: .78rem; color: #374151; line-height: 1.6; }
+.aeon-footer-copyright strong { color: #6b7280; }
+.aeon-footer-legal { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.aeon-footer-legal a { font-size: .75rem; color: #374151; text-decoration: none; transition: color .2s; }
+.aeon-footer-legal a:hover { color: #219a00; }
+
+/* ── DEV CREDIT ── */
+.aeon-footer-dev {
+  width: 100%; max-width: 1280px; margin: 0 auto;
+  padding: .85rem 0 1.25rem;
+  border-top: 1px solid #111;
+  display: flex; align-items: center; justify-content: center;
+  gap: .5rem; flex-wrap: wrap;
+}
+.aeon-footer-dev-text {
+  font-size: .72rem; color: #2d2d2d;
+  display: flex; align-items: center; gap: .4rem;
+  flex-wrap: wrap; justify-content: center;
+}
+.aeon-footer-dev-text a {
+  color: #374151; text-decoration: none; font-weight: 700;
+  transition: color .2s;
+}
+.aeon-footer-dev-text a:hover { color: #219a00; }
+.aeon-footer-dev-dot { color: #1f1f1f; }
+.aeon-footer-dev-heart { color: #ef4444; font-size: .75rem; }
+</style>
+
+<footer class="aeon-footer">
+  <div class="aeon-footer-grid">
+
+    <!-- ── COL 1: BRAND ── -->
+    <div class="aeon-footer-col">
+      <a href="index.html" class="aeon-footer-brand-logo">
+        <img src="/public/assets/images/logo-flower-aeon.png" alt="AEON Logo"/>
+        <span>AEON Travels &amp; Tours</span>
+      </a>
+      <p class="aeon-footer-brand-desc">
+        Crafting unforgettable journeys across Asia since 2012. We specialise in bespoke, tailor-made holidays built around you — not the other way around.
+      </p>
+
+      <div class="aeon-footer-badges">
+        <div class="aeon-footer-badge">
+          <img src="https://play-lh.googleusercontent.com/bfy2rE4Iu_15VyVAujaCtwQkThjUWWZSljcpnX2pdd4tcTO8SoGwrBhcTMwqeYjRlw" alt="TripAdvisor"/>
+          <span>TripAdvisor</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>1,306</span>
+        </div>
+        <div class="aeon-footer-badge">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVZEZ6fa7bPwCI4HE5583rhd3qiFNmf6kiPg&s" alt="Google"/>
+          <span>Google</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>1,068</span>
+        </div>
+        <div class="aeon-footer-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"/>
+          <span>Facebook</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>280</span>
+        </div>
+      </div>
+
+      <div class="aeon-footer-socials">
+        <!-- Facebook -->
+        <a href="#" class="aeon-footer-social" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" class="aeon-footer-social" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/94771234567" class="aeon-footer-social" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.998 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.008L2 22l5.137-1.318A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2z"/></svg>
+        </a>
+        <!-- TripAdvisor -->
+        <a href="#" class="aeon-footer-social" aria-label="TripAdvisor">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-13a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="#" class="aeon-footer-social" aria-label="YouTube">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── COL 2: QUICK LINKS ── -->
+    <div class="aeon-footer-col">
+      <h4>Quick Links</h4>
+      <ul class="aeon-footer-links">
+        <li><a href="index.html"><span class="link-arrow">›</span> Home</a></li>
+        <li><a href="tours-packages.html"><span class="link-arrow">›</span> Holidays &amp; Tours</a></li>
+        <li><a href="reviews.html"><span class="link-arrow">›</span> Success Stories</a></li>
+        <li><a href="about.html"><span class="link-arrow">›</span> About Us</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Contact Us</a></li>
+      </ul>
+
+      <h4 style="margin-top:1.75rem;">Destinations</h4>
+      <div class="aeon-footer-dest-chips">
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/lk.png" alt=""/> Sri Lanka</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/mv.png" alt=""/> Maldives</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/vn.png" alt=""/> Vietnam</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/kh.png" alt=""/> Cambodia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/id.png" alt=""/> Indonesia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/ae.png" alt=""/> Dubai</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/sg.png" alt=""/> Singapore</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/my.png" alt=""/> Malaysia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/th.png" alt=""/> Thailand</a>
+      </div>
+    </div>
+
+    <!-- ── COL 3: CONTACT ── -->
+    <div class="aeon-footer-col">
+      <h4>Contact Us</h4>
+      <div class="aeon-footer-contact">
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <label>Head Office</label>
+            <span>42 Galle Road, Colombo 03</span>
+            <span>Sri Lanka</span>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div>
+            <label>Phone</label>
+            <a href="tel:+94112345678">+94 11 234 5678</a>
+            <a href="tel:+94771234567">+94 77 123 4567</a>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
+            <label>Email</label>
+            <a href="mailto:info@aeontravel.com">info@aeontravel.com</a>
+            <a href="mailto:bookings@aeontravel.com">bookings@aeontravel.com</a>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.998 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.008L2 22l5.137-1.318A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2z"/></svg>
+          </div>
+          <div>
+            <label>WhatsApp</label>
+            <a href="https://wa.me/94771234567">+94 77 123 4567</a>
+            <span style="font-size:.75rem;color:#374151;">Available 24 / 7</span>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+          </div>
+          <div>
+            <label>Office Hours</label>
+            <span>Mon – Fri &nbsp; 8:30 AM – 6:00 PM</span>
+            <span>Sat &nbsp; 9:00 AM – 4:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COL 4: NEWSLETTER ── -->
+    <div class="aeon-footer-col">
+      <h4>Stay Inspired</h4>
+      <p style="font-size:.85rem;color:#4b5563;line-height:1.7;margin-bottom:.75rem;">
+        Get exclusive travel deals, destination guides, and trip inspiration delivered straight to your inbox.
+      </p>
+      <div class="aeon-footer-newsletter-form">
+        <input type="email" id="footerNewsletterEmail" placeholder="Your email address"/>
+        <button class="aeon-footer-newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+      <p class="aeon-footer-newsletter-note" id="footerNewsletterMsg">🔒 No spam, ever. Unsubscribe anytime.</p>
+
+      <h4 style="margin-top:1.75rem;">Trip Planner</h4>
+      <ul class="aeon-footer-links">
+        <li><a href="contact.html"><span class="link-arrow">›</span> Request a Custom Tour</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Group Bookings</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Honeymoon Packages</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Corporate Travel</a></li>
+        <li><a href="reviews.html"><span class="link-arrow">›</span> Read Traveller Stories</a></li>
+      </ul>
+    </div>
+
+  </div><!-- /grid -->
+
+  <!-- ── MID STRIP: TRUST + PAYMENTS ── -->
+  <div class="aeon-footer-mid">
+    <div class="aeon-footer-certifications">
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        SSL Secured
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M5 3h14a2 2 0 012 2v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm0 10h14a2 2 0 012 2v3a2 2 0 01-2 2H5a2 2 0 01-2-2v-3a2 2 0 012-2z"/></svg>
+        SLTDA Registered
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        2,600+ Five-Star Reviews
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+        24/7 Expert Support
+      </div>
+    </div>
+    <div class="aeon-footer-payment">
+      <span>We Accept</span>
+      <span class="aeon-footer-pay-badge">VISA</span>
+      <span class="aeon-footer-pay-badge">Mastercard</span>
+      <span class="aeon-footer-pay-badge">PayPal</span>
+      <span class="aeon-footer-pay-badge">Bank Transfer</span>
+    </div>
+  </div>
+
+  <!-- ── BOTTOM BAR ── -->
+  <div class="aeon-footer-bottom">
+    <div class="aeon-footer-copyright">
+      © <span id="footerYear"></span> <strong>AEON Travels &amp; Tours (Pvt) Ltd.</strong> All rights reserved.<br>
+      Reg. No. 00012345 · 42 Galle Road, Colombo 03, Sri Lanka
+    </div>
+    <div class="aeon-footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Refund Policy</a>
+      <a href="contact.html">Complaints</a>
+    </div>
+  </div>
+
+  <div class="aeon-footer-dev">
+    <div class="aeon-footer-dev-text">
+      <span>Designed &amp; Developed with</span>
+      <span class="aeon-footer-dev-heart">♥</span>
+      <span>by</span>
+      <a href="#" target="_blank" rel="noopener">Cipher Studio</a>
+      <span class="aeon-footer-dev-dot">·</span>
+      <span>Built on</span>
+      <a href="#" target="_blank" rel="noopener">Netlify CMS</a>
+      <span class="aeon-footer-dev-dot">·</span>
+      <a href="mailto:hello@cipherstudio.dev" target="_blank" rel="noopener">hello@cipherstudio.dev</a>
+    </div>
+  </div>
+
+</footer>
+
+<script>
+  /* ── Auto year ── */
+  document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+  /* ── Newsletter ── */
+  function subscribeNewsletter() {
+    const input = document.getElementById("footerNewsletterEmail");
+    const msg   = document.getElementById("footerNewsletterMsg");
+    const email = input.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.textContent = "⚠️ Please enter a valid email address.";
+      msg.style.color = "#ef4444";
+      return;
+    }
+    input.value = "";
+    msg.textContent = "✓ You're subscribed! Welcome aboard.";
+    msg.style.color = "#219a00";
+    setTimeout(() => {
+      msg.textContent = "🔒 No spam, ever. Unsubscribe anytime.";
+      msg.style.color = "";
+    }, 4000);
+  }
+
+  /* Allow Enter key in newsletter input */
+  document.getElementById("footerNewsletterEmail")
+    .addEventListener("keydown", e => { if (e.key === "Enter") subscribeNewsletter(); });
+</script>
+</body>
+</html>

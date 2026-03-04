@@ -1,0 +1,1243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us — AEON Travels & Tours</title>
+  <link rel="stylesheet" href="./assets/css/output.css"/>
+  <link rel="stylesheet" href="./assets/css/reviews.css"/>
+  <style>
+    /* ── GLOBAL OVERFLOW FIX ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    .nav-center-links{display:flex;gap:1.5rem;align-items:center}
+    .nav-center-link{font-size:.88rem;font-weight:600;color:#374151;text-decoration:none;transition:color .2s;white-space:nowrap}
+    .nav-center-link:hover,.nav-center-link.active{color:#219a00}
+    @media(max-width:1024px){.nav-center-links{display:none}}
+    @media(max-width:1024px){#menuToggle{display:block}}
+
+    body{background:#f5f5f5}
+
+    /* ── BREADCRUMB ── */
+    .contact-breadcrumb{
+      display:flex;align-items:center;gap:.4rem;
+      padding:1.25rem 1rem .5rem;font-size:.82rem;color:#6b7280;
+      flex-wrap:wrap;
+    }
+    .contact-breadcrumb a{display:flex;align-items:center;gap:.25rem;color:#6b7280;text-decoration:none;transition:color .2s}
+    .contact-breadcrumb a:hover{color:#219a00}
+    .contact-breadcrumb .bc-sep{color:#9ca3af}
+    .contact-breadcrumb .bc-active{color:#111;font-weight:600}
+
+    /* ── HERO ── */
+    .contact-hero{
+      position:relative;
+      min-height:280px;
+      background:url('https://images.unsplash.com/photo-1596526131083-e8c633064dbc?w=1600&q=80') center/cover no-repeat;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 1rem;
+      border-radius:1.25rem;
+      overflow:hidden;
+    }
+    @media(min-width:640px){.contact-hero{margin:0 2rem;min-height:340px;border-radius:1.5rem}}
+    .contact-hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,.3) 100%);
+    }
+    .contact-hero-content{
+      position:relative;z-index:2;text-align:center;color:#fff;
+      padding:2rem 1.25rem;max-width:650px;width:100%;
+    }
+    .contact-hero-eyebrow{
+      display:inline-flex;align-items:center;gap:.4rem;
+      background:rgba(33,154,0,.2);border:1px solid rgba(33,154,0,.4);
+      color:#6ee74b;font-size:.75rem;font-weight:700;
+      padding:.35rem .85rem;border-radius:9999px;
+      text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;
+    }
+    .contact-hero-content h1{
+      font-size:clamp(1.75rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:.85rem;
+    }
+    .contact-hero-content p{
+      font-size:.95rem;color:rgba(255,255,255,.85);line-height:1.7;
+    }
+
+    /* ── LAYOUT ── */
+    .contact-layout{
+      max-width:1200px;margin:2rem auto 4rem;
+      padding:0 1rem;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1.25rem;
+    }
+    @media(min-width:640px){.contact-layout{padding:0 1.5rem}}
+    @media(min-width:960px){
+      .contact-layout{
+        grid-template-columns:1fr 380px;
+        padding:0 2rem;
+        margin:3rem auto 5rem;
+        gap:1.5rem;
+      }
+    }
+
+    /* ── FORM CARD ── */
+    .contact-form-card{
+      background:#fff;border-radius:1.25rem;padding:1.5rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.06);
+      min-width:0;
+    }
+    @media(min-width:640px){.contact-form-card{padding:2.25rem}}
+    .contact-form-card h2{font-size:1.35rem;font-weight:900;margin-bottom:.4rem}
+    @media(min-width:640px){.contact-form-card h2{font-size:1.5rem}}
+    .contact-form-card h2 span{color:#219a00}
+    .contact-form-card > p{font-size:.88rem;color:#6b7280;margin-bottom:1.5rem;line-height:1.6}
+
+    .cf-grid{display:grid;grid-template-columns:1fr;gap:1rem;width:100%}
+    @media(min-width:480px){.cf-grid{grid-template-columns:1fr 1fr}}
+    .cf-full{grid-column:1/-1}
+
+    .cf-field{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+    .cf-field label{font-size:.8rem;font-weight:700;color:#374151}
+    .cf-field input,
+    .cf-field select,
+    .cf-field textarea{
+      border:1.5px solid #e5e7eb;border-radius:.7rem;
+      padding:.7rem .9rem;font-size:.88rem;
+      font-family:inherit;outline:none;
+      transition:border-color .2s,box-shadow .2s;
+      background:#fff;color:#111;
+      width:100%;min-width:0;
+    }
+    .cf-field input:focus,
+    .cf-field select:focus,
+    .cf-field textarea:focus{
+      border-color:#219a00;
+      box-shadow:0 0 0 3px rgba(33,154,0,.1);
+    }
+    .cf-field textarea{resize:vertical;min-height:120px}
+    .cf-field select{
+      cursor:pointer;appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right .9rem center;
+      padding-right:2.5rem;
+    }
+
+    .cf-travel-dates{display:grid;grid-template-columns:1fr;gap:1rem;width:100%}
+    @media(min-width:400px){.cf-travel-dates{grid-template-columns:1fr 1fr}}
+
+    /* traveller counter */
+    .cf-counter-wrap{
+      background:#f9fafb;border-radius:.75rem;
+      padding:.5rem 1rem;border:1.5px solid #e5e7eb;
+      width:100%;
+    }
+    .cf-counter-row{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;gap:.5rem}
+    .cf-counter-row + .cf-counter-row{border-top:1px solid #f3f4f6}
+    .cf-counter-label-wrap{min-width:0;flex:1}
+    .cf-counter-label{font-size:.87rem;color:#374151;font-weight:600}
+    .cf-counter-sub{font-size:.75rem;color:#9ca3af}
+    .cf-counter-controls{display:flex;align-items:center;gap:.65rem;flex-shrink:0}
+    .cf-counter-btn{
+      width:30px;height:30px;border-radius:50%;
+      border:1.5px solid #e5e7eb;background:#fff;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;font-size:1.1rem;font-weight:700;color:#374151;
+      transition:border-color .2s,background .2s;
+      line-height:1;flex-shrink:0;
+    }
+    .cf-counter-btn:hover{border-color:#219a00;background:#f0fdf4;color:#219a00}
+    .cf-counter-btn:disabled{opacity:.35;cursor:not-allowed}
+    .cf-counter-val{font-size:.95rem;font-weight:800;min-width:20px;text-align:center}
+
+    /* checkboxes */
+    .cf-checkbox-group{display:flex;flex-wrap:wrap;gap:.5rem;width:100%}
+    .cf-checkbox-item{
+      display:flex;align-items:center;gap:.4rem;
+      background:#f9fafb;border:1.5px solid #e5e7eb;
+      border-radius:.6rem;padding:.4rem .75rem;
+      cursor:pointer;font-size:.8rem;font-weight:600;color:#374151;
+      transition:border-color .2s,background .2s;
+      user-select:none;white-space:nowrap;
+    }
+    .cf-checkbox-item input{display:none}
+    .cf-checkbox-item.checked{border-color:#219a00;background:#f0fdf4;color:#219a00}
+
+    /* submit */
+    .cf-submit{
+      width:100%;background:#219a00;color:#fff;border:none;
+      padding:.9rem;border-radius:9999px;
+      font-size:1rem;font-weight:800;cursor:pointer;
+      font-family:inherit;transition:background .2s,transform .2s;
+      margin-top:.5rem;
+    }
+    .cf-submit:hover{background:#177a00;transform:translateY(-1px)}
+    .cf-note{font-size:.75rem;color:#9ca3af;text-align:center;margin-top:.6rem}
+
+    /* success state */
+    .cf-success{
+      display:none;flex-direction:column;align-items:center;
+      text-align:center;padding:2rem 1rem;gap:1rem;
+    }
+    .cf-success-icon{
+      width:72px;height:72px;border-radius:50%;
+      background:#f0fdf4;display:flex;align-items:center;justify-content:center;
+      color:#219a00;
+    }
+    .cf-success h3{font-size:1.4rem;font-weight:900}
+    .cf-success p{font-size:.9rem;color:#6b7280;line-height:1.6}
+    .cf-success-back{
+      background:#111;color:#fff;border:none;
+      padding:.65rem 1.75rem;border-radius:9999px;
+      font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;
+      transition:background .2s;
+    }
+    .cf-success-back:hover{background:#333}
+
+    /* ── SIDEBAR ── */
+    .contact-sidebar{
+      display:flex;flex-direction:column;gap:1.25rem;
+      min-width:0;
+    }
+    @media(min-width:960px){
+      .contact-sidebar{
+        grid-column:2;
+        grid-row:1/3;
+      }
+    }
+
+    /* info card */
+    .contact-info-card{
+      background:#fff;border-radius:1.25rem;padding:1.5rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.06);
+    }
+    @media(min-width:640px){.contact-info-card{padding:1.75rem}}
+    .contact-info-card h3{font-size:1.1rem;font-weight:800;margin-bottom:1.25rem}
+    .contact-info-card h3 span{color:#219a00}
+    .contact-info-list{display:flex;flex-direction:column;gap:.85rem}
+    .contact-info-item{display:flex;align-items:flex-start;gap:.75rem}
+    .contact-info-icon{
+      width:38px;height:38px;border-radius:.7rem;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .contact-info-icon.green{background:#f0fdf4;color:#219a00}
+    .contact-info-icon.blue{background:#eff6ff;color:#005ea6}
+    .contact-info-icon.orange{background:#fff7ed;color:#ea580c}
+    .contact-info-icon.purple{background:#f5f3ff;color:#7c3aed}
+    .contact-info-text{min-width:0;flex:1}
+    .contact-info-text label{font-size:.72rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.15rem}
+    .contact-info-text a,.contact-info-text span{
+      font-size:.85rem;font-weight:600;color:#111;text-decoration:none;
+      transition:color .2s;display:block;
+      overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    }
+    .contact-info-text a:hover{color:#219a00}
+
+    /* hours card */
+    .contact-hours-card{
+      background:#111;border-radius:1.25rem;padding:1.5rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.1);color:#fff;
+    }
+    @media(min-width:640px){.contact-hours-card{padding:1.75rem}}
+    .contact-hours-card h3{font-size:1.1rem;font-weight:800;margin-bottom:1.25rem}
+    .contact-hours-card h3 span{color:#219a00}
+    .contact-hours-list{display:flex;flex-direction:column;gap:.6rem}
+    .contact-hours-row{
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:.82rem;gap:.5rem;flex-wrap:wrap;
+    }
+    .contact-hours-day{color:#9ca3af;font-weight:600}
+    .contact-hours-time{color:#fff;font-weight:700}
+    .contact-hours-badge{
+      background:#219a00;color:#fff;
+      font-size:.68rem;font-weight:800;
+      padding:.2rem .6rem;border-radius:9999px;
+      white-space:nowrap;
+    }
+    .contact-hours-divider{border:none;border-top:1px solid #222;margin:.5rem 0}
+
+    /* map card */
+    .contact-map-card{
+      background:#fff;border-radius:1.25rem;overflow:hidden;
+      box-shadow:0 4px 20px rgba(0,0,0,.06);
+    }
+    .contact-map-card iframe{width:100%;height:200px;border:none;display:block}
+    .contact-map-footer{
+      padding:.85rem 1.25rem;display:flex;align-items:center;gap:.6rem;
+    }
+    .contact-map-footer svg{color:#219a00;flex-shrink:0}
+    .contact-map-footer span{
+      font-size:.8rem;color:#374151;font-weight:600;
+      overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    }
+
+    /* social card */
+    .contact-social-card{
+      background:#fff;border-radius:1.25rem;padding:1.5rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.06);
+    }
+    .contact-social-card h3{font-size:1rem;font-weight:800;margin-bottom:1rem}
+    .contact-social-list{display:flex;gap:.65rem}
+    .contact-social-btn{
+      flex:1;display:flex;align-items:center;justify-content:center;gap:.4rem;
+      padding:.6rem .4rem;border-radius:.75rem;font-size:.78rem;font-weight:700;
+      text-decoration:none;transition:transform .2s,box-shadow .2s;
+      border:none;cursor:pointer;font-family:inherit;
+      white-space:nowrap;min-width:0;
+    }
+    .contact-social-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+    .contact-social-btn.fb{background:#1877f2;color:#fff}
+    .contact-social-btn.ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);color:#fff}
+    .contact-social-btn.wa{background:#25d366;color:#fff}
+
+    /* ── FAQ ── */
+    .contact-faq{
+      background:#fff;border-radius:1.25rem;padding:1.5rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.06);
+    }
+    @media(min-width:640px){.contact-faq{padding:2.25rem}}
+    @media(min-width:960px){.contact-faq{grid-column:1}}
+    .contact-faq h2{font-size:1.3rem;font-weight:900;margin-bottom:.4rem}
+    @media(min-width:640px){.contact-faq h2{font-size:1.4rem}}
+    .contact-faq h2 span{color:#219a00}
+    .contact-faq > p{font-size:.88rem;color:#6b7280;margin-bottom:1.5rem}
+    .faq-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:600px){.faq-grid{grid-template-columns:1fr 1fr}}
+    .faq-item{
+      background:#f9fafb;border-radius:.9rem;padding:1.1rem 1.25rem;
+      border-left:3px solid #219a00;
+    }
+    .faq-item h4{font-size:.88rem;font-weight:800;margin-bottom:.4rem;color:#111}
+    .faq-item p{font-size:.82rem;color:#6b7280;line-height:1.65}
+  </style>
+</head>
+<body>
+
+  <!-- ── SIDE QUOTE OVERLAY ── -->
+  <div class="side-quote-overlay" id="sideQuoteOverlay"></div>
+
+  <!-- ── SIDE QUOTE PANEL ── -->
+  <div class="side-quote-panel" id="sideQuotePanel">
+    <div class="side-quote-header">
+      <h3>Get A <span>Quote</span></h3>
+      <button class="side-quote-close" id="sideQuoteClose">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <form class="side-quote-form" id="sideQuoteForm">
+      <div><label>Your Name</label><input type="text" name="name" placeholder="John Smith"/></div>
+      <div><label>Email Address</label><input type="email" name="email" placeholder="john@example.com"/></div>
+      <div><label>Mobile Number</label><input type="tel" name="mobile" placeholder="+1 234 567 890"/></div>
+      <div><label>Destination</label><input type="text" name="destination" placeholder="e.g. Ella, Sri Lanka"/></div>
+      <p class="side-quote-note">We will contact you within 24 hrs.</p>
+      <button type="submit" class="side-quote-submit">Submit Request</button>
+    </form>
+  </div>
+  <button class="side-quote-btn" id="sideQuoteBtn">Get a Quote</button>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">
+      <img src="/public/assets/images/logo-flower-aeon.png" alt="Logo" style="height:2rem;width:2rem"/>
+      <h1 class="nav-brand">AEON Travels &amp; Tours</h1>
+    </div>
+    <div class="nav-center-links">
+      <a href="index.html" class="nav-center-link">Home</a>
+      <a href="tours-packages.html" class="nav-center-link">Holidays &amp; Tours</a>
+      <a href="reviews.html" class="nav-center-link">Success Stories</a>
+      <a href="about.html" class="nav-center-link">About Us</a>
+      <a href="contact.html" class="nav-center-link active">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="mailto:info@aeontravel.com" class="nav-icon-btn" title="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-3.771 0-5.657 1.172-6.828S6.229 4 10 4h4c3.771 0 5.657 0 6.828 1.172S22 8.229 22 12s0 5.657-1.172 6.828S17.771 20 14 20h-4c-3.771 0-5.657 0-6.828-1.172S2 15.771 2 12Z"/><path stroke-linecap="round" d="m6 8l2.159 1.8c1.837 1.53 2.755 2.295 3.841 2.295s2.005-.765 3.841-2.296L18 8"/></g></svg>
+      </a>
+      <a href="tel:+94112345678" class="nav-icon-btn" title="Call">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M14 2s2.2.2 5 3s3 5 3 5m-7.793-4.464s.99.282 2.475 1.767s1.768 2.475 1.768 2.475m-8.412-4.462l.649 1.163c.585 1.05.35 2.426-.572 3.349c0 0-1.12 1.119.91 3.148c2.028 2.028 3.147.91 3.147.91c.923-.923 2.3-1.158 3.349-.573l1.163.65c1.585.884 1.772 3.106.379 4.5c-.837.836-1.863 1.488-2.996 1.53c-1.908.073-5.149-.41-8.4-3.66c-3.25-3.251-3.733-6.492-3.66-8.4c.043-1.133.694-2.159 1.53-2.996c1.394-1.393 3.616-1.206 4.5.38Z"/></svg>
+      </a>
+      <div class="currency-wrap">
+        <button id="currencyButton"><span id="currencyText">USD</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <div id="currencyDropdown"><ul style="padding:.25rem 0;list-style:none">
+          <li><a href="#" class="currency-item">USD</a></li>
+          <li><a href="#" class="currency-item">EUR</a></li>
+          <li><a href="#" class="currency-item">LKR</a></li>
+          <li><a href="#" class="currency-item">GBP</a></li>
+        </ul></div>
+      </div>
+      <button id="menuToggle" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M4 7h3m13 0h-9m9 10h-3M4 17h9m-9-5h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE DRAWER ── -->
+  <div class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-overlay" id="drawerOverlay"></div>
+    <div class="nav-drawer-panel">
+      <button class="drawer-close" id="drawerClose">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="tours-packages.html" class="drawer-link">Holidays &amp; Tours</a>
+      <a href="reviews.html" class="drawer-link">Success Stories</a>
+      <a href="about.html" class="drawer-link">About Us</a>
+      <a href="contact.html" class="drawer-link" style="color:#219a00;font-weight:700">Contact</a>
+      <a href="#" class="drawer-link" style="color:#219a00;font-weight:800"
+        onclick="openSideQuote();document.getElementById('navDrawer').classList.remove('open');">✦ Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- ── BREADCRUMB ── -->
+  <div class="contact-breadcrumb">
+    <a href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Home
+    </a>
+    <span class="bc-sep">›</span>
+    <span class="bc-active">Contact Us</span>
+  </div>
+
+  <!-- ── HERO ── -->
+  <div class="contact-hero">
+    <div class="contact-hero-overlay"></div>
+    <div class="contact-hero-content">
+      <div class="contact-hero-eyebrow">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        We Reply Within 24 Hours
+      </div>
+      <h1>Let's Plan Your<br/><span style="color:#6ee74b">Dream Trip</span></h1>
+      <p>Have a question or ready to book? Our travel experts are standing by to help you craft the perfect getaway.</p>
+    </div>
+  </div>
+
+  <!-- ── MAIN LAYOUT ── -->
+  <div class="contact-layout">
+
+    <!-- ── CONTACT FORM ── -->
+    <div class="contact-form-card">
+      <h2>Send Us a <span>Message</span></h2>
+      <p>Fill in the details below and one of our travel experts will get back to you within 24 hours.</p>
+
+      <div id="cfFormWrap">
+        <div class="cf-grid" id="cfForm">
+
+          <div class="cf-field">
+            <label>First Name <span style="color:#ef4444">*</span></label>
+            <input type="text" id="cfFirstName" placeholder="John"/>
+          </div>
+          <div class="cf-field">
+            <label>Last Name <span style="color:#ef4444">*</span></label>
+            <input type="text" id="cfLastName" placeholder="Smith"/>
+          </div>
+
+          <div class="cf-field">
+            <label>Email Address <span style="color:#ef4444">*</span></label>
+            <input type="email" id="cfEmail" placeholder="john@example.com"/>
+          </div>
+          <div class="cf-field">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" id="cfPhone" placeholder="+1 234 567 890"/>
+          </div>
+
+          <div class="cf-field cf-full">
+            <label>Destination <span style="color:#ef4444">*</span></label>
+            <select id="cfDestination">
+              <option value="" disabled selected>Select a destination…</option>
+              <option>Sri Lanka</option>
+              <option>Maldives</option>
+              <option>Vietnam</option>
+              <option>Cambodia</option>
+              <option>Indonesia</option>
+              <option>Dubai</option>
+              <option>Singapore</option>
+              <option>Malaysia</option>
+              <option>Thailand</option>
+              <option>Multiple Destinations</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="cf-field cf-full">
+            <label>Approximate Travel Dates</label>
+            <div class="cf-travel-dates">
+              <input type="date" id="cfDateFrom"/>
+              <input type="date" id="cfDateTo"/>
+            </div>
+          </div>
+
+          <div class="cf-field cf-full">
+            <label>Number of Travellers</label>
+            <div class="cf-counter-wrap">
+              <div class="cf-counter-row">
+                <div class="cf-counter-label-wrap">
+                  <div class="cf-counter-label">Adults</div>
+                  <div class="cf-counter-sub">Age 13+</div>
+                </div>
+                <div class="cf-counter-controls">
+                  <button class="cf-counter-btn" onclick="changeCount('adults',-1)" id="adultsMin">−</button>
+                  <span class="cf-counter-val" id="adultsVal">2</span>
+                  <button class="cf-counter-btn" onclick="changeCount('adults',1)">+</button>
+                </div>
+              </div>
+              <div class="cf-counter-row">
+                <div class="cf-counter-label-wrap">
+                  <div class="cf-counter-label">Children</div>
+                  <div class="cf-counter-sub">Age 2–12</div>
+                </div>
+                <div class="cf-counter-controls">
+                  <button class="cf-counter-btn" onclick="changeCount('children',-1)" id="childrenMin">−</button>
+                  <span class="cf-counter-val" id="childrenVal">0</span>
+                  <button class="cf-counter-btn" onclick="changeCount('children',1)">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cf-field cf-full">
+            <label>Trip Interests <span style="color:#9ca3af;font-weight:400">(select all that apply)</span></label>
+            <div class="cf-checkbox-group" id="cfInterests">
+              <label class="cf-checkbox-item"><input type="checkbox" value="Honeymoon"/> 💑 Honeymoon</label>
+              <label class="cf-checkbox-item"><input type="checkbox" value="Family"/> 👨‍👩‍👧 Family</label>
+              <label class="cf-checkbox-item"><input type="checkbox" value="Adventure"/> 🧗 Adventure</label>
+              <label class="cf-checkbox-item"><input type="checkbox" value="Beach"/> 🏖️ Beach</label>
+              <label class="cf-checkbox-item"><input type="checkbox" value="Culture"/> 🏛️ Culture</label>
+              <label class="cf-checkbox-item"><input type="checkbox" value="Wildlife"/> 🐘 Wildlife</label>
+              <label class="cf-checkbox-item"><input type="checkbox" value="Luxury"/> 💎 Luxury</label>
+            </div>
+          </div>
+
+          <div class="cf-field cf-full">
+            <label>Approximate Budget <span style="color:#9ca3af;font-weight:400">(per person)</span></label>
+            <select id="cfBudget">
+              <option value="" disabled selected>Select budget range…</option>
+              <option>Under $500</option>
+              <option>$500 – $1,000</option>
+              <option>$1,000 – $2,500</option>
+              <option>$2,500 – $5,000</option>
+              <option>$5,000+</option>
+              <option>Flexible</option>
+            </select>
+          </div>
+
+          <div class="cf-field cf-full">
+            <label>Your Message <span style="color:#ef4444">*</span></label>
+            <textarea id="cfMessage" placeholder="Tell us a bit about your dream trip — any special requirements, places you'd love to visit, or questions you have…"></textarea>
+          </div>
+
+          <div class="cf-field cf-full">
+            <label>How did you hear about us?</label>
+            <select id="cfSource">
+              <option value="" disabled selected>Select an option…</option>
+              <option>Google Search</option>
+              <option>TripAdvisor</option>
+              <option>Facebook</option>
+              <option>Instagram</option>
+              <option>Friend / Family Referral</option>
+              <option>Returning Customer</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+        </div>
+
+        <button class="cf-submit" onclick="submitForm()">Send Message →</button>
+        <p class="cf-note">⏱ We typically reply within a few hours during business hours.</p>
+      </div>
+
+      <div class="cf-success" id="cfSuccess">
+        <div class="cf-success-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Message Sent!</h3>
+        <p>Thank you for reaching out. One of our travel experts will be in touch with you within 24 hours.</p>
+        <button class="cf-success-back" onclick="resetForm()">Send Another Message</button>
+      </div>
+    </div>
+
+    <!-- ── SIDEBAR ── -->
+    <div class="contact-sidebar">
+
+      <div class="contact-info-card">
+        <h3>Get in <span>Touch</span></h3>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-info-icon green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div class="contact-info-text">
+              <label>Email Us</label>
+              <a href="mailto:info@aeontravel.com">info@aeontravel.com</a>
+              <a href="mailto:bookings@aeontravel.com" style="color:#6b7280;font-weight:500;font-size:.78rem">bookings@aeontravel.com</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <div class="contact-info-text">
+              <label>Call Us</label>
+              <a href="tel:+94112345678">+94 11 234 5678</a>
+              <a href="tel:+94771234567" style="color:#6b7280;font-weight:500;font-size:.78rem">+94 77 123 4567</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon orange">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.008L2 22l5.137-1.318A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2z"/></svg>
+            </div>
+            <div class="contact-info-text">
+              <label>WhatsApp</label>
+              <a href="https://wa.me/94771234567" target="_blank">+94 77 123 4567</a>
+              <span style="color:#6b7280;font-weight:500;font-size:.78rem">Quick responses available</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="contact-info-text">
+              <label>Our Office</label>
+              <span>42 Galle Road, Colombo 03</span>
+              <span style="color:#6b7280;font-weight:500;font-size:.78rem">Sri Lanka</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-hours-card">
+        <h3>Office <span>Hours</span></h3>
+        <div class="contact-hours-list">
+          <div class="contact-hours-row">
+            <span class="contact-hours-day">Monday – Friday</span>
+            <span class="contact-hours-time">8:30 AM – 6:00 PM</span>
+          </div>
+          <div class="contact-hours-row">
+            <span class="contact-hours-day">Saturday</span>
+            <span class="contact-hours-time">9:00 AM – 4:00 PM</span>
+          </div>
+          <div class="contact-hours-row">
+            <span class="contact-hours-day">Sunday</span>
+            <span class="contact-hours-time">10:00 AM – 2:00 PM</span>
+          </div>
+          <hr class="contact-hours-divider"/>
+          <div class="contact-hours-row">
+            <span class="contact-hours-day">WhatsApp &amp; Email</span>
+            <span class="contact-hours-badge">24 / 7</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-map-card">
+        <iframe
+          src="https://maps.google.com/maps?q=Colombo,Sri+Lanka&output=embed"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="contact-map-footer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>42 Galle Road, Colombo 03, Sri Lanka</span>
+        </div>
+      </div>
+
+      <div class="contact-social-card">
+        <h3>Find Us Online</h3>
+        <div class="contact-social-list">
+          <a href="#" class="contact-social-btn fb">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="#" class="contact-social-btn ig">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            Instagram
+          </a>
+          <a href="https://wa.me/94771234567" target="_blank" class="contact-social-btn wa">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.998 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.008L2 22l5.137-1.318A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── FAQ ── -->
+    <div class="contact-faq">
+      <h2>Frequently Asked <span>Questions</span></h2>
+      <p>Quick answers to the questions we hear most often.</p>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>How quickly will I get a response?</h4>
+          <p>We aim to reply to all enquiries within 24 hours. During busy periods WhatsApp is the fastest way to reach us — we're available around the clock.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Is there a fee for getting a quote?</h4>
+          <p>Absolutely not. All quotes and consultations are completely free with no obligation. We only charge once you're happy with your itinerary and confirm your booking.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I customise a package I see on the site?</h4>
+          <p>Yes — every package is a starting point. We tailor every detail to your preferences, timeline, and budget. Nothing is off the table.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Do you handle visas and travel insurance?</h4>
+          <p>We provide full guidance on visa requirements for all our destinations and can recommend trusted insurance providers, though final arrangements remain with the traveller.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What payment methods do you accept?</h4>
+          <p>We accept bank transfers, major credit and debit cards, and PayPal. A deposit secures your booking, with the balance due closer to your departure date.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What if I need to change or cancel my trip?</h4>
+          <p>We understand plans change. Our team will work with you to amend or reschedule your trip wherever possible. Full cancellation terms are provided at the time of booking.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    /* ── CURRENCY ── */
+    const currBtn=document.getElementById("currencyButton"),currDrop=document.getElementById("currencyDropdown"),currText=document.getElementById("currencyText");
+    currBtn.addEventListener("click",e=>{e.stopPropagation();currDrop.classList.toggle("open")});
+    document.querySelectorAll(".currency-item").forEach(i=>i.addEventListener("click",e=>{e.preventDefault();currText.textContent=i.textContent.trim();currDrop.classList.remove("open")}));
+    document.addEventListener("click",()=>currDrop.classList.remove("open"));
+
+    /* ── DRAWER ── */
+    document.getElementById("menuToggle").addEventListener("click",()=>document.getElementById("navDrawer").classList.add("open"));
+    document.getElementById("drawerClose").addEventListener("click",()=>document.getElementById("navDrawer").classList.remove("open"));
+    document.getElementById("drawerOverlay").addEventListener("click",()=>document.getElementById("navDrawer").classList.remove("open"));
+
+    /* ── SIDE QUOTE ── */
+    function openSideQuote(){document.getElementById("sideQuotePanel").classList.add("open");document.getElementById("sideQuoteOverlay").classList.add("open");document.body.style.overflow="hidden"}
+    function closeSideQuote(){document.getElementById("sideQuotePanel").classList.remove("open");document.getElementById("sideQuoteOverlay").classList.remove("open");document.body.style.overflow=""}
+    document.getElementById("sideQuoteBtn").addEventListener("click",openSideQuote);
+    document.getElementById("sideQuoteClose").addEventListener("click",closeSideQuote);
+    document.getElementById("sideQuoteOverlay").addEventListener("click",closeSideQuote);
+    document.getElementById("sideQuoteForm").addEventListener("submit",e=>{
+      e.preventDefault();const btn=e.target.querySelector(".side-quote-submit");
+      btn.textContent="✓ Request Sent!";btn.style.background="#177a00";
+      setTimeout(()=>{btn.textContent="Submit Request";btn.style.background="";e.target.reset();closeSideQuote()},2500)
+    });
+
+    /* ── TRAVELLER COUNTERS ── */
+    const counts={adults:2,children:0};
+    function changeCount(type,delta){
+      counts[type]=Math.max(0,counts[type]+delta);
+      if(type==="adults")counts[type]=Math.max(1,counts[type]);
+      document.getElementById(type+"Val").textContent=counts[type];
+      document.getElementById(type+"Min").disabled=counts[type]<=(type==="adults"?1:0);
+    }
+    document.getElementById("adultsMin").disabled=true;
+    document.getElementById("childrenMin").disabled=true;
+
+    /* ── INTEREST CHECKBOXES ── */
+    document.querySelectorAll(".cf-checkbox-item").forEach(label=>{
+      label.addEventListener("click",()=>{
+        const cb=label.querySelector("input");
+        cb.checked=!cb.checked;
+        label.classList.toggle("checked",cb.checked);
+      });
+    });
+
+    /* ── FORM SUBMIT ── */
+    function submitForm(){
+      const first=document.getElementById("cfFirstName").value.trim();
+      const last=document.getElementById("cfLastName").value.trim();
+      const email=document.getElementById("cfEmail").value.trim();
+      const dest=document.getElementById("cfDestination").value;
+      const msg=document.getElementById("cfMessage").value.trim();
+      if(!first||!last||!email||!dest||!msg){
+        const missing=[];
+        if(!first||!last)missing.push("name");
+        if(!email)missing.push("email");
+        if(!dest)missing.push("destination");
+        if(!msg)missing.push("message");
+        alert("Please fill in: "+missing.join(", ")+".");
+        return;
+      }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        alert("Please enter a valid email address.");
+        return;
+      }
+      document.getElementById("cfFormWrap").style.display="none";
+      const s=document.getElementById("cfSuccess");
+      s.style.display="flex";
+    }
+    function resetForm(){
+      document.getElementById("cfFormWrap").style.display="block";
+      document.getElementById("cfSuccess").style.display="none";
+      document.getElementById("cfFirstName").value="";
+      document.getElementById("cfLastName").value="";
+      document.getElementById("cfEmail").value="";
+      document.getElementById("cfPhone").value="";
+      document.getElementById("cfDestination").value="";
+      document.getElementById("cfMessage").value="";
+      document.getElementById("cfBudget").value="";
+      document.getElementById("cfSource").value="";
+      counts.adults=2;counts.children=0;
+      document.getElementById("adultsVal").textContent="2";
+      document.getElementById("childrenVal").textContent="0";
+      document.getElementById("adultsMin").disabled=true;
+      document.getElementById("childrenMin").disabled=true;
+      document.querySelectorAll(".cf-checkbox-item").forEach(l=>{
+        l.querySelector("input").checked=false;l.classList.remove("checked");
+      });
+    }
+  </script>
+  <style>
+
+.aeon-footer {
+  background: #0a0a0a;
+  color: #9ca3af;
+  font-family: "Raleway", sans-serif;
+  padding: 4rem 2rem 0;
+  margin-top: 4rem;
+}
+
+/* ── TOP GRID ── */
+.aeon-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+@media (max-width: 960px) { .aeon-footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media (max-width: 560px) { .aeon-footer-grid { grid-template-columns: 1fr; gap: 1.75rem; } }
+
+/* ── BRAND COL ── */
+.aeon-footer-brand-logo {
+  display: flex; align-items: center; gap: .65rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+.aeon-footer-brand-logo img {
+  width: 36px; height: 36px;
+  filter: brightness(0) invert(1);
+}
+.aeon-footer-brand-logo span {
+  font-size: 1.05rem; font-weight: 800;
+  color: #fff; letter-spacing: -.01em;
+}
+.aeon-footer-brand-desc {
+  font-size: .85rem; line-height: 1.8;
+  color: #6b7280; max-width: 290px;
+  margin-bottom: 1.5rem;
+}
+
+/* rating badges */
+.aeon-footer-badges { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.aeon-footer-badge {
+  display: flex; align-items: center; gap: .4rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .6rem; padding: .45rem .75rem;
+  font-size: .72rem; font-weight: 700; color: #d1d5db;
+}
+.aeon-footer-badge img { width: 16px; height: 16px; border-radius: 2px; object-fit: contain; }
+.aeon-footer-badge .badge-stars { color: #f59e0b; font-size: .7rem; }
+
+/* social row */
+.aeon-footer-socials { display: flex; gap: .6rem; }
+.aeon-footer-social {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #181818; border: 1px solid #222;
+  display: flex; align-items: center; justify-content: center;
+  color: #6b7280; text-decoration: none;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.aeon-footer-social:hover { background: #219a00; border-color: #219a00; color: #fff; }
+
+/* ── COLUMN HEADINGS ── */
+.aeon-footer-col h4 {
+  font-size: .78rem; font-weight: 800;
+  color: #fff; text-transform: uppercase;
+  letter-spacing: .08em; margin-bottom: 1.1rem;
+}
+
+/* ── NAV LINKS ── */
+.aeon-footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.aeon-footer-links a {
+  font-size: .875rem; color: #6b7280;
+  text-decoration: none; transition: color .2s;
+  display: flex; align-items: center; gap: .4rem;
+}
+.aeon-footer-links a:hover { color: #219a00; }
+.aeon-footer-links a .link-arrow {
+  opacity: 0; transform: translateX(-4px);
+  transition: opacity .2s, transform .2s;
+  color: #219a00; font-size: .7rem;
+}
+.aeon-footer-links a:hover .link-arrow { opacity: 1; transform: translateX(0); }
+
+/* ── CONTACT LIST ── */
+.aeon-footer-contact { display: flex; flex-direction: column; gap: .85rem; }
+.aeon-footer-contact-item { display: flex; align-items: flex-start; gap: .7rem; }
+.aeon-footer-contact-icon {
+  width: 32px; height: 32px; border-radius: .5rem;
+  background: #111; border: 1px solid #1f1f1f;
+  display: flex; align-items: center; justify-content: center;
+  color: #219a00; flex-shrink: 0; margin-top: 1px;
+}
+.aeon-footer-contact-item label {
+  font-size: .7rem; font-weight: 700; color: #4b5563;
+  text-transform: uppercase; letter-spacing: .05em;
+  display: block; margin-bottom: .15rem;
+}
+.aeon-footer-contact-item a,
+.aeon-footer-contact-item span {
+  font-size: .84rem; color: #9ca3af;
+  text-decoration: none; display: block;
+  transition: color .2s; line-height: 1.5;
+}
+.aeon-footer-contact-item a:hover { color: #219a00; }
+
+/* ── NEWSLETTER ── */
+.aeon-footer-newsletter-form {
+  display: flex; gap: .5rem;
+  margin-top: .75rem; flex-wrap: wrap;
+}
+.aeon-footer-newsletter-form input {
+  flex: 1; min-width: 0;
+  background: #111; border: 1px solid #222;
+  border-radius: .6rem; padding: .65rem .9rem;
+  font-size: .85rem; color: #fff;
+  font-family: "Raleway", sans-serif;
+  outline: none; transition: border-color .2s;
+}
+.aeon-footer-newsletter-form input::placeholder { color: #4b5563; }
+.aeon-footer-newsletter-form input:focus { border-color: #219a00; }
+.aeon-footer-newsletter-btn {
+  background: #219a00; color: #fff; border: none;
+  padding: .65rem 1.1rem; border-radius: .6rem;
+  font-size: .82rem; font-weight: 700; cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  white-space: nowrap; transition: background .2s;
+}
+.aeon-footer-newsletter-btn:hover { background: #177a00; }
+.aeon-footer-newsletter-note { font-size: .72rem; color: #374151; margin-top: .5rem; }
+
+/* ── DESTINATIONS CHIPS ── */
+.aeon-footer-dest-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .25rem; }
+.aeon-footer-dest-chip {
+  display: flex; align-items: center; gap: .3rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: 9999px; padding: .3rem .7rem;
+  font-size: .72rem; font-weight: 600; color: #6b7280;
+  text-decoration: none; transition: border-color .2s, color .2s;
+}
+.aeon-footer-dest-chip:hover { border-color: #219a00; color: #219a00; }
+.aeon-footer-dest-chip img { width: 14px; height: 14px; border-radius: 50%; object-fit: cover; }
+
+/* ── MID STRIP ── */
+.aeon-footer-mid {
+  max-width: 1280px; margin: 0 auto;
+  padding: 2rem 0;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+.aeon-footer-certifications { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.aeon-footer-cert {
+  display: flex; align-items: center; gap: .5rem;
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .75rem; padding: .6rem 1rem;
+  font-size: .75rem; font-weight: 700; color: #d1d5db;
+}
+.aeon-footer-cert svg { color: #219a00; }
+.aeon-footer-payment { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.aeon-footer-payment span { font-size: .72rem; color: #4b5563; font-weight: 600; margin-right: .25rem; }
+.aeon-footer-pay-badge {
+  background: #111; border: 1px solid #1f1f1f;
+  border-radius: .4rem; padding: .35rem .6rem;
+  font-size: .7rem; font-weight: 800; color: #9ca3af;
+  letter-spacing: .02em;
+}
+
+/* ── BOTTOM BAR ── */
+.aeon-footer-bottom {
+  max-width: 1280px; margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.aeon-footer-copyright { font-size: .78rem; color: #374151; line-height: 1.6; }
+.aeon-footer-copyright strong { color: #6b7280; }
+.aeon-footer-legal { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.aeon-footer-legal a { font-size: .75rem; color: #374151; text-decoration: none; transition: color .2s; }
+.aeon-footer-legal a:hover { color: #219a00; }
+
+/* ── DEV CREDIT ── */
+.aeon-footer-dev {
+  width: 100%; max-width: 1280px; margin: 0 auto;
+  padding: .85rem 0 1.25rem;
+  border-top: 1px solid #111;
+  display: flex; align-items: center; justify-content: center;
+  gap: .5rem; flex-wrap: wrap;
+}
+.aeon-footer-dev-text {
+  font-size: .72rem; color: #2d2d2d;
+  display: flex; align-items: center; gap: .4rem;
+  flex-wrap: wrap; justify-content: center;
+}
+.aeon-footer-dev-text a {
+  color: #374151; text-decoration: none; font-weight: 700;
+  transition: color .2s;
+}
+.aeon-footer-dev-text a:hover { color: #219a00; }
+.aeon-footer-dev-dot { color: #1f1f1f; }
+.aeon-footer-dev-heart { color: #ef4444; font-size: .75rem; }
+</style>
+
+<footer class="aeon-footer">
+  <div class="aeon-footer-grid">
+
+    <!-- ── COL 1: BRAND ── -->
+    <div class="aeon-footer-col">
+      <a href="index.html" class="aeon-footer-brand-logo">
+        <img src="/public/assets/images/logo-flower-aeon.png" alt="AEON Logo"/>
+        <span>AEON Travels &amp; Tours</span>
+      </a>
+      <p class="aeon-footer-brand-desc">
+        Crafting unforgettable journeys across Asia since 2012. We specialise in bespoke, tailor-made holidays built around you — not the other way around.
+      </p>
+
+      <div class="aeon-footer-badges">
+        <div class="aeon-footer-badge">
+          <img src="https://play-lh.googleusercontent.com/bfy2rE4Iu_15VyVAujaCtwQkThjUWWZSljcpnX2pdd4tcTO8SoGwrBhcTMwqeYjRlw" alt="TripAdvisor"/>
+          <span>TripAdvisor</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>1,306</span>
+        </div>
+        <div class="aeon-footer-badge">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVZEZ6fa7bPwCI4HE5583rhd3qiFNmf6kiPg&s" alt="Google"/>
+          <span>Google</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>1,068</span>
+        </div>
+        <div class="aeon-footer-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"/>
+          <span>Facebook</span>
+          <span class="badge-stars">★★★★★</span>
+          <span>280</span>
+        </div>
+      </div>
+
+      <div class="aeon-footer-socials">
+        <!-- Facebook -->
+        <a href="#" class="aeon-footer-social" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" class="aeon-footer-social" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/94771234567" class="aeon-footer-social" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.998 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.008L2 22l5.137-1.318A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2z"/></svg>
+        </a>
+        <!-- TripAdvisor -->
+        <a href="#" class="aeon-footer-social" aria-label="TripAdvisor">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-13a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="#" class="aeon-footer-social" aria-label="YouTube">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── COL 2: QUICK LINKS ── -->
+    <div class="aeon-footer-col">
+      <h4>Quick Links</h4>
+      <ul class="aeon-footer-links">
+        <li><a href="index.html"><span class="link-arrow">›</span> Home</a></li>
+        <li><a href="tours-packages.html"><span class="link-arrow">›</span> Holidays &amp; Tours</a></li>
+        <li><a href="reviews.html"><span class="link-arrow">›</span> Success Stories</a></li>
+        <li><a href="about.html"><span class="link-arrow">›</span> About Us</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Contact Us</a></li>
+      </ul>
+
+      <h4 style="margin-top:1.75rem;">Destinations</h4>
+      <div class="aeon-footer-dest-chips">
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/lk.png" alt=""/> Sri Lanka</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/mv.png" alt=""/> Maldives</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/vn.png" alt=""/> Vietnam</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/kh.png" alt=""/> Cambodia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/id.png" alt=""/> Indonesia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/ae.png" alt=""/> Dubai</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/sg.png" alt=""/> Singapore</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/my.png" alt=""/> Malaysia</a>
+        <a href="tours-packages.html" class="aeon-footer-dest-chip"><img src="https://flagcdn.com/w40/th.png" alt=""/> Thailand</a>
+      </div>
+    </div>
+
+    <!-- ── COL 3: CONTACT ── -->
+    <div class="aeon-footer-col">
+      <h4>Contact Us</h4>
+      <div class="aeon-footer-contact">
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <label>Head Office</label>
+            <span>42 Galle Road, Colombo 03</span>
+            <span>Sri Lanka</span>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div>
+            <label>Phone</label>
+            <a href="tel:+94112345678">+94 11 234 5678</a>
+            <a href="tel:+94771234567">+94 77 123 4567</a>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
+            <label>Email</label>
+            <a href="mailto:info@aeontravel.com">info@aeontravel.com</a>
+            <a href="mailto:bookings@aeontravel.com">bookings@aeontravel.com</a>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.998 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.008L2 22l5.137-1.318A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.998 2z"/></svg>
+          </div>
+          <div>
+            <label>WhatsApp</label>
+            <a href="https://wa.me/94771234567">+94 77 123 4567</a>
+            <span style="font-size:.75rem;color:#374151;">Available 24 / 7</span>
+          </div>
+        </div>
+        <div class="aeon-footer-contact-item">
+          <div class="aeon-footer-contact-icon">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+          </div>
+          <div>
+            <label>Office Hours</label>
+            <span>Mon – Fri &nbsp; 8:30 AM – 6:00 PM</span>
+            <span>Sat &nbsp; 9:00 AM – 4:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COL 4: NEWSLETTER ── -->
+    <div class="aeon-footer-col">
+      <h4>Stay Inspired</h4>
+      <p style="font-size:.85rem;color:#4b5563;line-height:1.7;margin-bottom:.75rem;">
+        Get exclusive travel deals, destination guides, and trip inspiration delivered straight to your inbox.
+      </p>
+      <div class="aeon-footer-newsletter-form">
+        <input type="email" id="footerNewsletterEmail" placeholder="Your email address"/>
+        <button class="aeon-footer-newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+      <p class="aeon-footer-newsletter-note" id="footerNewsletterMsg">🔒 No spam, ever. Unsubscribe anytime.</p>
+
+      <h4 style="margin-top:1.75rem;">Trip Planner</h4>
+      <ul class="aeon-footer-links">
+        <li><a href="contact.html"><span class="link-arrow">›</span> Request a Custom Tour</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Group Bookings</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Honeymoon Packages</a></li>
+        <li><a href="contact.html"><span class="link-arrow">›</span> Corporate Travel</a></li>
+        <li><a href="reviews.html"><span class="link-arrow">›</span> Read Traveller Stories</a></li>
+      </ul>
+    </div>
+
+  </div><!-- /grid -->
+
+  <!-- ── MID STRIP: TRUST + PAYMENTS ── -->
+  <div class="aeon-footer-mid">
+    <div class="aeon-footer-certifications">
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        SSL Secured
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M5 3h14a2 2 0 012 2v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm0 10h14a2 2 0 012 2v3a2 2 0 01-2 2H5a2 2 0 01-2-2v-3a2 2 0 012-2z"/></svg>
+        SLTDA Registered
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        2,600+ Five-Star Reviews
+      </div>
+      <div class="aeon-footer-cert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+        24/7 Expert Support
+      </div>
+    </div>
+    <div class="aeon-footer-payment">
+      <span>We Accept</span>
+      <span class="aeon-footer-pay-badge">VISA</span>
+      <span class="aeon-footer-pay-badge">Mastercard</span>
+      <span class="aeon-footer-pay-badge">PayPal</span>
+      <span class="aeon-footer-pay-badge">Bank Transfer</span>
+    </div>
+  </div>
+
+  <!-- ── BOTTOM BAR ── -->
+  <div class="aeon-footer-bottom">
+    <div class="aeon-footer-copyright">
+      © <span id="footerYear"></span> <strong>AEON Travels &amp; Tours (Pvt) Ltd.</strong> All rights reserved.<br>
+      Reg. No. 00012345 · 42 Galle Road, Colombo 03, Sri Lanka
+    </div>
+    <div class="aeon-footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Refund Policy</a>
+      <a href="contact.html">Complaints</a>
+    </div>
+  </div>
+
+  <div class="aeon-footer-dev">
+    <div class="aeon-footer-dev-text">
+      <span>Designed &amp; Developed with</span>
+      <span class="aeon-footer-dev-heart">♥</span>
+      <span>by</span>
+      <a href="#" target="_blank" rel="noopener">Cipher Studio</a>
+      <span class="aeon-footer-dev-dot">·</span>
+      <span>Built on</span>
+      <a href="#" target="_blank" rel="noopener">Netlify CMS</a>
+      <span class="aeon-footer-dev-dot">·</span>
+      <a href="mailto:hello@cipherstudio.dev" target="_blank" rel="noopener">hello@cipherstudio.dev</a>
+    </div>
+  </div>
+
+</footer>
+
+<script>
+  /* ── Auto year ── */
+  document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+  /* ── Newsletter ── */
+  function subscribeNewsletter() {
+    const input = document.getElementById("footerNewsletterEmail");
+    const msg   = document.getElementById("footerNewsletterMsg");
+    const email = input.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.textContent = "⚠️ Please enter a valid email address.";
+      msg.style.color = "#ef4444";
+      return;
+    }
+    input.value = "";
+    msg.textContent = "✓ You're subscribed! Welcome aboard.";
+    msg.style.color = "#219a00";
+    setTimeout(() => {
+      msg.textContent = "🔒 No spam, ever. Unsubscribe anytime.";
+      msg.style.color = "";
+    }, 4000);
+  }
+
+  /* Allow Enter key in newsletter input */
+  document.getElementById("footerNewsletterEmail")
+    .addEventListener("keydown", e => { if (e.key === "Enter") subscribeNewsletter(); });
+</script>
+</body>
+</html>
