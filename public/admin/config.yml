@@ -1,96 +1,137 @@
 # ══════════════════════════════════════════════════════════════════════
-#  AEON TRAVELS & TOURS — Decap CMS (Netlify CMS) Configuration
-#  File: public/admin/config.yml
+#  AEON TRAVELS & TOURS — Decap CMS Configuration
+#  Save this file to:  public/admin/config.yml
 #
-#  Collections managed here:
-#   1. packages   → content/data/packages.json  (tour packages by section)
-#   2. reviews    → content/data/reviews.json   (customer reviews)
+#  File structure reference (from your VS Code explorer):
+#    public/
+#      admin/
+#        config.yml          ← THIS FILE
+#        index.html          ← Decap CMS admin UI entry point
+#      assets/
+#        css/                ← output.css, reviews.css etc.
+#        fonts/
+#        icons/
+#        images/             ← logo-flower-aeon.png, Home_Image.jpg etc.
+#        js/
+#      data/
+#        packages.json       ← All tour packages (all sections)
+#        reviews.json        ← Customer reviews + platform stats
+#        site.json           ← Global site settings
+#      partials/
+#      about.html
+#      contact.html
+#      index.html
+#      reviews.html
+#      tour-detail.html
+#      tours-packages.html
+#
+#  Collections managed by this CMS:
+#    1. ✈️  Tour Packages  →  public/data/packages.json
+#    2. ⭐  Reviews        →  public/data/reviews.json
+#    3. ⚙️  Site Settings  →  public/data/site.json
 # ══════════════════════════════════════════════════════════════════════
 
 backend:
   name: git-gateway
   branch: main
 
-# Where uploaded media files (images) are stored
+# ── Media uploads ──────────────────────────────────────────────────
+# Uploaded images are saved to public/assets/uploads/
+# and referenced in HTML/JSON as /assets/uploads/filename.jpg
 media_folder: "public/assets/uploads"
 public_folder: "/assets/uploads"
 
 site_url: "/"
 display_url: "/"
 
-# ──────────────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════
 collections:
 
   # ════════════════════════════════════════════════════════════════════
-  #  1. TOUR PACKAGES
-  #     Stored as a single JSON file with a "sections" array.
-  #     Each section (e.g. "Tailor Made Tours") holds multiple packages.
-  #     NOTE: Netlify CMS file collections don't support deeply nested
-  #     list-of-lists editing natively, so we split packages.json into
-  #     one file-collection entry per section for clarity.
+  #  1.  ✈️  TOUR PACKAGES
+  #      File: public/data/packages.json
+  #
+  #  JSON structure:
+  #    {
+  #      "sections": [
+  #        {
+  #          "id": "tailor-made",
+  #          "labelBold": "Tailor",
+  #          "labelLight": "Made Tours",
+  #          "packages": [ { ...package fields... } ]
+  #        }
+  #      ]
+  #    }
+  #
+  #  The HTML pages fetch this file as:
+  #    tours-packages.html  →  fetch("data/packages.json")
+  #    tour-detail.html     →  fetch("data/packages.json")
   # ════════════════════════════════════════════════════════════════════
   - name: "packages"
     label: "✈️  Tour Packages"
-    label_singular: "Tour Package"
+    label_singular: "Package"
     description: >
-      Manage all tour packages shown on the Holidays & Tours page.
-      Packages are grouped into sections (Tailor Made, Fixed Departures,
-      Quick Getaways). Edit prices, itineraries, images, inclusions,
-      exclusions and reviews per package.
+      Manage all tour packages shown on the Holidays & Tours page and
+      individual Tour Detail pages. Packages are grouped into Sections.
+      Expand a section, then expand a package to edit it.
+      ⚠️ Never change a Package ID or Section ID after the site is live
+      — they are used in page URLs and internal links.
     format: "json"
     files:
 
-      # ── SECTION 1: Tailor Made Tours ──────────────────────────────
-      - name: "tailor_made"
-        label: "📝  Section 1 — Tailor Made Tours"
-        file: "content/data/packages.json"
-        description: >
-          All tour packages in the "Tailor Made Tours" section.
-          These are custom-built itineraries (Sri Lanka, Indonesia,
-          Dubai, Maldives etc.). Edit pricing in LKR (the frontend
-          converts to USD / EUR / GBP automatically).
+      - name: "all_packages"
+        label: "✈️  All Tour Packages  (public/data/packages.json)"
+        file: "public/data/packages.json"
         fields:
+
           - label: "Sections"
             name: "sections"
             widget: "list"
             collapsed: false
-            summary: "Section: {{fields.labelBold}} {{fields.labelLight}}"
+            add_to_top: false
+            summary: "📂  {{fields.labelBold}} {{fields.labelLight}}  —  id: {{fields.id}}"
             fields:
 
-              # Section metadata
-              - label: "Section ID (no spaces, e.g. tailor-made)"
+              # ── Section metadata ────────────────────────────────
+              - label: "Section ID"
                 name: "id"
                 widget: "string"
-                hint: "Used internally. Do NOT change once live — it breaks page anchors."
+                hint: >
+                  Lowercase, hyphens only. E.g. «tailor-made», «fixed-departures», «getaways».
+                  ⚠️ Do NOT change once live.
 
-              - label: "Section Heading — Bold word"
+              - label: "Section Heading — Bold word(s)"
                 name: "labelBold"
                 widget: "string"
-                hint: "E.g. «Tailor» — shown in bold on the page."
+                hint: "Displayed in bold on the page. E.g. «Tailor»."
 
               - label: "Section Heading — Light word(s)"
                 name: "labelLight"
                 widget: "string"
-                hint: "E.g. «Made Tours» — shown in regular weight after the bold word."
+                hint: "Displayed after the bold word in regular weight. E.g. «Made Tours»."
 
-              # ── Packages within this section ──
+              # ── Packages inside this section ────────────────────
               - label: "Packages in this section"
                 name: "packages"
                 widget: "list"
                 collapsed: true
-                summary: "🗺️  {{fields.title}} | {{fields.destination}} | LKR {{fields.startingFrom}}"
+                add_to_top: false
+                summary: "🗺️  [{{fields.id}}]  {{fields.title}}  —  {{fields.destination}}  —  {{fields.startingFrom}}  —  {{fields.duration}}"
                 fields:
 
-                  # ── Core identity ──
-                  - label: "Package ID (unique, e.g. pkg-001)"
+                  # ── Core identity ──────────────────────────────
+                  - label: "Package ID"
                     name: "id"
                     widget: "string"
-                    hint: "Must be unique across ALL packages. Used in URLs: tour-detail.html?id=pkg-001"
+                    hint: >
+                      Unique across ALL packages. Format: pkg-001, pkg-002 …
+                      Used in URLs: tour-detail.html?id=pkg-001
+                      ⚠️ Do NOT change after the site is live.
 
                   - label: "Package Title"
                     name: "title"
                     widget: "string"
-                    hint: "Full title shown on the card and detail page. E.g. «10 Days – Sri Lanka Dream Route»"
+                    hint: "Full title on the card and detail page. E.g. «10 Days – Sri Lanka Dream Route»."
 
                   - label: "Destination Country"
                     name: "destination"
@@ -106,33 +147,17 @@ collections:
                       - "Malaysia"
                       - "Thailand"
                       - "Singapore & Malaysia"
-                    hint: "Used for filtering, flag display and breadcrumbs."
+                    hint: "Used for filter chips, flag icon and breadcrumbs."
 
-                  - label: "Tour Type (shown as a tag on the card)"
+                  - label: "Tour Type (tag shown on the card)"
                     name: "type"
                     widget: "select"
                     options:
                       - "Tailor Made"
                       - "Fixed Departure"
                       - "Getaway"
-                    hint: "Controls which filter chip this package appears under."
 
-                  - label: "Duration (e.g. 10 Days 9 Nights)"
-                    name: "duration"
-                    widget: "string"
-
-                  - label: "Starting Price — LKR (number only, no commas)"
-                    name: "startingFrom"
-                    widget: "string"
-                    hint: >
-                      Enter as a full string like «LKR 463,500». The frontend
-                      strips non-numeric characters for currency conversion.
-                      Always use LKR as the base currency.
-                    pattern:
-                      - "^LKR [0-9,]+"
-                      - "Must start with LKR followed by a number, e.g. LKR 463,500"
-
-                  - label: "Suitable For (shown in tour summary)"
+                  - label: "Suitable For"
                     name: "suitableFor"
                     widget: "select"
                     options:
@@ -144,24 +169,40 @@ collections:
                       - "Friends"
                       - "Group"
 
-                  - label: "Featured (show badge on card)?"
+                  - label: "Duration"
+                    name: "duration"
+                    widget: "string"
+                    hint: "E.g. «10 Days 9 Nights»."
+
+                  - label: "Starting Price — must begin with LKR"
+                    name: "startingFrom"
+                    widget: "string"
+                    hint: >
+                      Format EXACTLY as «LKR 463,500».
+                      The frontend strips non-numeric characters for
+                      USD / EUR / GBP conversion — always use LKR.
+                    pattern:
+                      - "^LKR [\\d,]+"
+                      - "Must start with «LKR » followed by digits e.g. LKR 463,500"
+
+                  - label: "Featured (show highlight badge on card)?"
                     name: "featured"
                     widget: "boolean"
                     default: false
 
-                  # ── Cities ──
+                  # ── Cities ──────────────────────────────────────
                   - label: "Number of Cities visited"
                     name: "numberOfCities"
                     widget: "number"
                     value_type: "int"
                     min: 1
 
-                  - label: "Cities (comma-separated, e.g. Colombo, Kandy, Ella)"
+                  - label: "Cities visited (comma-separated)"
                     name: "cities"
                     widget: "string"
-                    hint: "Used for the map embed and city chip list on the detail page."
+                    hint: "E.g. «Colombo, Kandy, Ella, Mirissa». Used for the map and city chips."
 
-                  # ── Tour Themes ──
+                  # ── Themes ──────────────────────────────────────
                   - label: "Tour Themes (select all that apply)"
                     name: "themes"
                     widget: "select"
@@ -170,88 +211,79 @@ collections:
                       - "Adventure"
                       - "Beach"
                       - "Culture"
+                      - "Family"
                       - "History"
                       - "Honeymoon"
                       - "Luxury"
                       - "Nature"
                       - "Shopping"
-                      - "Family"
                       - "Wellness"
-                    hint: "Shown as theme chips on the tour detail page."
+                    hint: "Shown as theme chips on the detail page."
 
-                  # ── Tour Summary ──
-                  - label: "Tour Summary (2–3 paragraphs)"
+                  # ── Summary ─────────────────────────────────────
+                  - label: "Tour Summary"
                     name: "summary"
                     widget: "text"
-                    hint: "Shown in the Tour Summary card on the detail page. Plain text only."
+                    hint: "2–3 paragraph description. Plain text only — no HTML."
 
-                  # ── Main Card Image ──
+                  # ── Images ──────────────────────────────────────
                   - label: "Card / Hero Image"
                     name: "image"
                     widget: "image"
-                    hint: "Main image shown on the package card and at the top of the detail page."
+                    hint: "Main image on the package card and top of the detail page."
 
-                  - label: "Card Image Alt Text"
+                  - label: "Card Image Alt Text (for accessibility)"
                     name: "imageAlt"
                     widget: "string"
-                    hint: "Describe the image for accessibility (e.g. «Ella Nine Arch Bridge at sunrise»)."
+                    hint: "Describe the image. E.g. «Nine Arch Bridge Ella at sunrise»."
 
-                  # ── Gallery Images ──
-                  - label: "Gallery Images (shown in the slider on the detail page)"
+                  - label: "Gallery Images (slider on detail page — 3 to 6 images)"
                     name: "galleryImages"
                     widget: "list"
                     collapsed: true
                     summary: "📷  {{fields.caption}}"
-                    hint: "Add 3–6 images. First image is shown first in the slider."
+                    hint: "First image shows first in the slider."
                     fields:
                       - label: "Image"
                         name: "url"
                         widget: "image"
-                      - label: "Caption (shown below the image)"
+                      - label: "Caption"
                         name: "caption"
                         widget: "string"
 
-                  # ── Short Inclusions (card + summary card) ──
-                  - label: "Short Inclusions (shown on the card and summary)"
+                  # ── Inclusions / Exclusions / Conditions ────────
+                  - label: "Short Inclusions (on card + summary card — 3 to 5 items)"
                     name: "inclusions"
                     widget: "list"
-                    allow_add: true
                     collapsed: true
-                    hint: "3–5 key inclusions. E.g. «Private Driver/Guide», «Airport Assistance»."
+                    hint: "E.g. «Private Driver/Guide», «Airport Assistance»."
                     field:
-                      label: "Inclusion item"
+                      label: "Item"
                       name: "item"
                       widget: "string"
 
-                  # ── Full Inclusions Tab ──
-                  - label: "Full Inclusions (shown in the Inclusions tab)"
+                  - label: "Full Inclusions List (Inclusions tab on detail page)"
                     name: "inclusions_full"
                     widget: "list"
-                    allow_add: true
                     collapsed: true
-                    hint: "Complete list shown in the Inclusions / Exclusions / Conditions tab section."
                     field:
                       label: "Inclusion"
                       name: "item"
                       widget: "string"
 
-                  # ── Exclusions Tab ──
-                  - label: "Exclusions (shown in the Exclusions tab)"
+                  - label: "Exclusions (Exclusions tab on detail page)"
                     name: "exclusions"
                     widget: "list"
-                    allow_add: true
                     collapsed: true
-                    hint: "Items NOT included. E.g. «International airfare», «Visa fees»."
+                    hint: "E.g. «International airfare», «Visa fees»."
                     field:
                       label: "Exclusion"
                       name: "item"
                       widget: "string"
 
-                  # ── Conditions Tab ──
-                  - label: "Booking Conditions (shown in the Conditions tab)"
+                  - label: "Booking Conditions (Conditions tab on detail page)"
                     name: "conditions"
                     widget: "list"
-                    allow_add: true
                     collapsed: true
                     hint: "E.g. «Prices are per person based on double occupancy»."
                     field:
@@ -259,50 +291,52 @@ collections:
                       name: "item"
                       widget: "string"
 
-                  # ══════════════════════════════════════════════════
-                  #  ITINERARY
-                  # ══════════════════════════════════════════════════
+                  # ════════════════════════════════════════════════
+                  #  DAY-BY-DAY ITINERARY
+                  # ════════════════════════════════════════════════
                   - label: "Day-by-Day Itinerary"
                     name: "itinerary"
                     widget: "list"
                     collapsed: true
-                    summary: "📅  Day {{fields.day}} — {{fields.city}}"
-                    hint: "Add one entry per day. The accordion on the detail page is built from this."
+                    add_to_top: false
+                    summary: "📅  Day {{fields.day}} — {{fields.city}}  |  🏨 {{fields.hotel}}  |  🍽️ {{fields.meals}}"
+                    hint: >
+                      One entry per day. Days display as an accordion on the
+                      detail page in the order they appear here.
                     fields:
 
-                      - label: "Day Number (e.g. 1)"
+                      - label: "Day Number (e.g. 1, 2, 3)"
                         name: "day"
                         widget: "number"
                         value_type: "int"
                         min: 1
 
-                      - label: "City / Location (shown as the accordion heading)"
+                      - label: "City / Location (shown as accordion heading)"
                         name: "city"
                         widget: "string"
-                        hint: "E.g. «Colombo», «Ha Long Bay»."
+                        hint: "E.g. «Colombo», «Ha Long Bay», «North Malé Atoll»."
 
                       - label: "Day Description (1–2 paragraphs)"
                         name: "description"
                         widget: "text"
-                        hint: "Narrative description of the day shown in the accordion body."
+                        hint: "Narrative for the day. Shown inside the accordion body."
 
-                      - label: "Activities (bullet list inside the accordion)"
+                      - label: "Activities (bullet list — 4 to 6 items)"
                         name: "activities"
                         widget: "list"
-                        allow_add: true
                         collapsed: true
-                        hint: "4–6 short activity lines. E.g. «Visit Temple of the Tooth Relic»."
+                        hint: "Short lines. E.g. «Visit Temple of the Tooth Relic»."
                         field:
                           label: "Activity"
                           name: "item"
                           widget: "string"
 
-                      - label: "Highlight Photos (2-up grid below the description)"
+                      - label: "Highlight Photos (2-up photo grid — add exactly 2)"
                         name: "highlights"
                         widget: "list"
                         collapsed: true
                         summary: "🖼️  {{fields.caption}}"
-                        hint: "Optional. Add 2 photos per day for the highlights grid."
+                        hint: "Optional. Shown as a 2-column photo grid below the description."
                         fields:
                           - label: "Photo"
                             name: "url"
@@ -319,20 +353,21 @@ collections:
                       - label: "Meals Included Today"
                         name: "meals"
                         widget: "select"
+                        default: "N/A"
                         options:
                           - "N/A"
                           - "Breakfast"
                           - "Lunch"
                           - "Dinner"
-                          - "Breakfast & Dinner"
                           - "Breakfast & Lunch"
+                          - "Breakfast & Dinner"
                           - "Full Board"
                           - "Welcome Dinner"
-                        default: "N/A"
 
-                      - label: "Travel Time (e.g. Colombo to Kandy – 3 hours)"
+                      - label: "Travel Time"
                         name: "travelTime"
                         widget: "string"
+                        hint: "E.g. «Colombo to Kandy – 3 hours»."
 
                       - label: "Transport Type"
                         name: "transport"
@@ -346,23 +381,26 @@ collections:
                           - "Tuk Tuk"
                           - "N/A"
 
-                  # ══════════════════════════════════════════════════
-                  #  PACKAGE-LEVEL REVIEWS
-                  #  (shown in the "People Say" section on detail page)
-                  # ══════════════════════════════════════════════════
+                  # ════════════════════════════════════════════════
+                  #  PER-PACKAGE REVIEWS
+                  #  Shown in the "People Say" section on tour-detail.html
+                  # ════════════════════════════════════════════════
                   - label: "Package Reviews (shown on this tour's detail page)"
                     name: "reviews"
                     widget: "list"
                     collapsed: true
-                    summary: "⭐  {{fields.name}} — {{fields.platform}} ({{fields.date}})"
-                    hint: "Add 1–3 reviews specific to this tour. For the global reviews page, edit the Reviews collection instead."
+                    summary: "⭐{{fields.rating}}  {{fields.name}}  —  {{fields.platform}}  ({{fields.date}})"
+                    hint: >
+                      Add 1–3 reviews specific to THIS tour package.
+                      For the global Success Stories page use the
+                      «⭐ Customer Reviews» collection instead.
                     fields:
 
                       - label: "Reviewer Full Name"
                         name: "name"
                         widget: "string"
 
-                      - label: "Reviewer Location (City, Country)"
+                      - label: "Reviewer Location"
                         name: "location"
                         widget: "string"
                         hint: "E.g. «United Kingdom», «Sydney, Australia»."
@@ -376,10 +414,10 @@ collections:
                       - label: "Star Rating"
                         name: "rating"
                         widget: "select"
-                        options: ["1", "2", "3", "4", "5"]
                         default: "5"
+                        options: ["1", "2", "3", "4", "5"]
 
-                      - label: "Platform where review was posted"
+                      - label: "Platform"
                         name: "platform"
                         widget: "select"
                         options:
@@ -390,23 +428,24 @@ collections:
                       - label: "Review Text"
                         name: "text"
                         widget: "text"
-                        hint: "Full review. Longer than ~200 characters gets a «See More» link."
+                        hint: "Reviews over ~200 characters get a «See More» button automatically."
 
-                      - label: "Avatar Initial (single letter shown in the avatar circle)"
+                      - label: "Avatar Initial (single capital letter)"
                         name: "avatar"
                         widget: "string"
-                        hint: "Single capital letter of reviewer's first name. E.g. «S» for Sarah."
+                        hint: "First letter of the reviewer's name. E.g. «S» for Sarah."
                         pattern:
                           - "^[A-Z]$"
-                          - "Must be a single uppercase letter."
+                          - "Must be exactly one uppercase letter."
 
-                  # ── Related Packages ──
-                  - label: "Related Package IDs (shown at the bottom of the detail page)"
+                  # ── Related Packages ────────────────────────────
+                  - label: "Related Package IDs (Related Tours section at page bottom)"
                     name: "relatedPackages"
                     widget: "list"
-                    allow_add: true
                     collapsed: true
-                    hint: "Enter 2–4 package IDs exactly as they appear (e.g. pkg-002). These are shown as «Related Tours» cards."
+                    hint: >
+                      2–4 package IDs that will appear as «Related Tours» cards.
+                      Must match existing package IDs exactly, e.g. «pkg-002».
                     field:
                       label: "Package ID"
                       name: "item"
@@ -414,33 +453,45 @@ collections:
 
 
   # ════════════════════════════════════════════════════════════════════
-  #  2. CUSTOMER REVIEWS
-  #     Stored in content/data/reviews.json
-  #     These are shown on the global Success Stories / Reviews page.
-  #     Separate from the per-package reviews above.
+  #  2.  ⭐  CUSTOMER REVIEWS
+  #      File: public/data/reviews.json
+  #
+  #  JSON structure:
+  #    {
+  #      "stats": {
+  #        "tripadvisor": { "count": 1306, "rating": 4.9 },
+  #        "google":      { "count": 1068, "rating": 4.8 },
+  #        "facebook":    { "count": 280,  "rating": 5.0 }
+  #      },
+  #      "reviews": [ { ...review fields... } ]
+  #    }
+  #
+  #  The HTML pages fetch this as:
+  #    reviews.html  →  fetch("data/reviews.json")
   # ════════════════════════════════════════════════════════════════════
   - name: "reviews"
     label: "⭐  Customer Reviews"
     label_singular: "Review"
     description: >
-      Manage all reviews shown on the Success Stories page (reviews.html).
-      These are the global customer reviews, separate from the
-      per-package reviews that live inside each package entry above.
-      You can also set platform stats (TripAdvisor / Google / Facebook counts).
+      Manage the global Success Stories page (reviews.html).
+      Update platform stats when your TripAdvisor / Google / Facebook
+      counts change. Add new reviews at the top of the list.
+      Mark up to 5 reviews as Featured — they appear in the
+      highlighted strip at the top of the page.
     format: "json"
     files:
 
       - name: "all_reviews"
-        label: "⭐  All Customer Reviews & Platform Stats"
-        file: "content/data/reviews.json"
+        label: "⭐  Reviews + Platform Stats  (public/data/reviews.json)"
+        file: "public/data/reviews.json"
         fields:
 
-          # ── Platform Statistics ──────────────────────────────────
-          - label: "📊  Platform Review Statistics (shown as count badges)"
+          # ── Platform stats ────────────────────────────────────────
+          - label: "📊  Platform Statistics"
             name: "stats"
             widget: "object"
             collapsed: false
-            hint: "Update these numbers manually when your platform review counts change."
+            hint: "Update these numbers manually when your review counts change on each platform."
             fields:
 
               - label: "TripAdvisor"
@@ -452,13 +503,14 @@ collections:
                     widget: "number"
                     value_type: "int"
                     hint: "E.g. 1306"
-                  - label: "Average Rating (e.g. 4.9)"
+                  - label: "Average Rating"
                     name: "rating"
                     widget: "number"
                     value_type: "float"
-                    min: 1
-                    max: 5
+                    min: 1.0
+                    max: 5.0
                     step: 0.1
+                    hint: "E.g. 4.9"
 
               - label: "Google"
                 name: "google"
@@ -468,12 +520,12 @@ collections:
                     name: "count"
                     widget: "number"
                     value_type: "int"
-                  - label: "Average Rating (e.g. 4.8)"
+                  - label: "Average Rating"
                     name: "rating"
                     widget: "number"
                     value_type: "float"
-                    min: 1
-                    max: 5
+                    min: 1.0
+                    max: 5.0
                     step: 0.1
 
               - label: "Facebook"
@@ -484,62 +536,63 @@ collections:
                     name: "count"
                     widget: "number"
                     value_type: "int"
-                  - label: "Average Rating (e.g. 5.0)"
+                  - label: "Average Rating"
                     name: "rating"
                     widget: "number"
                     value_type: "float"
-                    min: 1
-                    max: 5
+                    min: 1.0
+                    max: 5.0
                     step: 0.1
 
-          # ── Reviews List ─────────────────────────────────────────
+          # ── Reviews list ──────────────────────────────────────────
           - label: "💬  Reviews"
             name: "reviews"
             widget: "list"
             collapsed: false
+            add_to_top: true
             summary: "⭐{{fields.rating}}  {{fields.name}}  |  {{fields.destination}}  |  {{fields.platform}}  |  {{fields.date}}"
-            hint: "Each entry is one customer review. Featured reviews appear in the highlighted strip at the top of the Success Stories page."
+            hint: >
+              Click «Add» to add a new review at the top.
+              Each entry becomes one review card on the Success Stories page.
             fields:
 
-              # ── Identity ──
-              - label: "Review ID (unique, e.g. rev-013)"
+              - label: "Review ID (unique — format: rev-013, rev-014 …)"
                 name: "id"
                 widget: "string"
-                hint: "Must be unique. Format: rev-001, rev-002 etc."
+                hint: "⚠️ Never change after saving."
 
               - label: "Reviewer Full Name"
                 name: "name"
                 widget: "string"
-                hint: "E.g. «Sarah and James Thompson» or «Professor Jayanath Colombage»."
+                hint: "E.g. «Sarah and James Thompson»."
 
               - label: "Reviewer Title / Job (optional)"
                 name: "title"
                 widget: "string"
                 required: false
-                hint: "Only fill if notable, e.g. «Ambassador of Sri Lanka to Indonesia». Leave blank otherwise."
+                hint: "Only for notable guests. E.g. «Ambassador of Sri Lanka to Indonesia». Leave blank otherwise."
 
-              - label: "Reviewer Location (City, Country)"
+              - label: "Reviewer Location"
                 name: "location"
                 widget: "string"
-                hint: "E.g. «United Kingdom», «Sydney, Australia», «Tokyo, Japan»."
+                hint: "E.g. «United Kingdom», «Sydney, Australia»."
 
-              # ── Date & Rating ──
               - label: "Review Date"
                 name: "date"
                 widget: "datetime"
                 format: "YYYY-MM-DD"
                 time_format: false
 
-              - label: "Star Rating (1–5)"
+              - label: "Star Rating"
                 name: "rating"
                 widget: "select"
-                options: ["1", "2", "3", "4", "5"]
                 default: "5"
+                options: ["1", "2", "3", "4", "5"]
 
-              # ── Platform ──
-              - label: "Platform where review was posted"
+              - label: "Platform (⚠️ value must be lowercase)"
                 name: "platform"
                 widget: "select"
+                hint: "The value saved is lowercase — this powers the filter on reviews.html."
                 options:
                   - label: "TripAdvisor"
                     value: "tripadvisor"
@@ -547,12 +600,11 @@ collections:
                     value: "google"
                   - label: "Facebook"
                     value: "facebook"
-                hint: "Must be lowercase — used for platform filter on the reviews page."
 
-              # ── Tour link ──
-              - label: "Destination (used for destination filter)"
+              - label: "Destination"
                 name: "destination"
                 widget: "select"
+                hint: "Used for the destination filter on the Success Stories page."
                 options:
                   - "Sri Lanka"
                   - "Maldives"
@@ -568,45 +620,45 @@ collections:
               - label: "Linked Package ID (e.g. pkg-007)"
                 name: "tourId"
                 widget: "string"
-                hint: "Must match a package ID exactly. Creates a «View Tour» link on the review card."
+                hint: >
+                  Must match a package ID exactly. Creates a «View Tour» button.
+                  Use empty string if no specific package applies.
 
-              - label: "Tour Title (shown on the review card)"
+              - label: "Tour Title"
                 name: "tourTitle"
                 widget: "string"
-                hint: "Copy the tour title exactly as it appears in the package. E.g. «10 Days Sri Lanka Dream Route»."
+                hint: "Copy the tour title from the package. Shown as a label on the review card."
 
-              # ── Review content ──
               - label: "Review Text (full review)"
                 name: "text"
                 widget: "text"
-                hint: "Paste the full review text here. Long reviews get a «See More» expand button."
+                hint: "Reviews over ~200 characters get a «See More» expand button automatically."
 
-              # ── Avatar ──
-              - label: "Avatar Colour (hex code, e.g. #219a00)"
+              - label: "Avatar Background Colour"
                 name: "avatarColor"
                 widget: "color"
                 default: "#219a00"
-                hint: "Background colour of the reviewer's avatar circle. Each reviewer should have a distinct colour."
+                hint: "Background of the reviewer's initials circle. Use a distinct colour per reviewer."
 
-              # ── Review Photos ──
-              - label: "Review Photos (optional, shown in a gallery on the review card)"
+              - label: "Trip Photos (optional — up to 6)"
                 name: "images"
                 widget: "list"
                 allow_add: true
                 collapsed: true
                 summary: "📷  Photo {{index}}"
-                hint: "Upload up to 6 photos from this customer's trip. Leave empty if no photos."
+                hint: "Upload photos from this customer's trip. Leave empty if none."
                 field:
                   label: "Photo"
                   name: "url"
                   widget: "image"
 
-              # ── Featured & Expert ──
-              - label: "Featured Review?"
+              - label: "⭐  Featured Review?"
                 name: "featured"
                 widget: "boolean"
                 default: false
-                hint: "Featured reviews appear in the highlighted strip at the top of the Success Stories page. Limit to 4–5 featured reviews."
+                hint: >
+                  Featured reviews show in the highlighted strip at the top
+                  of the Success Stories page. Keep to 4–5 at a time.
 
               - label: "AEON Expert who managed this booking"
                 name: "expert"
@@ -618,45 +670,63 @@ collections:
                   - "Shalini"
                   - "Rohan"
                   - "Amara"
-                hint: "Select the team member who handled this customer's trip."
 
 
   # ════════════════════════════════════════════════════════════════════
-  #  3. SITE SETTINGS  (optional — keep from original config)
+  #  3.  ⚙️  SITE SETTINGS
+  #      File: public/data/site.json
   # ════════════════════════════════════════════════════════════════════
   - name: "site"
     label: "⚙️  Site Settings"
-    description: "Global settings — company name, contact info, tagline and policy text."
+    description: "Global company details, contact info and policy text used across all pages."
     format: "json"
     files:
+
       - name: "site_settings"
-        label: "⚙️  Global Site Settings"
-        file: "content/data/site.json"
+        label: "⚙️  Global Site Settings  (public/data/site.json)"
+        file: "public/data/site.json"
         fields:
+
           - label: "Company Name"
             name: "companyName"
             widget: "string"
+
           - label: "Tagline"
             name: "tagline"
             widget: "string"
+
           - label: "Contact Details"
             name: "contact"
             widget: "object"
+            collapsed: false
             fields:
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
-              - { label: "Office Address", name: "address", widget: "string", required: false }
+              - label: "Primary Email"
+                name: "email"
+                widget: "string"
+              - label: "Office Phone"
+                name: "phone"
+                widget: "string"
+              - label: "WhatsApp Number (with country code, e.g. +94771234567)"
+                name: "whatsapp"
+                widget: "string"
+                required: false
+              - label: "Office Address"
+                name: "address"
+                widget: "string"
+                required: false
+
           - label: "Unique Selling Proposition"
             name: "usp"
             widget: "text"
-          - label: "Response Time Goal (hours)"
+
+          - label: "Response Time Goal (hours, e.g. 24)"
             name: "responseTimeGoalHours"
             widget: "string"
-            hint: "E.g. «24» — shown in the quote form note."
+
           - label: "Privacy Policy"
             name: "privacyPolicy"
             widget: "text"
+
           - label: "Green / Sustainability Promise (optional)"
             name: "greenPromise"
             widget: "text"
