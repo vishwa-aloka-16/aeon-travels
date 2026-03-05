@@ -1,7 +1,5 @@
-
 backend:
-  name: github
-  repo: vishwa-aloka-16/aeon-travels
+  name: git-gateway
   branch: main
 
 media_folder: "public/assets/images"
