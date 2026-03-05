@@ -1,3 +1,4 @@
+
 backend:
   name: github
   repo: vishwa-aloka-16/aeon-travels
@@ -7,52 +8,52 @@ media_folder: "public/assets/images"
 public_folder: "/assets/images"
 
 collections:
+  - name: "site_data"
+    label: "Site Data"
+    files:
 
-  - name: "packages"
-    label: "Tour Packages"
-    file: "content/data/packages.json"
-    format: "json"
-    fields:
-      - label: "Sections"
-        name: "sections"
-        widget: "list"
+      - label: "Packages"
+        name: "packages"
+        file: "public/data/packages.json"
+        format: "json"
         fields:
-
-          - {label: "Section ID", name: "id", widget: "string"}
-          - {label: "Label Bold", name: "labelBold", widget: "string"}
-          - {label: "Label Light", name: "labelLight", widget: "string"}
-
-          - label: "Packages"
-            name: "packages"
+          - label: "Sections"
+            name: "sections"
             widget: "list"
+            summary: "{{fields.id}}"
             fields:
+              - { label: "Section ID", name: "id", widget: "string" }
+              - { label: "Label Bold", name: "labelBold", widget: "string" }
+              - { label: "Label Light", name: "labelLight", widget: "string" }
 
-              - {label: "ID", name: "id", widget: "string"}
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Destination", name: "destination", widget: "string"}
-              - {label: "Image", name: "image", widget: "image"}
-              - {label: "Price", name: "startingFrom", widget: "string"}
-              - {label: "Duration", name: "duration", widget: "string"}
-              - {label: "Cities", name: "cities", widget: "string"}
-              - {label: "Summary", name: "summary", widget: "text"}
-
-  - name: "reviews"
-    label: "Reviews"
-    file: "content/data/reviews.json"
-    format: "json"
-    fields:
+              - label: "Packages"
+                name: "packages"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Destination", name: "destination", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Price", name: "startingFrom", widget: "string" }
+                  - { label: "Duration", name: "duration", widget: "string" }
+                  - { label: "Cities", name: "cities", widget: "string" }
+                  - { label: "Summary", name: "summary", widget: "text" }
 
       - label: "Reviews"
         name: "reviews"
-        widget: "list"
+        file: "public/data/reviews.json"
+        format: "json"
         fields:
-
-          - {label: "ID", name: "id", widget: "string"}
-          - {label: "Name", name: "name", widget: "string"}
-          - {label: "Location", name: "location", widget: "string"}
-          - {label: "Date", name: "date", widget: "datetime"}
-          - {label: "Rating", name: "rating", widget: "number"}
-          - {label: "Platform", name: "platform", widget: "string"}
-          - {label: "Tour ID", name: "tourId", widget: "string"}
-          - {label: "Tour Title", name: "tourTitle", widget: "string"}
-          - {label: "Text", name: "text", widget: "text"}
+          - label: "Reviews"
+            name: "reviews"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime" }
+              - { label: "Rating", name: "rating", widget: "number" }
+              - { label: "Platform", name: "platform", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }

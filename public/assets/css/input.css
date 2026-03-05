@@ -249,7 +249,7 @@
         max-height: 90vh;
         background-size: cover;
         background-position: center;
-        background-image: url("/public/assets/images/Home_Image.jpg");
+        background-image: url("/assets/images/Home_Image.jpg");
         border-radius: 40px;
         overflow: visible;
         padding-bottom: 12rem;
