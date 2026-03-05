@@ -1,57 +1,663 @@
+# ══════════════════════════════════════════════════════════════════════
+#  AEON TRAVELS & TOURS — Decap CMS (Netlify CMS) Configuration
+#  File: public/admin/config.yml
+#
+#  Collections managed here:
+#   1. packages   → content/data/packages.json  (tour packages by section)
+#   2. reviews    → content/data/reviews.json   (customer reviews)
+# ══════════════════════════════════════════════════════════════════════
+
 backend:
   name: git-gateway
   branch: main
 
-media_folder: "public/assets/images"
-public_folder: "/assets/images"
+# Where uploaded media files (images) are stored
+media_folder: "public/assets/uploads"
+public_folder: "/assets/uploads"
 
+site_url: "/"
+display_url: "/"
+
+# ──────────────────────────────────────────────────────────────────────
 collections:
-  - name: "site_data"
-    label: "Site Data"
+
+  # ════════════════════════════════════════════════════════════════════
+  #  1. TOUR PACKAGES
+  #     Stored as a single JSON file with a "sections" array.
+  #     Each section (e.g. "Tailor Made Tours") holds multiple packages.
+  #     NOTE: Netlify CMS file collections don't support deeply nested
+  #     list-of-lists editing natively, so we split packages.json into
+  #     one file-collection entry per section for clarity.
+  # ════════════════════════════════════════════════════════════════════
+  - name: "packages"
+    label: "✈️  Tour Packages"
+    label_singular: "Tour Package"
+    description: >
+      Manage all tour packages shown on the Holidays & Tours page.
+      Packages are grouped into sections (Tailor Made, Fixed Departures,
+      Quick Getaways). Edit prices, itineraries, images, inclusions,
+      exclusions and reviews per package.
+    format: "json"
     files:
 
-      - label: "Packages"
-        name: "packages"
-        file: "public/data/packages.json"
-        format: "json"
+      # ── SECTION 1: Tailor Made Tours ──────────────────────────────
+      - name: "tailor_made"
+        label: "📝  Section 1 — Tailor Made Tours"
+        file: "content/data/packages.json"
+        description: >
+          All tour packages in the "Tailor Made Tours" section.
+          These are custom-built itineraries (Sri Lanka, Indonesia,
+          Dubai, Maldives etc.). Edit pricing in LKR (the frontend
+          converts to USD / EUR / GBP automatically).
         fields:
           - label: "Sections"
             name: "sections"
             widget: "list"
-            summary: "{{fields.id}}"
+            collapsed: false
+            summary: "Section: {{fields.labelBold}} {{fields.labelLight}}"
             fields:
-              - { label: "Section ID", name: "id", widget: "string" }
-              - { label: "Label Bold", name: "labelBold", widget: "string" }
-              - { label: "Label Light", name: "labelLight", widget: "string" }
 
-              - label: "Packages"
+              # Section metadata
+              - label: "Section ID (no spaces, e.g. tailor-made)"
+                name: "id"
+                widget: "string"
+                hint: "Used internally. Do NOT change once live — it breaks page anchors."
+
+              - label: "Section Heading — Bold word"
+                name: "labelBold"
+                widget: "string"
+                hint: "E.g. «Tailor» — shown in bold on the page."
+
+              - label: "Section Heading — Light word(s)"
+                name: "labelLight"
+                widget: "string"
+                hint: "E.g. «Made Tours» — shown in regular weight after the bold word."
+
+              # ── Packages within this section ──
+              - label: "Packages in this section"
                 name: "packages"
                 widget: "list"
-                summary: "{{fields.title}}"
+                collapsed: true
+                summary: "🗺️  {{fields.title}} | {{fields.destination}} | LKR {{fields.startingFrom}}"
                 fields:
-                  - { label: "ID", name: "id", widget: "string" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Destination", name: "destination", widget: "string" }
-                  - { label: "Image", name: "image", widget: "image" }
-                  - { label: "Price", name: "startingFrom", widget: "string" }
-                  - { label: "Duration", name: "duration", widget: "string" }
-                  - { label: "Cities", name: "cities", widget: "string" }
-                  - { label: "Summary", name: "summary", widget: "text" }
 
-      - label: "Reviews"
-        name: "reviews"
-        file: "public/data/reviews.json"
-        format: "json"
+                  # ── Core identity ──
+                  - label: "Package ID (unique, e.g. pkg-001)"
+                    name: "id"
+                    widget: "string"
+                    hint: "Must be unique across ALL packages. Used in URLs: tour-detail.html?id=pkg-001"
+
+                  - label: "Package Title"
+                    name: "title"
+                    widget: "string"
+                    hint: "Full title shown on the card and detail page. E.g. «10 Days – Sri Lanka Dream Route»"
+
+                  - label: "Destination Country"
+                    name: "destination"
+                    widget: "select"
+                    options:
+                      - "Sri Lanka"
+                      - "Maldives"
+                      - "Vietnam"
+                      - "Cambodia"
+                      - "Indonesia"
+                      - "Dubai"
+                      - "Singapore"
+                      - "Malaysia"
+                      - "Thailand"
+                      - "Singapore & Malaysia"
+                    hint: "Used for filtering, flag display and breadcrumbs."
+
+                  - label: "Tour Type (shown as a tag on the card)"
+                    name: "type"
+                    widget: "select"
+                    options:
+                      - "Tailor Made"
+                      - "Fixed Departure"
+                      - "Getaway"
+                    hint: "Controls which filter chip this package appears under."
+
+                  - label: "Duration (e.g. 10 Days 9 Nights)"
+                    name: "duration"
+                    widget: "string"
+
+                  - label: "Starting Price — LKR (number only, no commas)"
+                    name: "startingFrom"
+                    widget: "string"
+                    hint: >
+                      Enter as a full string like «LKR 463,500». The frontend
+                      strips non-numeric characters for currency conversion.
+                      Always use LKR as the base currency.
+                    pattern:
+                      - "^LKR [0-9,]+"
+                      - "Must start with LKR followed by a number, e.g. LKR 463,500"
+
+                  - label: "Suitable For (shown in tour summary)"
+                    name: "suitableFor"
+                    widget: "select"
+                    options:
+                      - "Everyone"
+                      - "Family"
+                      - "Couple"
+                      - "Honeymoon"
+                      - "Solo"
+                      - "Friends"
+                      - "Group"
+
+                  - label: "Featured (show badge on card)?"
+                    name: "featured"
+                    widget: "boolean"
+                    default: false
+
+                  # ── Cities ──
+                  - label: "Number of Cities visited"
+                    name: "numberOfCities"
+                    widget: "number"
+                    value_type: "int"
+                    min: 1
+
+                  - label: "Cities (comma-separated, e.g. Colombo, Kandy, Ella)"
+                    name: "cities"
+                    widget: "string"
+                    hint: "Used for the map embed and city chip list on the detail page."
+
+                  # ── Tour Themes ──
+                  - label: "Tour Themes (select all that apply)"
+                    name: "themes"
+                    widget: "select"
+                    multiple: true
+                    options:
+                      - "Adventure"
+                      - "Beach"
+                      - "Culture"
+                      - "History"
+                      - "Honeymoon"
+                      - "Luxury"
+                      - "Nature"
+                      - "Shopping"
+                      - "Family"
+                      - "Wellness"
+                    hint: "Shown as theme chips on the tour detail page."
+
+                  # ── Tour Summary ──
+                  - label: "Tour Summary (2–3 paragraphs)"
+                    name: "summary"
+                    widget: "text"
+                    hint: "Shown in the Tour Summary card on the detail page. Plain text only."
+
+                  # ── Main Card Image ──
+                  - label: "Card / Hero Image"
+                    name: "image"
+                    widget: "image"
+                    hint: "Main image shown on the package card and at the top of the detail page."
+
+                  - label: "Card Image Alt Text"
+                    name: "imageAlt"
+                    widget: "string"
+                    hint: "Describe the image for accessibility (e.g. «Ella Nine Arch Bridge at sunrise»)."
+
+                  # ── Gallery Images ──
+                  - label: "Gallery Images (shown in the slider on the detail page)"
+                    name: "galleryImages"
+                    widget: "list"
+                    collapsed: true
+                    summary: "📷  {{fields.caption}}"
+                    hint: "Add 3–6 images. First image is shown first in the slider."
+                    fields:
+                      - label: "Image"
+                        name: "url"
+                        widget: "image"
+                      - label: "Caption (shown below the image)"
+                        name: "caption"
+                        widget: "string"
+
+                  # ── Short Inclusions (card + summary card) ──
+                  - label: "Short Inclusions (shown on the card and summary)"
+                    name: "inclusions"
+                    widget: "list"
+                    allow_add: true
+                    collapsed: true
+                    hint: "3–5 key inclusions. E.g. «Private Driver/Guide», «Airport Assistance»."
+                    field:
+                      label: "Inclusion item"
+                      name: "item"
+                      widget: "string"
+
+                  # ── Full Inclusions Tab ──
+                  - label: "Full Inclusions (shown in the Inclusions tab)"
+                    name: "inclusions_full"
+                    widget: "list"
+                    allow_add: true
+                    collapsed: true
+                    hint: "Complete list shown in the Inclusions / Exclusions / Conditions tab section."
+                    field:
+                      label: "Inclusion"
+                      name: "item"
+                      widget: "string"
+
+                  # ── Exclusions Tab ──
+                  - label: "Exclusions (shown in the Exclusions tab)"
+                    name: "exclusions"
+                    widget: "list"
+                    allow_add: true
+                    collapsed: true
+                    hint: "Items NOT included. E.g. «International airfare», «Visa fees»."
+                    field:
+                      label: "Exclusion"
+                      name: "item"
+                      widget: "string"
+
+                  # ── Conditions Tab ──
+                  - label: "Booking Conditions (shown in the Conditions tab)"
+                    name: "conditions"
+                    widget: "list"
+                    allow_add: true
+                    collapsed: true
+                    hint: "E.g. «Prices are per person based on double occupancy»."
+                    field:
+                      label: "Condition"
+                      name: "item"
+                      widget: "string"
+
+                  # ══════════════════════════════════════════════════
+                  #  ITINERARY
+                  # ══════════════════════════════════════════════════
+                  - label: "Day-by-Day Itinerary"
+                    name: "itinerary"
+                    widget: "list"
+                    collapsed: true
+                    summary: "📅  Day {{fields.day}} — {{fields.city}}"
+                    hint: "Add one entry per day. The accordion on the detail page is built from this."
+                    fields:
+
+                      - label: "Day Number (e.g. 1)"
+                        name: "day"
+                        widget: "number"
+                        value_type: "int"
+                        min: 1
+
+                      - label: "City / Location (shown as the accordion heading)"
+                        name: "city"
+                        widget: "string"
+                        hint: "E.g. «Colombo», «Ha Long Bay»."
+
+                      - label: "Day Description (1–2 paragraphs)"
+                        name: "description"
+                        widget: "text"
+                        hint: "Narrative description of the day shown in the accordion body."
+
+                      - label: "Activities (bullet list inside the accordion)"
+                        name: "activities"
+                        widget: "list"
+                        allow_add: true
+                        collapsed: true
+                        hint: "4–6 short activity lines. E.g. «Visit Temple of the Tooth Relic»."
+                        field:
+                          label: "Activity"
+                          name: "item"
+                          widget: "string"
+
+                      - label: "Highlight Photos (2-up grid below the description)"
+                        name: "highlights"
+                        widget: "list"
+                        collapsed: true
+                        summary: "🖼️  {{fields.caption}}"
+                        hint: "Optional. Add 2 photos per day for the highlights grid."
+                        fields:
+                          - label: "Photo"
+                            name: "url"
+                            widget: "image"
+                          - label: "Caption"
+                            name: "caption"
+                            widget: "string"
+
+                      - label: "Hotel Name & Star Rating"
+                        name: "hotel"
+                        widget: "string"
+                        hint: "E.g. «Cinnamon Grand (5 ★ Hotel)»."
+
+                      - label: "Meals Included Today"
+                        name: "meals"
+                        widget: "select"
+                        options:
+                          - "N/A"
+                          - "Breakfast"
+                          - "Lunch"
+                          - "Dinner"
+                          - "Breakfast & Dinner"
+                          - "Breakfast & Lunch"
+                          - "Full Board"
+                          - "Welcome Dinner"
+                        default: "N/A"
+
+                      - label: "Travel Time (e.g. Colombo to Kandy – 3 hours)"
+                        name: "travelTime"
+                        widget: "string"
+
+                      - label: "Transport Type"
+                        name: "transport"
+                        widget: "select"
+                        options:
+                          - "Private Vehicle (Air Conditioned)"
+                          - "Luxury Private Vehicle"
+                          - "Scenic Train Journey"
+                          - "Private Speedboat"
+                          - "Domestic Flight"
+                          - "Tuk Tuk"
+                          - "N/A"
+
+                  # ══════════════════════════════════════════════════
+                  #  PACKAGE-LEVEL REVIEWS
+                  #  (shown in the "People Say" section on detail page)
+                  # ══════════════════════════════════════════════════
+                  - label: "Package Reviews (shown on this tour's detail page)"
+                    name: "reviews"
+                    widget: "list"
+                    collapsed: true
+                    summary: "⭐  {{fields.name}} — {{fields.platform}} ({{fields.date}})"
+                    hint: "Add 1–3 reviews specific to this tour. For the global reviews page, edit the Reviews collection instead."
+                    fields:
+
+                      - label: "Reviewer Full Name"
+                        name: "name"
+                        widget: "string"
+
+                      - label: "Reviewer Location (City, Country)"
+                        name: "location"
+                        widget: "string"
+                        hint: "E.g. «United Kingdom», «Sydney, Australia»."
+
+                      - label: "Review Date"
+                        name: "date"
+                        widget: "datetime"
+                        format: "YYYY-MM-DD"
+                        time_format: false
+
+                      - label: "Star Rating"
+                        name: "rating"
+                        widget: "select"
+                        options: ["1", "2", "3", "4", "5"]
+                        default: "5"
+
+                      - label: "Platform where review was posted"
+                        name: "platform"
+                        widget: "select"
+                        options:
+                          - "TripAdvisor"
+                          - "Google"
+                          - "Facebook"
+
+                      - label: "Review Text"
+                        name: "text"
+                        widget: "text"
+                        hint: "Full review. Longer than ~200 characters gets a «See More» link."
+
+                      - label: "Avatar Initial (single letter shown in the avatar circle)"
+                        name: "avatar"
+                        widget: "string"
+                        hint: "Single capital letter of reviewer's first name. E.g. «S» for Sarah."
+                        pattern:
+                          - "^[A-Z]$"
+                          - "Must be a single uppercase letter."
+
+                  # ── Related Packages ──
+                  - label: "Related Package IDs (shown at the bottom of the detail page)"
+                    name: "relatedPackages"
+                    widget: "list"
+                    allow_add: true
+                    collapsed: true
+                    hint: "Enter 2–4 package IDs exactly as they appear (e.g. pkg-002). These are shown as «Related Tours» cards."
+                    field:
+                      label: "Package ID"
+                      name: "item"
+                      widget: "string"
+
+
+  # ════════════════════════════════════════════════════════════════════
+  #  2. CUSTOMER REVIEWS
+  #     Stored in content/data/reviews.json
+  #     These are shown on the global Success Stories / Reviews page.
+  #     Separate from the per-package reviews above.
+  # ════════════════════════════════════════════════════════════════════
+  - name: "reviews"
+    label: "⭐  Customer Reviews"
+    label_singular: "Review"
+    description: >
+      Manage all reviews shown on the Success Stories page (reviews.html).
+      These are the global customer reviews, separate from the
+      per-package reviews that live inside each package entry above.
+      You can also set platform stats (TripAdvisor / Google / Facebook counts).
+    format: "json"
+    files:
+
+      - name: "all_reviews"
+        label: "⭐  All Customer Reviews & Platform Stats"
+        file: "content/data/reviews.json"
         fields:
-          - label: "Reviews"
+
+          # ── Platform Statistics ──────────────────────────────────
+          - label: "📊  Platform Review Statistics (shown as count badges)"
+            name: "stats"
+            widget: "object"
+            collapsed: false
+            hint: "Update these numbers manually when your platform review counts change."
+            fields:
+
+              - label: "TripAdvisor"
+                name: "tripadvisor"
+                widget: "object"
+                fields:
+                  - label: "Total Review Count"
+                    name: "count"
+                    widget: "number"
+                    value_type: "int"
+                    hint: "E.g. 1306"
+                  - label: "Average Rating (e.g. 4.9)"
+                    name: "rating"
+                    widget: "number"
+                    value_type: "float"
+                    min: 1
+                    max: 5
+                    step: 0.1
+
+              - label: "Google"
+                name: "google"
+                widget: "object"
+                fields:
+                  - label: "Total Review Count"
+                    name: "count"
+                    widget: "number"
+                    value_type: "int"
+                  - label: "Average Rating (e.g. 4.8)"
+                    name: "rating"
+                    widget: "number"
+                    value_type: "float"
+                    min: 1
+                    max: 5
+                    step: 0.1
+
+              - label: "Facebook"
+                name: "facebook"
+                widget: "object"
+                fields:
+                  - label: "Total Review Count"
+                    name: "count"
+                    widget: "number"
+                    value_type: "int"
+                  - label: "Average Rating (e.g. 5.0)"
+                    name: "rating"
+                    widget: "number"
+                    value_type: "float"
+                    min: 1
+                    max: 5
+                    step: 0.1
+
+          # ── Reviews List ─────────────────────────────────────────
+          - label: "💬  Reviews"
             name: "reviews"
             widget: "list"
-            summary: "{{fields.name}}"
+            collapsed: false
+            summary: "⭐{{fields.rating}}  {{fields.name}}  |  {{fields.destination}}  |  {{fields.platform}}  |  {{fields.date}}"
+            hint: "Each entry is one customer review. Featured reviews appear in the highlighted strip at the top of the Success Stories page."
             fields:
-              - { label: "ID", name: "id", widget: "string" }
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Location", name: "location", widget: "string" }
-              - { label: "Date", name: "date", widget: "datetime" }
-              - { label: "Rating", name: "rating", widget: "number" }
-              - { label: "Platform", name: "platform", widget: "string" }
-              - { label: "Text", name: "text", widget: "text" }
+
+              # ── Identity ──
+              - label: "Review ID (unique, e.g. rev-013)"
+                name: "id"
+                widget: "string"
+                hint: "Must be unique. Format: rev-001, rev-002 etc."
+
+              - label: "Reviewer Full Name"
+                name: "name"
+                widget: "string"
+                hint: "E.g. «Sarah and James Thompson» or «Professor Jayanath Colombage»."
+
+              - label: "Reviewer Title / Job (optional)"
+                name: "title"
+                widget: "string"
+                required: false
+                hint: "Only fill if notable, e.g. «Ambassador of Sri Lanka to Indonesia». Leave blank otherwise."
+
+              - label: "Reviewer Location (City, Country)"
+                name: "location"
+                widget: "string"
+                hint: "E.g. «United Kingdom», «Sydney, Australia», «Tokyo, Japan»."
+
+              # ── Date & Rating ──
+              - label: "Review Date"
+                name: "date"
+                widget: "datetime"
+                format: "YYYY-MM-DD"
+                time_format: false
+
+              - label: "Star Rating (1–5)"
+                name: "rating"
+                widget: "select"
+                options: ["1", "2", "3", "4", "5"]
+                default: "5"
+
+              # ── Platform ──
+              - label: "Platform where review was posted"
+                name: "platform"
+                widget: "select"
+                options:
+                  - label: "TripAdvisor"
+                    value: "tripadvisor"
+                  - label: "Google"
+                    value: "google"
+                  - label: "Facebook"
+                    value: "facebook"
+                hint: "Must be lowercase — used for platform filter on the reviews page."
+
+              # ── Tour link ──
+              - label: "Destination (used for destination filter)"
+                name: "destination"
+                widget: "select"
+                options:
+                  - "Sri Lanka"
+                  - "Maldives"
+                  - "Vietnam"
+                  - "Cambodia"
+                  - "Indonesia"
+                  - "Dubai"
+                  - "Singapore"
+                  - "Malaysia"
+                  - "Thailand"
+                  - "Singapore and Malaysia"
+
+              - label: "Linked Package ID (e.g. pkg-007)"
+                name: "tourId"
+                widget: "string"
+                hint: "Must match a package ID exactly. Creates a «View Tour» link on the review card."
+
+              - label: "Tour Title (shown on the review card)"
+                name: "tourTitle"
+                widget: "string"
+                hint: "Copy the tour title exactly as it appears in the package. E.g. «10 Days Sri Lanka Dream Route»."
+
+              # ── Review content ──
+              - label: "Review Text (full review)"
+                name: "text"
+                widget: "text"
+                hint: "Paste the full review text here. Long reviews get a «See More» expand button."
+
+              # ── Avatar ──
+              - label: "Avatar Colour (hex code, e.g. #219a00)"
+                name: "avatarColor"
+                widget: "color"
+                default: "#219a00"
+                hint: "Background colour of the reviewer's avatar circle. Each reviewer should have a distinct colour."
+
+              # ── Review Photos ──
+              - label: "Review Photos (optional, shown in a gallery on the review card)"
+                name: "images"
+                widget: "list"
+                allow_add: true
+                collapsed: true
+                summary: "📷  Photo {{index}}"
+                hint: "Upload up to 6 photos from this customer's trip. Leave empty if no photos."
+                field:
+                  label: "Photo"
+                  name: "url"
+                  widget: "image"
+
+              # ── Featured & Expert ──
+              - label: "Featured Review?"
+                name: "featured"
+                widget: "boolean"
+                default: false
+                hint: "Featured reviews appear in the highlighted strip at the top of the Success Stories page. Limit to 4–5 featured reviews."
+
+              - label: "AEON Expert who managed this booking"
+                name: "expert"
+                widget: "select"
+                options:
+                  - "Chathurika"
+                  - "Priyanga"
+                  - "Nimal"
+                  - "Shalini"
+                  - "Rohan"
+                  - "Amara"
+                hint: "Select the team member who handled this customer's trip."
+
+
+  # ════════════════════════════════════════════════════════════════════
+  #  3. SITE SETTINGS  (optional — keep from original config)
+  # ════════════════════════════════════════════════════════════════════
+  - name: "site"
+    label: "⚙️  Site Settings"
+    description: "Global settings — company name, contact info, tagline and policy text."
+    format: "json"
+    files:
+      - name: "site_settings"
+        label: "⚙️  Global Site Settings"
+        file: "content/data/site.json"
+        fields:
+          - label: "Company Name"
+            name: "companyName"
+            widget: "string"
+          - label: "Tagline"
+            name: "tagline"
+            widget: "string"
+          - label: "Contact Details"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
+              - { label: "Office Address", name: "address", widget: "string", required: false }
+          - label: "Unique Selling Proposition"
+            name: "usp"
+            widget: "text"
+          - label: "Response Time Goal (hours)"
+            name: "responseTimeGoalHours"
+            widget: "string"
+            hint: "E.g. «24» — shown in the quote form note."
+          - label: "Privacy Policy"
+            name: "privacyPolicy"
+            widget: "text"
+          - label: "Green / Sustainability Promise (optional)"
+            name: "greenPromise"
+            widget: "text"
+            required: false
