@@ -6,74 +6,150 @@
       "labelLight": "Made Tours",
       "packages": [
         {
-          "id": "pkg-001",
-          "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-          "imageAlt": "10 Days Sri Lanka Dream Route",
-          "destination": "Sri Lanka",
-          "type": "Tailor Made",
-          "title": "10 Days – Sri Lanka Dream Route",
-          "startingFrom": "LKR 463,500",
-          "featured": true,
           "suitableFor": "Family",
-          "duration": "10 Days 9 Nights",
+          "exclusions": [
+            "International airfare",
+            "Visa fees",
+            "Travel insurance",
+            "Personal expenses",
+            "Tips and gratuities",
+            "Meals not mentioned in itinerary"
+          ],
+          "summary": "Sri Lanka is a vibrant island nation known for its diverse landscapes, rich culture, bustling cities and historical landmarks. Explore lush tea plantations, towering mountains and scenic coastlines, while immersing yourself in vibrant markets, ancient temples and the warmth of local hospitality. Unwind with tranquil beach escapes and peaceful backwater journeys along the way.",
           "numberOfCities": 4,
           "cities": "Colombo, Kandy, Ella, Mirissa",
-          "themes": ["Adventure", "Culture", "Nature"],
-          "summary": "Sri Lanka is a vibrant island nation known for its diverse landscapes, rich culture, bustling cities and historical landmarks. Explore lush tea plantations, towering mountains and scenic coastlines, while immersing yourself in vibrant markets, ancient temples and the warmth of local hospitality. Unwind with tranquil beach escapes and peaceful backwater journeys along the way.",
-          "inclusions": ["Private Driver/Guide", "Tour Consultant", "Airport Assistance", "Government Taxes"],
+          "startingFrom": "LKR 463,500",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80", "caption": "Nine Arch Bridge" },
-            { "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=600&q=80", "caption": "Ella Rock" },
-            { "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80", "caption": "Mirissa Beach" },
-            { "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80", "caption": "Sri Lanka Coast" }
+            {
+              "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
+              "caption": "Nine Arch Bridge"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=600&q=80",
+              "caption": "Ella Rock"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80",
+              "caption": "Mirissa Beach"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80",
+              "caption": "Sri Lanka Coast"
+            }
+          ],
+          "themes": [
+            "Adventure",
+            "Culture",
+            "Nature"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Colombo",
-              "description": "Upon arrival at Bandaranaike International Airport, our guide will transfer you to Colombo. Enjoy scenic city views, explore colonial architecture, visit the Gangaramaya Temple and stroll along Galle Face Green.",
-              "activities": ["Arrive in Colombo and transfer to hotel", "Visit Gangaramaya Temple", "Explore Pettah Market", "Stroll along Galle Face Green"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&q=80", "caption": "Gangaramaya Temple" },
-                { "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80", "caption": "Galle Face Green" }
-              ],
-              "hotel": "Cinnamon Grand (5 ★ Hotel)",
-              "meals": "N/A",
               "travelTime": "Airport to Hotel – 45 mins",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Colombo",
+              "activities": [
+                "Arrive in Colombo and transfer to hotel",
+                "Visit Gangaramaya Temple",
+                "Explore Pettah Market",
+                "Stroll along Galle Face Green"
+              ],
+              "meals": "N/A",
+              "hotel": "Cinnamon Grand (5 ★ Hotel)",
+              "day": 1,
+              "description": "Upon arrival at Bandaranaike International Airport, our guide will transfer you to Colombo. Enjoy scenic city views, explore colonial architecture, visit the Gangaramaya Temple and stroll along Galle Face Green.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&q=80",
+                  "caption": "Gangaramaya Temple"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
+                  "caption": "Galle Face Green"
+                }
+              ]
             },
             {
-              "day": 2,
-              "city": "Kandy",
-              "description": "Travel to Kandy, the cultural capital of Sri Lanka. Visit the sacred Temple of the Tooth Relic, explore the Royal Botanical Gardens at Peradeniya and enjoy a cultural dance show in the evening.",
-              "activities": ["Visit Temple of the Tooth Relic", "Explore Royal Botanical Gardens", "Kandy Lake walk", "Evening cultural show"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1593691509543-c55fb32e5cef?w=400&q=80", "caption": "Temple of the Tooth" },
-                { "url": "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?w=400&q=80", "caption": "Kandy Lake" }
-              ],
-              "hotel": "Earl's Regency (4 ★ Hotel)",
-              "meals": "Breakfast",
               "travelTime": "Colombo to Kandy – 3 hours",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Kandy",
+              "activities": [
+                "Visit Temple of the Tooth Relic",
+                "Explore Royal Botanical Gardens",
+                "Kandy Lake walk",
+                "Evening cultural show"
+              ],
+              "meals": "Breakfast",
+              "hotel": "Earl's Regency (4 ★ Hotel)",
+              "day": 2,
+              "description": "Travel to Kandy, the cultural capital of Sri Lanka. Visit the sacred Temple of the Tooth Relic, explore the Royal Botanical Gardens at Peradeniya and enjoy a cultural dance show in the evening.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1593691509543-c55fb32e5cef?w=400&q=80",
+                  "caption": "Temple of the Tooth"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?w=400&q=80",
+                  "caption": "Kandy Lake"
+                }
+              ]
             },
             {
-              "day": 3,
-              "city": "Ella",
-              "description": "Journey through misty mountains to Ella on the scenic train ride. Walk the Nine Arch Bridge, hike Little Adam's Peak and soak in the highland atmosphere of this picturesque village.",
-              "activities": ["Scenic train ride to Ella", "Walk Nine Arch Bridge", "Hike Little Adam's Peak", "Explore Ella village"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=80", "caption": "Nine Arch Bridge" },
-                { "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=400&q=80", "caption": "Little Adam's Peak" }
-              ],
-              "hotel": "Ella Flower Garden Resort (3 ★ Hotel)",
-              "meals": "Breakfast",
               "travelTime": "Kandy to Ella – 4 hours (train)",
-              "transport": "Scenic Train Journey"
+              "transport": "Scenic Train Journey",
+              "city": "Ella",
+              "activities": [
+                "Scenic train ride to Ella",
+                "Walk Nine Arch Bridge",
+                "Hike Little Adam's Peak",
+                "Explore Ella village"
+              ],
+              "meals": "Breakfast",
+              "hotel": "Ella Flower Garden Resort (3 ★ Hotel)",
+              "day": 3,
+              "description": "Journey through misty mountains to Ella on the scenic train ride. Walk the Nine Arch Bridge, hike Little Adam's Peak and soak in the highland atmosphere of this picturesque village.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=80",
+                  "caption": "Nine Arch Bridge"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=400&q=80",
+                  "caption": "Little Adam's Peak"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation as listed or similar on double sharing basis", "Meals as mentioned", "Tours as mentioned with an English speaking guide", "Private transfers as mentioned", "Entrance fees for the activities as outlined", "Inclusive of all government taxes and service charges"],
-          "exclusions": ["International airfare", "Visa fees", "Travel insurance", "Personal expenses", "Tips and gratuities", "Meals not mentioned in itinerary"],
-          "conditions": ["Prices are per person based on double occupancy", "Single supplement charges apply", "Bookings are subject to availability", "Cancellation policies apply as per terms"],
+          "destination": "Sri Lanka",
+          "featured": true,
+          "imageAlt": "10 Days Sri Lanka Dream Route",
+          "duration": "10 Days 9 Nights",
+          "inclusions": [
+            "Private Driver/Guide",
+            "Tour Consultant",
+            "Airport Assistance",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation as listed or similar on double sharing basis",
+            "Meals as mentioned",
+            "Tours as mentioned with an English speaking guide",
+            "Private transfers as mentioned",
+            "Entrance fees for the activities as outlined",
+            "Inclusive of all government taxes and service charges"
+          ],
+          "relatedPackages": [
+            "pkg-002",
+            "pkg-003",
+            "pkg-010"
+          ],
+          "title": "10 Days – Sri Lanka Dream Route",
+          "conditions": [
+            "Prices are per person based on double occupancy",
+            "Single supplement charges apply",
+            "Bookings are subject to availability",
+            "Cancellation policies apply as per terms"
+          ],
+          "type": "Tailor Made",
           "reviews": [
             {
               "name": "Sarah & James Thompson",
@@ -94,63 +170,127 @@
               "avatar": "R"
             }
           ],
-          "relatedPackages": ["pkg-002", "pkg-003", "pkg-010"]
+          "id": "pkg-001",
+          "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
         },
         {
-          "id": "pkg-002",
-          "image": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=800&q=80",
-          "imageAlt": "A 12-Day Island Adventure Awaits",
-          "destination": "Sri Lanka",
-          "type": "Tailor Made",
-          "title": "A 12-Day Island Adventure Awaits",
-          "startingFrom": "LKR 587,100",
-          "featured": false,
           "suitableFor": "Couple",
-          "duration": "12 Days 11 Nights",
+          "exclusions": [
+            "International airfare",
+            "Visa fees",
+            "Travel insurance",
+            "Personal expenses",
+            "Tips and gratuities"
+          ],
+          "summary": "Discover the full breadth of Sri Lanka over 12 incredible days. From ancient rock fortresses and cultural cities to misty highlands and pristine beaches, this comprehensive tour takes you on an unforgettable journey through the island's most iconic destinations.",
           "numberOfCities": 5,
           "cities": "Colombo, Sigiriya, Kandy, Ella, Galle",
-          "themes": ["Adventure", "Culture", "Beach"],
-          "summary": "Discover the full breadth of Sri Lanka over 12 incredible days. From ancient rock fortresses and cultural cities to misty highlands and pristine beaches, this comprehensive tour takes you on an unforgettable journey through the island's most iconic destinations.",
-          "inclusions": ["Private Driver/Guide", "Tour Consultant", "Airport Assistance", "Government Taxes"],
+          "startingFrom": "LKR 587,100",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=600&q=80", "caption": "Highland Tea Country" },
-            { "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80", "caption": "Nine Arch Bridge" },
-            { "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80", "caption": "Southern Beaches" },
-            { "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/a9/70/52/kandy-lake-in-sri-lanka.jpg?w=600", "caption": "Kandy Lake" }
+            {
+              "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=600&q=80",
+              "caption": "Highland Tea Country"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
+              "caption": "Nine Arch Bridge"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80",
+              "caption": "Southern Beaches"
+            },
+            {
+              "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/a9/70/52/kandy-lake-in-sri-lanka.jpg?w=600",
+              "caption": "Kandy Lake"
+            }
+          ],
+          "themes": [
+            "Adventure",
+            "Culture",
+            "Beach"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Colombo",
-              "description": "Arrive in Colombo and settle into your hotel. Explore the city's vibrant neighbourhoods, colonial landmarks and bustling markets in the afternoon.",
-              "activities": ["Airport pickup", "City orientation tour", "Visit Colombo Fort", "Dinner at local restaurant"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&q=80", "caption": "Colombo City" },
-                { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", "caption": "Local Markets" }
-              ],
-              "hotel": "Kingsbury Hotel (5 ★ Hotel)",
-              "meals": "N/A",
               "travelTime": "Airport to Hotel – 45 mins",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Colombo",
+              "activities": [
+                "Airport pickup",
+                "City orientation tour",
+                "Visit Colombo Fort",
+                "Dinner at local restaurant"
+              ],
+              "meals": "N/A",
+              "hotel": "Kingsbury Hotel (5 ★ Hotel)",
+              "day": 1,
+              "description": "Arrive in Colombo and settle into your hotel. Explore the city's vibrant neighbourhoods, colonial landmarks and bustling markets in the afternoon.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&q=80",
+                  "caption": "Colombo City"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
+                  "caption": "Local Markets"
+                }
+              ]
             },
             {
-              "day": 2,
-              "city": "Sigiriya",
-              "description": "Head to the cultural triangle and climb the ancient Sigiriya Rock Fortress, a UNESCO World Heritage Site. Explore the frescoes and the stunning panoramic views from the top.",
-              "activities": ["Climb Sigiriya Rock Fortress", "Explore ancient frescoes", "Visit Pidurangala Rock", "Evening village walk"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=80", "caption": "Sigiriya Rock" },
-                { "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=400&q=80", "caption": "Ancient Frescoes" }
-              ],
-              "hotel": "Aliya Resort (4 ★ Hotel)",
-              "meals": "Breakfast",
               "travelTime": "Colombo to Sigiriya – 4 hours",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Sigiriya",
+              "activities": [
+                "Climb Sigiriya Rock Fortress",
+                "Explore ancient frescoes",
+                "Visit Pidurangala Rock",
+                "Evening village walk"
+              ],
+              "meals": "Breakfast",
+              "hotel": "Aliya Resort (4 ★ Hotel)",
+              "day": 2,
+              "description": "Head to the cultural triangle and climb the ancient Sigiriya Rock Fortress, a UNESCO World Heritage Site. Explore the frescoes and the stunning panoramic views from the top.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=80",
+                  "caption": "Sigiriya Rock"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=400&q=80",
+                  "caption": "Ancient Frescoes"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation as listed or similar on double sharing basis", "Meals as mentioned", "Tours as mentioned with an English speaking guide", "Private transfers as mentioned", "Entrance fees for the activities as outlined", "Inclusive of all government taxes and service charges"],
-          "exclusions": ["International airfare", "Visa fees", "Travel insurance", "Personal expenses", "Tips and gratuities"],
-          "conditions": ["Prices are per person based on double occupancy", "Single supplement charges apply", "Bookings are subject to availability"],
+          "destination": "Sri Lanka",
+          "featured": false,
+          "imageAlt": "A 12-Day Island Adventure Awaits",
+          "duration": "12 Days 11 Nights",
+          "inclusions": [
+            "Private Driver/Guide",
+            "Tour Consultant",
+            "Airport Assistance",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation as listed or similar on double sharing basis",
+            "Meals as mentioned",
+            "Tours as mentioned with an English speaking guide",
+            "Private transfers as mentioned",
+            "Entrance fees for the activities as outlined",
+            "Inclusive of all government taxes and service charges"
+          ],
+          "relatedPackages": [
+            "pkg-001",
+            "pkg-003",
+            "pkg-011"
+          ],
+          "title": "A 12-Day Island Adventure Awaits",
+          "conditions": [
+            "Prices are per person based on double occupancy",
+            "Single supplement charges apply",
+            "Bookings are subject to availability"
+          ],
+          "type": "Tailor Made",
           "reviews": [
             {
               "name": "Emily Chen",
@@ -162,183 +302,402 @@
               "avatar": "E"
             }
           ],
-          "relatedPackages": ["pkg-001", "pkg-003", "pkg-011"]
+          "id": "pkg-002",
+          "image": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=800&q=80"
         },
         {
-          "id": "pkg-003",
-          "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
-          "imageAlt": "14 Days Sri Lanka Intimate Trails",
-          "destination": "Sri Lanka",
-          "type": "Tailor Made",
-          "title": "14 Days – Sri Lanka Intimate Trails",
-          "startingFrom": "LKR 911,549",
-          "featured": false,
           "suitableFor": "Honeymoon",
-          "duration": "14 Days 13 Nights",
+          "exclusions": [
+            "International airfare",
+            "Visa fees",
+            "Travel insurance",
+            "Personal expenses"
+          ],
+          "summary": "The ultimate Sri Lanka experience crafted for those who want to immerse deeply in every corner of this magical island. From the ancient cultural triangle to misty hill country and golden beaches, 14 days of pure discovery await.",
           "numberOfCities": 6,
           "cities": "Colombo, Sigiriya, Kandy, Nuwara Eliya, Ella, Galle",
-          "themes": ["Honeymoon", "Culture", "Beach", "Nature"],
-          "summary": "The ultimate Sri Lanka experience crafted for those who want to immerse deeply in every corner of this magical island. From the ancient cultural triangle to misty hill country and golden beaches, 14 days of pure discovery await.",
-          "inclusions": ["Private Driver/Guide", "Tour Consultant", "Airport Assistance", "Government Taxes", "Luxury Accommodation"],
+          "startingFrom": "LKR 911,549",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80", "caption": "Sri Lanka Coastline" },
-            { "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80", "caption": "Nine Arch Bridge" },
-            { "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80", "caption": "Mirissa Beach" },
-            { "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=600&q=80", "caption": "Tea Plantations" }
+            {
+              "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80",
+              "caption": "Sri Lanka Coastline"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
+              "caption": "Nine Arch Bridge"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80",
+              "caption": "Mirissa Beach"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=600&q=80",
+              "caption": "Tea Plantations"
+            }
+          ],
+          "themes": [
+            "Honeymoon",
+            "Culture",
+            "Beach",
+            "Nature"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Colombo",
-              "description": "Begin your intimate Sri Lanka journey with a warm welcome at Colombo airport and a luxury transfer to your hotel. Enjoy a sunset cocktail with views of the Indian Ocean.",
-              "activities": ["VIP airport pickup", "Luxury hotel check-in", "Sunset cocktails", "Welcome dinner"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&q=80", "caption": "Colombo Sunset" },
-                { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", "caption": "Galle Face" }
-              ],
-              "hotel": "Shangri-La Colombo (5 ★ Hotel)",
-              "meals": "Welcome Dinner",
               "travelTime": "Airport to Hotel – 45 mins",
-              "transport": "Luxury Private Vehicle"
+              "transport": "Luxury Private Vehicle",
+              "city": "Colombo",
+              "activities": [
+                "VIP airport pickup",
+                "Luxury hotel check-in",
+                "Sunset cocktails",
+                "Welcome dinner"
+              ],
+              "meals": "Welcome Dinner",
+              "hotel": "Shangri-La Colombo (5 ★ Hotel)",
+              "day": 1,
+              "description": "Begin your intimate Sri Lanka journey with a warm welcome at Colombo airport and a luxury transfer to your hotel. Enjoy a sunset cocktail with views of the Indian Ocean.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&q=80",
+                  "caption": "Colombo Sunset"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
+                  "caption": "Galle Face"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Luxury accommodation as listed", "Meals as mentioned", "Private English-speaking guide throughout", "All private transfers", "Entrance fees", "All government taxes and service charges", "Welcome and farewell dinners"],
-          "exclusions": ["International airfare", "Visa fees", "Travel insurance", "Personal expenses"],
-          "conditions": ["Prices are per person based on double occupancy", "Single supplement charges apply"],
+          "destination": "Sri Lanka",
+          "featured": false,
+          "imageAlt": "14 Days Sri Lanka Intimate Trails",
+          "duration": "14 Days 13 Nights",
+          "inclusions": [
+            "Private Driver/Guide",
+            "Tour Consultant",
+            "Airport Assistance",
+            "Government Taxes",
+            "Luxury Accommodation"
+          ],
+          "inclusions_full": [
+            "Luxury accommodation as listed",
+            "Meals as mentioned",
+            "Private English-speaking guide throughout",
+            "All private transfers",
+            "Entrance fees",
+            "All government taxes and service charges",
+            "Welcome and farewell dinners"
+          ],
+          "relatedPackages": [
+            "pkg-001",
+            "pkg-002",
+            "pkg-011"
+          ],
+          "title": "14 Days – Sri Lanka Intimate Trails",
+          "conditions": [
+            "Prices are per person based on double occupancy",
+            "Single supplement charges apply"
+          ],
+          "type": "Tailor Made",
           "reviews": [],
-          "relatedPackages": ["pkg-001", "pkg-002", "pkg-011"]
+          "id": "pkg-003",
+          "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80"
         },
         {
-          "id": "pkg-004",
-          "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
-          "imageAlt": "Magical Bali Escape",
-          "destination": "Indonesia",
-          "type": "Tailor Made",
-          "title": "8 Days – Magical Bali Escape",
-          "startingFrom": "LKR 524,200",
-          "featured": false,
           "suitableFor": "Couple",
-          "duration": "8 Days 7 Nights",
+          "exclusions": [
+            "International airfare",
+            "Visa on arrival fee",
+            "Travel insurance",
+            "Personal expenses"
+          ],
+          "summary": "Bali is the Island of the Gods — a place of extraordinary beauty, spiritual energy and warm hospitality. Explore lush rice terraces, sacred temples and vibrant arts before unwinding on world-class beaches.",
           "numberOfCities": 3,
           "cities": "Ubud, Seminyak, Nusa Dua",
-          "themes": ["Beach", "Culture", "Wellness"],
-          "summary": "Bali is the Island of the Gods — a place of extraordinary beauty, spiritual energy and warm hospitality. Explore lush rice terraces, sacred temples and vibrant arts before unwinding on world-class beaches.",
-          "inclusions": ["Private Driver/Guide", "Tour Consultant", "Airport Assistance", "Government Taxes"],
+          "startingFrom": "LKR 524,200",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80", "caption": "Bali Rice Terraces" },
-            { "url": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80", "caption": "Bali Beach" },
-            { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80", "caption": "Temple at Sunset" },
-            { "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80", "caption": "Seminyak Beach" }
+            {
+              "url": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80",
+              "caption": "Bali Rice Terraces"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80",
+              "caption": "Bali Beach"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+              "caption": "Temple at Sunset"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80",
+              "caption": "Seminyak Beach"
+            }
+          ],
+          "themes": [
+            "Beach",
+            "Culture",
+            "Wellness"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Ubud",
-              "description": "Arrive in Bali and transfer to the cultural heart of Ubud. Visit the Sacred Monkey Forest, explore local art galleries and enjoy a traditional Kecak dance performance.",
-              "activities": ["Airport transfer to Ubud", "Sacred Monkey Forest visit", "Art market exploration", "Evening Kecak dance show"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=80", "caption": "Monkey Forest" },
-                { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", "caption": "Ubud Market" }
-              ],
-              "hotel": "Komaneka at Bisma (5 ★ Hotel)",
-              "meals": "N/A",
               "travelTime": "Airport to Ubud – 1.5 hours",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Ubud",
+              "activities": [
+                "Airport transfer to Ubud",
+                "Sacred Monkey Forest visit",
+                "Art market exploration",
+                "Evening Kecak dance show"
+              ],
+              "meals": "N/A",
+              "hotel": "Komaneka at Bisma (5 ★ Hotel)",
+              "day": 1,
+              "description": "Arrive in Bali and transfer to the cultural heart of Ubud. Visit the Sacred Monkey Forest, explore local art galleries and enjoy a traditional Kecak dance performance.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=80",
+                  "caption": "Monkey Forest"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
+                  "caption": "Ubud Market"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation as listed", "Daily breakfast", "Private guide and transfers", "Entrance fees", "Government taxes"],
-          "exclusions": ["International airfare", "Visa on arrival fee", "Travel insurance", "Personal expenses"],
-          "conditions": ["Prices per person on double occupancy", "Single supplement applies"],
+          "destination": "Indonesia",
+          "featured": false,
+          "imageAlt": "Magical Bali Escape",
+          "duration": "8 Days 7 Nights",
+          "inclusions": [
+            "Private Driver/Guide",
+            "Tour Consultant",
+            "Airport Assistance",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation as listed",
+            "Daily breakfast",
+            "Private guide and transfers",
+            "Entrance fees",
+            "Government taxes"
+          ],
+          "relatedPackages": [
+            "pkg-005",
+            "pkg-006",
+            "pkg-001"
+          ],
+          "title": "8 Days – Magical Bali Escape",
+          "conditions": [
+            "Prices per person on double occupancy",
+            "Single supplement applies"
+          ],
+          "type": "Tailor Made",
           "reviews": [],
-          "relatedPackages": ["pkg-005", "pkg-006", "pkg-001"]
+          "id": "pkg-004",
+          "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80"
         },
         {
-          "id": "pkg-005",
-          "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-          "imageAlt": "Dubai Luxury and Adventure",
-          "destination": "Dubai",
-          "type": "Tailor Made",
-          "title": "7 Days – Dubai Luxury & Adventure",
-          "startingFrom": "LKR 648,900",
-          "featured": false,
           "suitableFor": "Family",
-          "duration": "7 Days 6 Nights",
+          "exclusions": [
+            "International airfare",
+            "Visa fees",
+            "Travel insurance",
+            "Personal expenses",
+            "Tips"
+          ],
+          "summary": "Dubai is a city of superlatives — the tallest buildings, the most extravagant malls and the most thrilling desert adventures. Experience the perfect blend of ultramodern luxury and rich Arabian heritage on this action-packed 7-day tour.",
           "numberOfCities": 1,
           "cities": "Dubai",
-          "themes": ["Adventure", "Luxury", "Shopping"],
-          "summary": "Dubai is a city of superlatives — the tallest buildings, the most extravagant malls and the most thrilling desert adventures. Experience the perfect blend of ultramodern luxury and rich Arabian heritage on this action-packed 7-day tour.",
-          "inclusions": ["Private Driver/Guide", "Tour Consultant", "Airport Assistance", "Government Taxes"],
+          "startingFrom": "LKR 648,900",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", "caption": "Dubai Skyline" },
-            { "url": "https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80", "caption": "Desert Safari" },
-            { "url": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80", "caption": "Dubai Creek" },
-            { "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80", "caption": "Palm Jumeirah" }
+            {
+              "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+              "caption": "Dubai Skyline"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80",
+              "caption": "Desert Safari"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80",
+              "caption": "Dubai Creek"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80",
+              "caption": "Palm Jumeirah"
+            }
+          ],
+          "themes": [
+            "Adventure",
+            "Luxury",
+            "Shopping"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Dubai",
-              "description": "Arrive at Dubai International Airport and check into your luxury hotel. Enjoy an orientation tour of Downtown Dubai including the Burj Khalifa and Dubai Fountain show.",
-              "activities": ["Airport transfer", "Burj Khalifa visit", "Dubai Mall exploration", "Dubai Fountain show"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80", "caption": "Burj Khalifa" },
-                { "url": "https://images.unsplash.com/photo-1488085061387-422e29b40080?w=400&q=80", "caption": "Dubai Mall" }
-              ],
-              "hotel": "Atlantis The Palm (5 ★ Hotel)",
-              "meals": "N/A",
               "travelTime": "Airport to Hotel – 30 mins",
-              "transport": "Luxury Private Vehicle"
+              "transport": "Luxury Private Vehicle",
+              "city": "Dubai",
+              "activities": [
+                "Airport transfer",
+                "Burj Khalifa visit",
+                "Dubai Mall exploration",
+                "Dubai Fountain show"
+              ],
+              "meals": "N/A",
+              "hotel": "Atlantis The Palm (5 ★ Hotel)",
+              "day": 1,
+              "description": "Arrive at Dubai International Airport and check into your luxury hotel. Enjoy an orientation tour of Downtown Dubai including the Burj Khalifa and Dubai Fountain show.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
+                  "caption": "Burj Khalifa"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1488085061387-422e29b40080?w=400&q=80",
+                  "caption": "Dubai Mall"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Luxury accommodation", "Daily breakfast", "Private transfers", "Burj Khalifa entry", "Desert safari", "Government taxes"],
-          "exclusions": ["International airfare", "Visa fees", "Travel insurance", "Personal expenses", "Tips"],
-          "conditions": ["Prices per person on double occupancy", "Single supplement applies"],
+          "destination": "Dubai",
+          "featured": false,
+          "imageAlt": "Dubai Luxury and Adventure",
+          "duration": "7 Days 6 Nights",
+          "inclusions": [
+            "Private Driver/Guide",
+            "Tour Consultant",
+            "Airport Assistance",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Luxury accommodation",
+            "Daily breakfast",
+            "Private transfers",
+            "Burj Khalifa entry",
+            "Desert safari",
+            "Government taxes"
+          ],
+          "relatedPackages": [
+            "pkg-004",
+            "pkg-006",
+            "pkg-007"
+          ],
+          "title": "7 Days – Dubai Luxury & Adventure",
+          "conditions": [
+            "Prices per person on double occupancy",
+            "Single supplement applies"
+          ],
+          "type": "Tailor Made",
           "reviews": [],
-          "relatedPackages": ["pkg-004", "pkg-006", "pkg-007"]
+          "id": "pkg-005",
+          "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
         },
         {
-          "id": "pkg-006",
-          "image": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80",
-          "imageAlt": "Maldives Paradise Bliss",
-          "destination": "Maldives",
-          "type": "Tailor Made",
-          "title": "5 Days – Maldives Paradise Bliss",
-          "startingFrom": "LKR 392,500",
-          "featured": false,
           "suitableFor": "Honeymoon",
-          "duration": "5 Days 4 Nights",
+          "exclusions": [
+            "International airfare",
+            "Spa treatments",
+            "Motorised water sports",
+            "Personal expenses"
+          ],
+          "summary": "The Maldives is the ultimate tropical paradise — a collection of 26 atolls adorned with turquoise lagoons, pristine white sand beaches and spectacular coral reefs. Perfect for honeymooners and beach lovers seeking absolute tranquility.",
           "numberOfCities": 1,
           "cities": "Malé, North Malé Atoll",
-          "themes": ["Honeymoon", "Beach", "Wellness"],
-          "summary": "The Maldives is the ultimate tropical paradise — a collection of 26 atolls adorned with turquoise lagoons, pristine white sand beaches and spectacular coral reefs. Perfect for honeymooners and beach lovers seeking absolute tranquility.",
-          "inclusions": ["Speedboat Transfers", "Tour Consultant", "Snorkelling Equipment", "Government Taxes"],
+          "startingFrom": "LKR 392,500",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80", "caption": "Overwater Bungalow" },
-            { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80", "caption": "Crystal Lagoon" },
-            { "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80", "caption": "Beach Sunset" },
-            { "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80", "caption": "Coral Reef" }
+            {
+              "url": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80",
+              "caption": "Overwater Bungalow"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+              "caption": "Crystal Lagoon"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80",
+              "caption": "Beach Sunset"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80",
+              "caption": "Coral Reef"
+            }
+          ],
+          "themes": [
+            "Honeymoon",
+            "Beach",
+            "Wellness"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "North Malé Atoll",
-              "description": "Arrive at Velana International Airport and transfer by speedboat to your private island resort. Check in to your overwater bungalow and enjoy the stunning sunset views.",
-              "activities": ["Speedboat transfer to resort", "Check-in to overwater bungalow", "Welcome drink on the jetty", "Sunset dinner on the beach"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=400&q=80", "caption": "Overwater Villa" },
-                { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", "caption": "Beach Sunset" }
-              ],
-              "hotel": "Soneva Jani (5 ★ Resort)",
-              "meals": "Welcome Dinner",
               "travelTime": "Airport to Resort – 45 mins by speedboat",
-              "transport": "Private Speedboat"
+              "transport": "Private Speedboat",
+              "city": "North Malé Atoll",
+              "activities": [
+                "Speedboat transfer to resort",
+                "Check-in to overwater bungalow",
+                "Welcome drink on the jetty",
+                "Sunset dinner on the beach"
+              ],
+              "meals": "Welcome Dinner",
+              "hotel": "Soneva Jani (5 ★ Resort)",
+              "day": 1,
+              "description": "Arrive at Velana International Airport and transfer by speedboat to your private island resort. Check in to your overwater bungalow and enjoy the stunning sunset views.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=400&q=80",
+                  "caption": "Overwater Villa"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
+                  "caption": "Beach Sunset"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Overwater/beach villa accommodation", "All meals (full board)", "Speedboat transfers", "Snorkelling equipment", "Non-motorised water sports", "Government taxes and service charges"],
-          "exclusions": ["International airfare", "Spa treatments", "Motorised water sports", "Personal expenses"],
-          "conditions": ["Prices per person on double occupancy", "Single supplement applies", "Peak season surcharges may apply"],
+          "destination": "Maldives",
+          "featured": false,
+          "imageAlt": "Maldives Paradise Bliss",
+          "duration": "5 Days 4 Nights",
+          "inclusions": [
+            "Speedboat Transfers",
+            "Tour Consultant",
+            "Snorkelling Equipment",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Overwater/beach villa accommodation",
+            "All meals (full board)",
+            "Speedboat transfers",
+            "Snorkelling equipment",
+            "Non-motorised water sports",
+            "Government taxes and service charges"
+          ],
+          "relatedPackages": [
+            "pkg-001",
+            "pkg-003",
+            "pkg-011"
+          ],
+          "title": "5 Days – Maldives Paradise Bliss",
+          "conditions": [
+            "Prices per person on double occupancy",
+            "Single supplement applies",
+            "Peak season surcharges may apply"
+          ],
+          "type": "Tailor Made",
           "reviews": [],
-          "relatedPackages": ["pkg-001", "pkg-003", "pkg-011"]
+          "id": "pkg-006",
+          "image": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80"
+        },
+        {
+          "id": "Sample Packaage",
+          "title": "Sample Packaage",
+          "destination": "Sample Destination",
+          "image": "/assets/images/Home_Image.jpg",
+          "startingFrom": "100000",
+          "duration": "10 days",
+          "cities": "kandy, Ella",
+          "summary": "sample summery"
         }
       ]
     },
@@ -348,74 +707,150 @@
       "labelLight": "Departures",
       "packages": [
         {
-          "id": "pkg-007",
-          "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80",
-          "imageAlt": "Vietnam North to South Discovery",
-          "destination": "Vietnam",
-          "type": "Fixed Departure",
-          "title": "11 Days – Vietnam North to South Discovery",
-          "startingFrom": "LKR 534,700",
-          "featured": false,
           "suitableFor": "Family",
-          "duration": "11 Days 10 Nights",
+          "exclusions": [
+            "International airfare",
+            "Visa fees",
+            "Travel insurance",
+            "Personal expenses",
+            "Tips and gratuities",
+            "Meals not mentioned"
+          ],
+          "summary": "Vietnam is a vibrant Southeast Asian country known for its diverse landscapes, rich culture, bustling cities and historical landmarks. Explore lush valleys, towering mountains and scenic coastlines, while immersing yourself in vibrant markets, ancient temples and the warmth of local hospitality.",
           "numberOfCities": 5,
           "cities": "Hanoi, Ha Long Bay, Hue, Hoi An, Ho Chi Minh City",
-          "themes": ["Adventure", "Culture", "History"],
-          "summary": "Vietnam is a vibrant Southeast Asian country known for its diverse landscapes, rich culture, bustling cities and historical landmarks. Explore lush valleys, towering mountains and scenic coastlines, while immersing yourself in vibrant markets, ancient temples and the warmth of local hospitality.",
-          "inclusions": ["Private Driver/Guide", "Tour Consultant", "Airport Assistance", "Government Taxes"],
+          "startingFrom": "LKR 534,700",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80", "caption": "Ha Long Bay" },
-            { "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80", "caption": "Ancient Temple" },
-            { "url": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80", "caption": "Hoi An Lanterns" },
-            { "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80", "caption": "Hanoi Old Quarter" }
+            {
+              "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80",
+              "caption": "Ha Long Bay"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80",
+              "caption": "Ancient Temple"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80",
+              "caption": "Hoi An Lanterns"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80",
+              "caption": "Hanoi Old Quarter"
+            }
+          ],
+          "themes": [
+            "Adventure",
+            "Culture",
+            "History"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Hanoi",
-              "description": "Upon arrival at Noi Bai airport, our guide will transfer you to the heart of Hanoi. Enjoy scenic views, experience local culture, access historical sites and engage in recreational activities.",
-              "activities": ["Arrive in Hanoi and transfer to hotel", "Visit Ho Chi Minh complex", "Explore the Presidential Palace", "Discover the Temple of Literature"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=80", "caption": "One Pillar Pagoda" },
-                { "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80", "caption": "Presidential Palace" }
-              ],
-              "hotel": "Thang Long Opera (4 ★ Hotel)",
-              "meals": "N/A",
               "travelTime": "Airport to Hotel – 30 mins",
-              "transport": "Private Vehicle (Air Conditioned)"
-            },
-            {
-              "day": 2,
-              "city": "Ha Long Bay",
-              "description": "Get lost in the stunning landscape of Ha Long Bay, where you can admire the limestone karsts, experience water activities like kayaking and swimming, explore hidden caves and islands.",
-              "activities": ["Boat ride in Ha Long Bay", "Admire the majestic limestone mountains", "Punt over the bay", "Kayak to local fishing spots"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80", "caption": "Floating Village" },
-                { "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&q=80", "caption": "Kayaking" }
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Hanoi",
+              "activities": [
+                "Arrive in Hanoi and transfer to hotel",
+                "Visit Ho Chi Minh complex",
+                "Explore the Presidential Palace",
+                "Discover the Temple of Literature"
               ],
-              "hotel": "Wyndham Legend (5 ★ Hotel)",
-              "meals": "Breakfast",
-              "travelTime": "Hanoi to Ha Long Bay – 3 hours",
-              "transport": "Private Vehicle (Air Conditioned)"
-            },
-            {
-              "day": 3,
-              "city": "Ha Long Bay",
-              "description": "Ha Long Bay, a UNESCO World Heritage Site, invites you to explore stunning geological formations and experience its natural beauty while practicing Tai Chi on the sundeck.",
-              "activities": ["Practice Tai Chi", "Sightsee the Cave of surprises", "Relaxing on sundeck", "Hands on Vietnamese culinary experience"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80", "caption": "Scenic Views" },
-                { "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&q=80", "caption": "Cave Exploration" }
-              ],
+              "meals": "N/A",
               "hotel": "Thang Long Opera (4 ★ Hotel)",
+              "day": 1,
+              "description": "Upon arrival at Noi Bai airport, our guide will transfer you to the heart of Hanoi. Enjoy scenic views, experience local culture, access historical sites and engage in recreational activities.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=80",
+                  "caption": "One Pillar Pagoda"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80",
+                  "caption": "Presidential Palace"
+                }
+              ]
+            },
+            {
+              "travelTime": "Hanoi to Ha Long Bay – 3 hours",
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Ha Long Bay",
+              "activities": [
+                "Boat ride in Ha Long Bay",
+                "Admire the majestic limestone mountains",
+                "Punt over the bay",
+                "Kayak to local fishing spots"
+              ],
               "meals": "Breakfast",
+              "hotel": "Wyndham Legend (5 ★ Hotel)",
+              "day": 2,
+              "description": "Get lost in the stunning landscape of Ha Long Bay, where you can admire the limestone karsts, experience water activities like kayaking and swimming, explore hidden caves and islands.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80",
+                  "caption": "Floating Village"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&q=80",
+                  "caption": "Kayaking"
+                }
+              ]
+            },
+            {
               "travelTime": "Ha Long Bay to Hanoi – 3 hours",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Ha Long Bay",
+              "activities": [
+                "Practice Tai Chi",
+                "Sightsee the Cave of surprises",
+                "Relaxing on sundeck",
+                "Hands on Vietnamese culinary experience"
+              ],
+              "meals": "Breakfast",
+              "hotel": "Thang Long Opera (4 ★ Hotel)",
+              "day": 3,
+              "description": "Ha Long Bay, a UNESCO World Heritage Site, invites you to explore stunning geological formations and experience its natural beauty while practicing Tai Chi on the sundeck.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80",
+                  "caption": "Scenic Views"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&q=80",
+                  "caption": "Cave Exploration"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation as listed or similar on double sharing basis", "Meals as mentioned", "Tours as mentioned with an English speaking guide", "Private transfers as mentioned", "Entrance fees for the activities as outlined", "Inclusive of all government taxes and service charges"],
-          "exclusions": ["International airfare", "Visa fees", "Travel insurance", "Personal expenses", "Tips and gratuities", "Meals not mentioned"],
-          "conditions": ["Prices are per person based on double occupancy", "Single supplement charges apply", "Fixed departure dates apply", "Minimum 4 persons required"],
+          "destination": "Vietnam",
+          "featured": false,
+          "imageAlt": "Vietnam North to South Discovery",
+          "duration": "11 Days 10 Nights",
+          "inclusions": [
+            "Private Driver/Guide",
+            "Tour Consultant",
+            "Airport Assistance",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation as listed or similar on double sharing basis",
+            "Meals as mentioned",
+            "Tours as mentioned with an English speaking guide",
+            "Private transfers as mentioned",
+            "Entrance fees for the activities as outlined",
+            "Inclusive of all government taxes and service charges"
+          ],
+          "relatedPackages": [
+            "pkg-008",
+            "pkg-009",
+            "pkg-004"
+          ],
+          "title": "11 Days – Vietnam North to South Discovery",
+          "conditions": [
+            "Prices are per person based on double occupancy",
+            "Single supplement charges apply",
+            "Fixed departure dates apply",
+            "Minimum 4 persons required"
+          ],
+          "type": "Fixed Departure",
           "reviews": [
             {
               "name": "Professor Jayanath Colombage",
@@ -427,95 +862,199 @@
               "avatar": "J"
             }
           ],
-          "relatedPackages": ["pkg-008", "pkg-009", "pkg-004"]
+          "id": "pkg-007",
+          "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80"
         },
         {
-          "id": "pkg-008",
-          "image": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
-          "imageAlt": "Angkor and Cambodian Heritage",
-          "destination": "Cambodia",
-          "type": "Fixed Departure",
-          "title": "9 Days – Angkor & Cambodian Heritage",
-          "startingFrom": "LKR 478,300",
-          "featured": false,
           "suitableFor": "Family",
-          "duration": "9 Days 8 Nights",
+          "exclusions": [
+            "International airfare",
+            "Visa fees",
+            "Travel insurance",
+            "Personal expenses"
+          ],
+          "summary": "Cambodia's magnificent temples, rich history and warm-hearted people make it one of Southeast Asia's most compelling destinations. The awe-inspiring Angkor Wat complex is just the beginning of what this extraordinary country has to offer.",
           "numberOfCities": 3,
           "cities": "Phnom Penh, Siem Reap, Angkor",
-          "themes": ["Culture", "History", "Adventure"],
-          "summary": "Cambodia's magnificent temples, rich history and warm-hearted people make it one of Southeast Asia's most compelling destinations. The awe-inspiring Angkor Wat complex is just the beginning of what this extraordinary country has to offer.",
-          "inclusions": ["Private Driver/Guide", "Tour Consultant", "Airport Assistance", "Government Taxes"],
+          "startingFrom": "LKR 478,300",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80", "caption": "Angkor Wat" },
-            { "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80", "caption": "Temple Sunrise" },
-            { "url": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80", "caption": "Ta Prohm" },
-            { "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80", "caption": "Bayon Temple" }
+            {
+              "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80",
+              "caption": "Angkor Wat"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80",
+              "caption": "Temple Sunrise"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80",
+              "caption": "Ta Prohm"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80",
+              "caption": "Bayon Temple"
+            }
+          ],
+          "themes": [
+            "Culture",
+            "History",
+            "Adventure"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Phnom Penh",
-              "description": "Arrive in Phnom Penh, Cambodia's vibrant capital. Visit the magnificent Royal Palace, the Silver Pagoda and the National Museum before exploring the bustling Central Market.",
-              "activities": ["Arrive in Phnom Penh", "Royal Palace visit", "Silver Pagoda tour", "National Museum exploration"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&q=80", "caption": "Royal Palace" },
-                { "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80", "caption": "National Museum" }
-              ],
-              "hotel": "Raffles Hotel Le Royal (5 ★ Hotel)",
-              "meals": "N/A",
               "travelTime": "Airport to Hotel – 20 mins",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Phnom Penh",
+              "activities": [
+                "Arrive in Phnom Penh",
+                "Royal Palace visit",
+                "Silver Pagoda tour",
+                "National Museum exploration"
+              ],
+              "meals": "N/A",
+              "hotel": "Raffles Hotel Le Royal (5 ★ Hotel)",
+              "day": 1,
+              "description": "Arrive in Phnom Penh, Cambodia's vibrant capital. Visit the magnificent Royal Palace, the Silver Pagoda and the National Museum before exploring the bustling Central Market.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&q=80",
+                  "caption": "Royal Palace"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80",
+                  "caption": "National Museum"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation as listed", "Meals as mentioned", "English-speaking guide", "Private transfers", "Angkor Wat entrance fees", "Government taxes"],
-          "exclusions": ["International airfare", "Visa fees", "Travel insurance", "Personal expenses"],
-          "conditions": ["Prices per person on double occupancy", "Single supplement applies", "Fixed departure dates"],
+          "destination": "Cambodia",
+          "featured": false,
+          "imageAlt": "Angkor and Cambodian Heritage",
+          "duration": "9 Days 8 Nights",
+          "inclusions": [
+            "Private Driver/Guide",
+            "Tour Consultant",
+            "Airport Assistance",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation as listed",
+            "Meals as mentioned",
+            "English-speaking guide",
+            "Private transfers",
+            "Angkor Wat entrance fees",
+            "Government taxes"
+          ],
+          "relatedPackages": [
+            "pkg-007",
+            "pkg-009",
+            "pkg-004"
+          ],
+          "title": "9 Days – Angkor & Cambodian Heritage",
+          "conditions": [
+            "Prices per person on double occupancy",
+            "Single supplement applies",
+            "Fixed departure dates"
+          ],
+          "type": "Fixed Departure",
           "reviews": [],
-          "relatedPackages": ["pkg-007", "pkg-009", "pkg-004"]
+          "id": "pkg-008",
+          "image": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80"
         },
         {
-          "id": "pkg-009",
-          "image": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80",
-          "imageAlt": "Singapore and KL City Highlights",
-          "destination": "Singapore & Malaysia",
-          "type": "Fixed Departure",
-          "title": "7 Days – Singapore & KL City Highlights",
-          "startingFrom": "LKR 445,800",
-          "featured": false,
           "suitableFor": "Family",
-          "duration": "7 Days 6 Nights",
+          "exclusions": [
+            "International airfare",
+            "Visa fees",
+            "Travel insurance",
+            "Personal expenses"
+          ],
+          "summary": "Combine two of Asia's most exciting city destinations in one incredible trip. From Singapore's futuristic Gardens by the Bay and iconic Merlion to Kuala Lumpur's towering Petronas Towers and vibrant street food scene.",
           "numberOfCities": 2,
           "cities": "Singapore, Kuala Lumpur",
-          "themes": ["Culture", "Shopping", "Adventure"],
-          "summary": "Combine two of Asia's most exciting city destinations in one incredible trip. From Singapore's futuristic Gardens by the Bay and iconic Merlion to Kuala Lumpur's towering Petronas Towers and vibrant street food scene.",
-          "inclusions": ["Private Driver/Guide", "Tour Consultant", "Airport Assistance", "Government Taxes"],
+          "startingFrom": "LKR 445,800",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80", "caption": "Marina Bay Sands" },
-            { "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80", "caption": "Gardens by the Bay" },
-            { "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80", "caption": "Petronas Towers" },
-            { "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80", "caption": "Chinatown" }
+            {
+              "url": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80",
+              "caption": "Marina Bay Sands"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&q=80",
+              "caption": "Gardens by the Bay"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80",
+              "caption": "Petronas Towers"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80",
+              "caption": "Chinatown"
+            }
+          ],
+          "themes": [
+            "Culture",
+            "Shopping",
+            "Adventure"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Singapore",
-              "description": "Arrive in the Lion City and check into your hotel. Explore the iconic Marina Bay area, visit the spectacular Gardens by the Bay and admire the futuristic Supertree Grove light show.",
-              "activities": ["Arrive in Singapore", "Gardens by the Bay", "Marina Bay Sands Skypark", "Supertree Grove light show"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=400&q=80", "caption": "Marina Bay Sands" },
-                { "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80", "caption": "Supertrees" }
-              ],
-              "hotel": "Marina Bay Sands (5 ★ Hotel)",
-              "meals": "N/A",
               "travelTime": "Airport to Hotel – 25 mins",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Singapore",
+              "activities": [
+                "Arrive in Singapore",
+                "Gardens by the Bay",
+                "Marina Bay Sands Skypark",
+                "Supertree Grove light show"
+              ],
+              "meals": "N/A",
+              "hotel": "Marina Bay Sands (5 ★ Hotel)",
+              "day": 1,
+              "description": "Arrive in the Lion City and check into your hotel. Explore the iconic Marina Bay area, visit the spectacular Gardens by the Bay and admire the futuristic Supertree Grove light show.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=400&q=80",
+                  "caption": "Marina Bay Sands"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400&q=80",
+                  "caption": "Supertrees"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation as listed", "Daily breakfast", "Private guide and transfers", "Gardens by the Bay entry", "Government taxes"],
-          "exclusions": ["International airfare", "Visa fees", "Travel insurance", "Personal expenses"],
-          "conditions": ["Prices per person on double occupancy", "Fixed departure dates", "Minimum 4 persons required"],
+          "destination": "Singapore & Malaysia",
+          "featured": false,
+          "imageAlt": "Singapore and KL City Highlights",
+          "duration": "7 Days 6 Nights",
+          "inclusions": [
+            "Private Driver/Guide",
+            "Tour Consultant",
+            "Airport Assistance",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation as listed",
+            "Daily breakfast",
+            "Private guide and transfers",
+            "Gardens by the Bay entry",
+            "Government taxes"
+          ],
+          "relatedPackages": [
+            "pkg-007",
+            "pkg-008",
+            "pkg-005"
+          ],
+          "title": "7 Days – Singapore & KL City Highlights",
+          "conditions": [
+            "Prices per person on double occupancy",
+            "Fixed departure dates",
+            "Minimum 4 persons required"
+          ],
+          "type": "Fixed Departure",
           "reviews": [],
-          "relatedPackages": ["pkg-007", "pkg-008", "pkg-005"]
+          "id": "pkg-009",
+          "image": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80"
         }
       ]
     },
@@ -525,136 +1064,278 @@
       "labelLight": "Getaways",
       "packages": [
         {
-          "id": "pkg-010",
-          "image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
-          "imageAlt": "Ella and Nine Arch Weekend Escape",
-          "destination": "Sri Lanka",
-          "type": "Getaway",
-          "title": "3 Days – Ella & Nine Arch Weekend Escape",
-          "startingFrom": "LKR 124,500",
-          "featured": false,
           "suitableFor": "Friends",
-          "duration": "3 Days 2 Nights",
+          "exclusions": [
+            "Meals not mentioned",
+            "Personal expenses",
+            "Tips"
+          ],
+          "summary": "Escape to the misty highlands of Ella for a perfect weekend getaway. Walk the iconic Nine Arch Bridge, hike Little Adam's Peak and enjoy breathtaking views of the surrounding tea country.",
           "numberOfCities": 1,
           "cities": "Ella",
-          "themes": ["Adventure", "Nature"],
-          "summary": "Escape to the misty highlands of Ella for a perfect weekend getaway. Walk the iconic Nine Arch Bridge, hike Little Adam's Peak and enjoy breathtaking views of the surrounding tea country.",
-          "inclusions": ["Private Driver", "Airport Assistance", "Government Taxes"],
+          "startingFrom": "LKR 124,500",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80", "caption": "Nine Arch Bridge" },
-            { "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=600&q=80", "caption": "Tea Plantations" },
-            { "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80", "caption": "Ella Village" },
-            { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80", "caption": "Mountain Views" }
+            {
+              "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
+              "caption": "Nine Arch Bridge"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=600&q=80",
+              "caption": "Tea Plantations"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",
+              "caption": "Ella Village"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+              "caption": "Mountain Views"
+            }
+          ],
+          "themes": [
+            "Adventure",
+            "Nature"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Ella",
-              "description": "Depart from Colombo early morning and travel to the beautiful highland village of Ella. Walk to Nine Arch Bridge and enjoy sunset views over the valley.",
-              "activities": ["Travel to Ella", "Nine Arch Bridge walk", "Ella village exploration", "Sunset viewpoint visit"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=80", "caption": "Nine Arch Bridge" },
-                { "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=400&q=80", "caption": "Valley Views" }
-              ],
-              "hotel": "98 Acres Resort (4 ★ Hotel)",
-              "meals": "Dinner",
               "travelTime": "Colombo to Ella – 5 hours",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Ella",
+              "activities": [
+                "Travel to Ella",
+                "Nine Arch Bridge walk",
+                "Ella village exploration",
+                "Sunset viewpoint visit"
+              ],
+              "meals": "Dinner",
+              "hotel": "98 Acres Resort (4 ★ Hotel)",
+              "day": 1,
+              "description": "Depart from Colombo early morning and travel to the beautiful highland village of Ella. Walk to Nine Arch Bridge and enjoy sunset views over the valley.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=80",
+                  "caption": "Nine Arch Bridge"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1588598198321-9735fd5e1f4a?w=400&q=80",
+                  "caption": "Valley Views"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation for 2 nights", "Breakfast daily", "Private driver", "Government taxes"],
-          "exclusions": ["Meals not mentioned", "Personal expenses", "Tips"],
-          "conditions": ["Prices per person on double occupancy", "Subject to availability"],
+          "destination": "Sri Lanka",
+          "featured": false,
+          "imageAlt": "Ella and Nine Arch Weekend Escape",
+          "duration": "3 Days 2 Nights",
+          "inclusions": [
+            "Private Driver",
+            "Airport Assistance",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation for 2 nights",
+            "Breakfast daily",
+            "Private driver",
+            "Government taxes"
+          ],
+          "relatedPackages": [
+            "pkg-001",
+            "pkg-011",
+            "pkg-012"
+          ],
+          "title": "3 Days – Ella & Nine Arch Weekend Escape",
+          "conditions": [
+            "Prices per person on double occupancy",
+            "Subject to availability"
+          ],
+          "type": "Getaway",
           "reviews": [],
-          "relatedPackages": ["pkg-001", "pkg-011", "pkg-012"]
+          "id": "pkg-010",
+          "image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80"
         },
         {
-          "id": "pkg-011",
-          "image": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80",
-          "imageAlt": "Mirissa and Unawatuna Beach Getaway",
-          "destination": "Sri Lanka",
-          "type": "Getaway",
-          "title": "4 Days – Mirissa & Unawatuna Beach Getaway",
-          "startingFrom": "LKR 156,200",
-          "featured": false,
           "suitableFor": "Couple",
-          "duration": "4 Days 3 Nights",
+          "exclusions": [
+            "Meals not mentioned",
+            "Water sports",
+            "Personal expenses"
+          ],
+          "summary": "The southern coast of Sri Lanka is home to some of the most beautiful beaches in Asia. Combine the whale-watching paradise of Mirissa with the golden sands and coral reefs of Unawatuna for an unforgettable beach escape.",
           "numberOfCities": 2,
           "cities": "Mirissa, Unawatuna",
-          "themes": ["Beach", "Wellness"],
-          "summary": "The southern coast of Sri Lanka is home to some of the most beautiful beaches in Asia. Combine the whale-watching paradise of Mirissa with the golden sands and coral reefs of Unawatuna for an unforgettable beach escape.",
-          "inclusions": ["Private Driver", "Whale Watching Tour", "Government Taxes"],
+          "startingFrom": "LKR 156,200",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80", "caption": "Mirissa Beach" },
-            { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80", "caption": "Whale Watching" },
-            { "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80", "caption": "Unawatuna Bay" },
-            { "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80", "caption": "Sunset Beach" }
+            {
+              "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=600&q=80",
+              "caption": "Mirissa Beach"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+              "caption": "Whale Watching"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
+              "caption": "Unawatuna Bay"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80",
+              "caption": "Sunset Beach"
+            }
+          ],
+          "themes": [
+            "Beach",
+            "Wellness"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Mirissa",
-              "description": "Travel to the southern coast and settle into your beachfront hotel in Mirissa. Spend the afternoon on the beautiful crescent-shaped beach and enjoy fresh seafood for dinner.",
-              "activities": ["Travel to Mirissa", "Beach time", "Parrot Rock sunset visit", "Seafood dinner"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=400&q=80", "caption": "Mirissa Beach" },
-                { "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", "caption": "Parrot Rock" }
-              ],
-              "hotel": "The Leaf Sanctuary (4 ★ Hotel)",
-              "meals": "Dinner",
               "travelTime": "Colombo to Mirissa – 3.5 hours",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Mirissa",
+              "activities": [
+                "Travel to Mirissa",
+                "Beach time",
+                "Parrot Rock sunset visit",
+                "Seafood dinner"
+              ],
+              "meals": "Dinner",
+              "hotel": "The Leaf Sanctuary (4 ★ Hotel)",
+              "day": 1,
+              "description": "Travel to the southern coast and settle into your beachfront hotel in Mirissa. Spend the afternoon on the beautiful crescent-shaped beach and enjoy fresh seafood for dinner.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=400&q=80",
+                  "caption": "Mirissa Beach"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
+                  "caption": "Parrot Rock"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation for 3 nights", "Daily breakfast", "Whale watching tour", "Private driver", "Government taxes"],
-          "exclusions": ["Meals not mentioned", "Water sports", "Personal expenses"],
-          "conditions": ["Prices per person on double occupancy", "Whale watching subject to season"],
+          "destination": "Sri Lanka",
+          "featured": false,
+          "imageAlt": "Mirissa and Unawatuna Beach Getaway",
+          "duration": "4 Days 3 Nights",
+          "inclusions": [
+            "Private Driver",
+            "Whale Watching Tour",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation for 3 nights",
+            "Daily breakfast",
+            "Whale watching tour",
+            "Private driver",
+            "Government taxes"
+          ],
+          "relatedPackages": [
+            "pkg-006",
+            "pkg-001",
+            "pkg-010"
+          ],
+          "title": "4 Days – Mirissa & Unawatuna Beach Getaway",
+          "conditions": [
+            "Prices per person on double occupancy",
+            "Whale watching subject to season"
+          ],
+          "type": "Getaway",
           "reviews": [],
-          "relatedPackages": ["pkg-006", "pkg-001", "pkg-010"]
+          "id": "pkg-011",
+          "image": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800&q=80"
         },
         {
-          "id": "pkg-012",
-          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80",
-          "imageAlt": "Kandy Cultural Heritage Tour",
-          "destination": "Sri Lanka",
-          "type": "Getaway",
-          "title": "3 Days – Kandy Cultural Heritage Tour",
-          "startingFrom": "LKR 98,000",
-          "featured": false,
           "suitableFor": "Family",
-          "duration": "3 Days 2 Nights",
+          "exclusions": [
+            "Meals not mentioned",
+            "Personal expenses",
+            "Tips"
+          ],
+          "summary": "Kandy is the cultural capital of Sri Lanka and home to the sacred Temple of the Tooth Relic. This short but enriching getaway takes you through the city's royal history, botanical wonders and vibrant cultural performances.",
           "numberOfCities": 1,
           "cities": "Kandy",
-          "themes": ["Culture", "History"],
-          "summary": "Kandy is the cultural capital of Sri Lanka and home to the sacred Temple of the Tooth Relic. This short but enriching getaway takes you through the city's royal history, botanical wonders and vibrant cultural performances.",
-          "inclusions": ["Private Driver", "Temple Entry", "Cultural Show Tickets", "Government Taxes"],
+          "startingFrom": "LKR 98,000",
           "galleryImages": [
-            { "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80", "caption": "Temple of the Tooth" },
-            { "url": "https://images.unsplash.com/photo-1593691509543-c55fb32e5cef?w=600&q=80", "caption": "Kandy Lake" },
-            { "url": "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?w=600&q=80", "caption": "Royal Botanical Gardens" },
-            { "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80", "caption": "Cultural Dance" }
+            {
+              "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",
+              "caption": "Temple of the Tooth"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1593691509543-c55fb32e5cef?w=600&q=80",
+              "caption": "Kandy Lake"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?w=600&q=80",
+              "caption": "Royal Botanical Gardens"
+            },
+            {
+              "url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
+              "caption": "Cultural Dance"
+            }
+          ],
+          "themes": [
+            "Culture",
+            "History"
           ],
           "itinerary": [
             {
-              "day": 1,
-              "city": "Kandy",
-              "description": "Travel from Colombo to Kandy through the scenic central highlands. Visit the renowned Royal Botanical Gardens at Peradeniya and settle in for an evening cultural show.",
-              "activities": ["Travel to Kandy", "Royal Botanical Gardens", "Kandy Lake walk", "Evening Kandyan dance show"],
-              "highlights": [
-                { "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&q=80", "caption": "Botanical Gardens" },
-                { "url": "https://images.unsplash.com/photo-1593691509543-c55fb32e5cef?w=400&q=80", "caption": "Cultural Show" }
-              ],
-              "hotel": "Earl's Regency (4 ★ Hotel)",
-              "meals": "Dinner",
               "travelTime": "Colombo to Kandy – 3 hours",
-              "transport": "Private Vehicle (Air Conditioned)"
+              "transport": "Private Vehicle (Air Conditioned)",
+              "city": "Kandy",
+              "activities": [
+                "Travel to Kandy",
+                "Royal Botanical Gardens",
+                "Kandy Lake walk",
+                "Evening Kandyan dance show"
+              ],
+              "meals": "Dinner",
+              "hotel": "Earl's Regency (4 ★ Hotel)",
+              "day": 1,
+              "description": "Travel from Colombo to Kandy through the scenic central highlands. Visit the renowned Royal Botanical Gardens at Peradeniya and settle in for an evening cultural show.",
+              "highlights": [
+                {
+                  "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&q=80",
+                  "caption": "Botanical Gardens"
+                },
+                {
+                  "url": "https://images.unsplash.com/photo-1593691509543-c55fb32e5cef?w=400&q=80",
+                  "caption": "Cultural Show"
+                }
+              ]
             }
           ],
-          "inclusions_full": ["Accommodation for 2 nights", "Daily breakfast", "Temple of the Tooth entry", "Cultural show tickets", "Private driver", "Government taxes"],
-          "exclusions": ["Meals not mentioned", "Personal expenses", "Tips"],
-          "conditions": ["Prices per person on double occupancy", "Subject to availability"],
+          "destination": "Sri Lanka",
+          "featured": false,
+          "imageAlt": "Kandy Cultural Heritage Tour",
+          "duration": "3 Days 2 Nights",
+          "inclusions": [
+            "Private Driver",
+            "Temple Entry",
+            "Cultural Show Tickets",
+            "Government Taxes"
+          ],
+          "inclusions_full": [
+            "Accommodation for 2 nights",
+            "Daily breakfast",
+            "Temple of the Tooth entry",
+            "Cultural show tickets",
+            "Private driver",
+            "Government taxes"
+          ],
+          "relatedPackages": [
+            "pkg-001",
+            "pkg-002",
+            "pkg-010"
+          ],
+          "title": "3 Days – Kandy Cultural Heritage Tour",
+          "conditions": [
+            "Prices per person on double occupancy",
+            "Subject to availability"
+          ],
+          "type": "Getaway",
           "reviews": [],
-          "relatedPackages": ["pkg-001", "pkg-002", "pkg-010"]
+          "id": "pkg-012",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80"
         }
       ]
     }
