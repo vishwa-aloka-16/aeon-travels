@@ -690,14 +690,24 @@
           "image": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80"
         },
         {
-          "id": "pkg-007",
-          "title": "Sample Packaage",
-          "destination": "Sample Destination",
-          "image": "/assets/images/Home_Image.jpg",
-          "startingFrom": "100000",
+          "suitableFor": "Honeymoon",
+          "summary": "sample summery",
+          "numberOfCities": 5,
+          "cities": "Colombo, Kandy, Ella, Mirissa",
+          "startingFrom": "LKR 100000",
+          "galleryImages": [],
+          "themes": [
+            "Beach"
+          ],
+          "destination": "Sri Lanka",
+          "featured": true,
+          "imageAlt": "img",
           "duration": "10 days",
-          "cities": "kandy, Ella",
-          "summary": "sample summery"
+          "title": "Sample Packaage",
+          "type": "Tailor Made",
+          "reviews": [],
+          "id": "pkg-007",
+          "image": "/assets/images/Home_Image.jpg"
         }
       ]
     },
